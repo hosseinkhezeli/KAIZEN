@@ -1,0 +1,98 @@
+:root {
+    --rmdp-primary-theme: #3d9970;
+    --rmdp-secondary-theme: #87ad92;
+    --rmdp-shadow-theme: #87ad92;
+    --rmdp-today-theme: #01ff70;
+    --rmdp-hover-theme: #2ecc40;
+    --rmdp-deselect-theme: #39795c;
+    --rmdp-box-shadow-theme: #39795c;
+    --rmdp-text-primary: #000;
+    --rmdp-text-secondary: #fff;
+    --rmdp-box-border: #b5b5b5;
+    --rmdp-error-theme: #ff0000;
+    --rmdp-success-theme: #1bff02;
+}
+
+.custom-calender .rmdp-wrapper {
+    border: 1px solid var(--rmdp-secondary-theme);
+    box-shadow: 0 0 5px var(--rmdp-secondary-theme);
+}
+
+.custom-calender .rmdp-panel-body li {
+    background-color: var(--rmdp-primary-theme);
+    box-shadow: 0 0 2px var(--rmdp-secondary-theme);
+}
+
+.custom-calender .rmdp-week-day {
+    color: var(--rmdp-primary-theme);
+}
+
+.custom-calender .rmdp-day.rmdp-deactive {
+    color: var(--rmdp-secondary-theme);
+}
+
+.custom-calender .rmdp-range {
+    background-color: var(--rmdp-primary-theme);
+    box-shadow: 0 0 3px var(--rmdp-shadow-theme);
+}
+
+.custom-calender .rmdp-arrow {
+    border: solid var(--rmdp-primary-theme);
+    border-width: 0 2px 2px 0;
+}
+
+.custom-calender .rmdp-arrow-container:hover {
+    background-color: var(--rmdp-primary-theme);
+    box-shadow: 0 0 3px var(--rmdp-secondary-theme);
+}
+
+.custom-calender .rmdp-panel-body::-webkit-scrollbar-thumb {
+    background: var(--rmdp-primary-theme);
+}
+
+.custom-calender .rmdp-day.rmdp-today span {
+    background-color: transparent;
+    border-color: var(--rmdp-box-border);
+    color: var(--rmdp-text-primary);
+}
+
+.custom-calender .rmdp-rtl .rmdp-panel {
+    border-left: unset;
+    border-right: 1px solid var(--rmdp-secondary-theme);
+}
+
+.custom-calender .rmdp-day.rmdp-selected span:not(.highlight) {
+    background-color: var(--rmdp-primary-theme);
+    box-shadow: none;
+    color: var(--rmdp-text-secondary);
+}
+
+.custom-calender .rmdp-day:not(.rmdp-day-hidden) span:hover {
+    background-color: var(--rmdp-hover-theme) !important;
+    color: var(--rmdp-text-secondary);
+}
+
+.custom-calender .b-deselect {
+    color: var(--rmdp-deselect-theme);
+    background-color: white;
+}
+
+.custom-calender .rmdp-action-button {
+    color: var(--rmdp-primary-theme);
+}
+
+.custom-calender .rmdp-button:not(.rmdp-action-button) {
+    background-color: var(--rmdp-primary-theme);
+}
+
+.custom-calender .rmdp-button:not(.rmdp-action-button):hover {
+    background-color: var(--rmdp-deselect-theme);
+}
+
+.highlight-present {
+    background-color: var(--rmdp-success-theme);
+}
+
+.highlight-absent {
+    background-color: var(--rmdp-error-theme);
+}

@@ -1,0 +1,30 @@
+import { createTheme, PaletteMode, PaletteOptions } from '@mui/material';
+import { MuiButton } from '@styles/theme/components/Button/MuiButton';
+import { MuiButtonBase } from '@styles/theme/components/Button/MuiButtonBase';
+import { MuiCssBaseline } from '@styles/theme/components/CssBaseline/MuiCssBaseline';
+import { typography } from '@styles/theme/components/Typography';
+import { MuiTypography } from '@styles/theme/components/Typography/MuiTypography/MuiTypography';
+import { lightPalette } from './palette/light/lightPalette';
+import { darkPalette } from './palette/dark/darkPalette';
+
+// Define the return type of getDesignTokens
+const getDesignTokens = (mode: PaletteMode): PaletteOptions => ({
+  mode,
+  ...(mode === 'light' ? lightPalette : darkPalette),
+});
+
+// Create the custom theme function
+export const customTheme = (mode: PaletteMode | undefined, isRtl: boolean) =>
+  createTheme({
+    palette: getDesignTokens(mode ?? 'light'),
+    typography,
+    direction: isRtl ? 'rtl' : 'ltr',
+    components: {
+      MuiButtonBase,
+      MuiButton,
+      MuiTypography,
+      MuiCssBaseline,
+    },
+  });
+
+export default customTheme;

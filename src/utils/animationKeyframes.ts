@@ -1,0 +1,50 @@
+import { keyframes } from '@mui/material/styles';
+
+export const pop = keyframes`
+    0% {
+        transform: translateY(-5%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 100%;
+    }
+`;
+
+export const fadeOut = keyframes`
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+`;
+
+export const bounce = keyframes`
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 100%;
+    }
+`;
+
+export const shock = keyframes`
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+`;

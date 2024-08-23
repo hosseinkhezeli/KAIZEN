@@ -1,0 +1,21 @@
+import React, {FC} from 'react';
+import {SnackbarProvider} from "notistack";
+
+interface Props {
+  children: React.ReactNode
+}
+
+const CustomSnackbarProvider: FC<Props> = ({children}) => {
+
+  return (
+    <SnackbarProvider
+      style={{ fontFamily: 'inherit', direction: 'ltr' }}
+      anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+      // Components={{ error: CustomErrorSnackbar }}
+    >
+      {children}
+    </SnackbarProvider>
+  );
+};
+
+export default CustomSnackbarProvider;

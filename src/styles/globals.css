@@ -1,0 +1,47 @@
+* {
+    -webkit-text-fill-color: inherit !important
+}
+:root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    font-family: inherit !important;
+}
+
+
+/* ------------------------ NotoSans ------------------------ */
+@font-face {
+    font-family: 'Noto Sans';
+    src: url('/fonts/Noto_Sans_Arabic/NotoSansArabic-VariableFont_wdth,wght.ttf');
+    font-display: fallback;
+}
+
+/* ------------------------ Libre_Franklin ------------------------ */
+@font-face {
+    font-family: 'Libre Franklin';
+    src: url('/fonts/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf');
+    font-display: fallback;
+}
+
+
+.en-font {
+    font-family: Libre Franklin, sans-serif;
+}
+
+.fa-font {
+    font-family: Noto Sans, sans-serif;
+}

@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# KAIZEN 🎉
 
-## Getting Started
+Welcome to **KAIZEN**, your go-to app for managing tasks in a fun and interactive way! Dive into a seamless
+experience where you can organize your projects with ease, just like a dance!
 
-First, run the development server:
+## Features 🌟
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Kanban Style Boards**: Effortlessly move tasks between stages.
+- **Task Management**: Create, edit, and delete tasks with a simple click.
+- **Drag and Drop**: Rearrange tasks to fit your workflow.
+- **Real-Time Updates**: Stay in sync with your team as changes happen instantly.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used 🛠️
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Vite**: Fast and modern build tool.
+- **React**: A JavaScript library for building user interfaces.
+- **SWC**: Super-fast compiler for TypeScript and JavaScript.
+- **TypeScript**: Adds type safety to JavaScript.
+- **Axios**: Promise-based HTTP client for making API requests.
+- **TanStack Query**: Powerful data-fetching and state management.
+- **Redux Toolkit**: Simplifies state management.
+- **Material-UI (MUI)**: UI components for React.
+- **React Router DOM**: Declarative routing for React applications.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation Instructions 🚀
 
-## Learn More
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/hosseinkhezeli/kaizen.git
+   cd kaizen
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+4. Open your browser and navigate to `http://localhost:3000` (or the specified port).
 
-## Deploy on Vercel
+## Usage Instructions 📝
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Create tasks in a kanban-style format.
+- Move tasks between different columns to reflect their status.
+- Edit or delete tasks as needed.
+- Enjoy a smooth and interactive user experience!
