@@ -5,8 +5,8 @@ export default function Home() {
     <main>
         Hello World!
         سلام به دنیا
-        <Button>سلام بر دنیا</Button>
-        <Button> Hello World!</Button>
+        <Button color={'success'}>سلام بر دنیا</Button>
+        <Button color={'success'}> Hello World!</Button>
 
     </main>
   );
