@@ -1,6 +1,6 @@
 import 'server-only';
 export const i18n = {
-    defaultLocale: 'fa',
+    defaultLocale: 'en',
     locales: ['en', 'fa'],
 } as const;
 

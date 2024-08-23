@@ -1,3 +1,4 @@
+
 * {
     -webkit-text-fill-color: inherit !important
 }
@@ -26,14 +27,14 @@ body {
 /* ------------------------ NotoSans ------------------------ */
 @font-face {
     font-family: 'Noto Sans';
-    src: url('/fonts/Noto_Sans_Arabic/NotoSansArabic-VariableFont_wdth,wght.ttf');
+    src: url('../../public/fonts/Noto_Sans_Arabic/NotoSansArabic-VariableFont_wdth,wght.ttf');
     font-display: fallback;
 }
 
 /* ------------------------ Libre_Franklin ------------------------ */
 @font-face {
     font-family: 'Libre Franklin';
-    src: url('/fonts/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf');
+    src: url('../../public/fonts/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf');
     font-display: fallback;
 }
 

@@ -6,6 +6,7 @@ import customTheme from './theme';
 import { useDispatch } from 'react-redux';
 import CacheProvider from './CacheProvider';
 import { Locale } from '@/i18n';
+
 interface AppThemeProps {
     children: ReactNode;
     lang: Locale;
