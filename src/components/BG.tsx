@@ -20,21 +20,21 @@ const BG: React.FC = () => {
                 cx='50'
                 cy='100'
                 r='35'
-                fill='#87D498'
+                fill='#de9124'
             />
             <circle
                 className='bokeh bokeh2'
                 cx='100'
                 cy='75'
                 r='25'
-                fill='#de9124'
+                fill='#e5682a'
             />
             <circle
                 className='bokeh bokeh3'
                 cx='100'
                 cy='150'
                 r='30'
-                fill='#c22f2f'
+                fill='#c44e15'
             />
 
             {/* Animation styles */}
