@@ -1,28 +1,35 @@
-import React, { FC } from 'react';
+//@3rd Party
+import { FC } from 'react';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@Mui
 import {
-    FormControl,
     InputLabel,
     TextField,
     BaseTextFieldProps,
-    Stack,
+    InputLabelProps,
+    FormControlProps,
 } from '@mui/material';
-import { InputLabelProps } from '@mui/material';
-import { FormControlProps } from '@mui/material';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//@Types
 interface ITextInput extends BaseTextFieldProps {
+    label: string; // Ensure label is a required prop
     labelProps?: InputLabelProps;
     formControlProps?: FormControlProps;
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const TextInput: FC<ITextInput> = ({
+    label,
     labelProps,
     formControlProps,
-    label,
     ...textFieldProps
 }) => {
+    const inputId = `${label}-input`;
     return (
         <InputLabel
-            htmlFor={label + '-input'}
+            htmlFor={inputId}
             {...labelProps}
             sx={{
                 display: 'flex',
@@ -33,7 +40,7 @@ const TextInput: FC<ITextInput> = ({
             }}
         >
             {label}
-            <TextField id={label + '-input'} {...textFieldProps} />
+            <TextField id={inputId} {...textFieldProps} />
         </InputLabel>
     );
 };

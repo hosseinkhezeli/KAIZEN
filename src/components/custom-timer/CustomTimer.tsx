@@ -1,51 +1,71 @@
-import { useEffect, useState } from 'react';
+//@3rd Party
+import { useEffect, useState, useRef, FC } from 'react';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@Mui
 import { Typography } from '@mui/material';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const CustomTimer = ({ startTime }: { startTime?: Date | string }) => {
+//@Types
+interface CustomTimerProps {
+    startTime?: Date | string;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const CustomTimer: FC<CustomTimerProps> = ({ startTime }) => {
     const [count, setCount] = useState(0);
-    const [time, setTime] = useState('00:00:00');
+    const [time, setTime] = useState<string>('00:00:00');
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-    const initTime = new Date(startTime!);
+    const initTime = startTime ? new Date(startTime).getTime() : Date.now();
 
-    const showTimer = (ms: number) => {
-        const second = Math.floor((ms / 1000) % 60)
+    const formatTime = (ms: number): string => {
+        const seconds = Math.floor((ms / 1000) % 60)
             .toString()
             .padStart(2, '0');
-        const minute = Math.floor((ms / 1000 / 60) % 60)
+        const minutes = Math.floor((ms / 1000 / 60) % 60)
             .toString()
             .padStart(2, '0');
-        const hour = Math.floor(ms / 1000 / 60 / 60).toString();
-        setTime(hour + ':' + minute + ':' + second);
+        const hours = Math.floor(ms / 1000 / 60 / 60)
+            .toString()
+            .padStart(2, '0');
+        return `${hours}:${minutes}:${seconds}`;
     };
 
     useEffect(() => {
-        const id = setInterval(() => {
-            const left = count + (Number(new Date()) - Number(initTime));
-            setCount(left);
-            showTimer(left);
-            if (left <= 0) {
+        intervalRef.current = setInterval(() => {
+            const elapsedTime = Date.now() - initTime + count;
+            setCount(elapsedTime);
+            setTime(formatTime(elapsedTime));
+
+            if (elapsedTime <= 0) {
+                clearInterval(intervalRef.current!);
                 setTime('00:00:00');
-                clearInterval(id);
             }
-        }, 1);
-        return () => clearInterval(id);
-    }, [startTime]);
+        }, 1000);
+
+        return () => {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+        };
+    }, [count, initTime]);
+
     return (
-        <>
-            <Typography
-                color={'info.main'}
-                variant={'caption3.medium'}
-                sx={{
-                    p: '4px 8px',
-                    backgroundColor: 'info.1',
-                    borderRadius: 1,
-                    borderRight: '1px solid',
-                    borderColor: 'info.3',
-                }}
-            >
-                {time}
-            </Typography>
-        </>
+        <Typography
+            color={'info.main'}
+            variant={'body2'}
+            sx={{
+                p: '4px 8px',
+                backgroundColor: 'info.1',
+                borderRadius: 1,
+                borderRight: '1px solid',
+                borderColor: 'info.3',
+            }}
+            aria-live='polite'
+        >
+            {time}
+        </Typography>
     );
 };
 
