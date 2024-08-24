@@ -1,4 +1,5 @@
 import { createTheme, PaletteMode, PaletteOptions } from '@mui/material';
+import { MuiIconButton } from '@styles/theme/components/Button/IconButton';
 import { MuiButton } from '@styles/theme/components/Button/MuiButton';
 import { MuiButtonBase } from '@styles/theme/components/Button/MuiButtonBase';
 import { MuiCssBaseline } from '@styles/theme/components/CssBaseline/MuiCssBaseline';
@@ -28,6 +29,7 @@ export const customTheme = (mode: PaletteMode | undefined, isRtl: boolean) =>
       MuiCssBaseline,
       MuiInputBase,
       MuiInputLabel,
+      MuiIconButton,
     },
   });
 
