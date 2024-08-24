@@ -1,46 +1,71 @@
 import React from 'react';
 
-const BG = ({ style }: { style?: React.CSSProperties | undefined }) => {
-  return (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      xmlnsXlink='http://www.w3.org/1999/xlink'
-      style={{
-        margin: 'auto',
-        display: 'block',
-        position: 'absolute',
-        zIndex: -1,
-        top: 0,
-        left: 0,
-        ...style,
-      }}
-      width='100vw'
-      height='100%'
-    >
-      <g transform='translate(683,325.5) scale(1,1) translate(-683,-325.5)'>
-        <linearGradient id='ldbk-w6huv53jzi' x1='-1.5' y1='0' x2='0.5' y2='1'>
-          <animate
-            attributeName='y2'
-            repeatCount='indefinite'
-            dur='7s'
-            keyTimes='0;0.5;1'
-            values='-1;1;-1'
-            keySplines='0.5 0 0.5 1;0.5 0 0.5 1'
-            calcMode='spline'
-          ></animate>
-          <stop stopColor='#985bf6' offset='0'></stop>
-          <stop stopColor='#01002c' offset='1'></stop>
-        </linearGradient>
-        <rect
-          x='0'
-          y='0'
-          width='100%'
-          height='100%'
-          fill='url(#ldbk-w6huv53jzi)'
-        ></rect>
-      </g>
-    </svg>
-  );
+const BG: React.FC = () => {
+    return (
+        <svg
+            xmlns='http://www.w3.org/2000/svg'
+            viewBox='0 0 200 200'
+            width='100vw'
+            height='100%'
+            style={{
+                position: 'absolute',
+                top: 0,
+                right: -360,
+                filter: 'blur(50px)',
+            }}
+        >
+            {/* Bokeh circles without blur filter */}
+            <circle
+                className='bokeh bokeh1'
+                cx='50'
+                cy='100'
+                r='35'
+                fill='#87D498'
+            />
+            <circle
+                className='bokeh bokeh2'
+                cx='100'
+                cy='75'
+                r='25'
+                fill='#de9124'
+            />
+            <circle
+                className='bokeh bokeh3'
+                cx='100'
+                cy='150'
+                r='30'
+                fill='#c22f2f'
+            />
+
+            {/* Animation styles */}
+            <style>
+                {`
+                    .bokeh {
+                        animation: move 4s ease infinite alternate;
+                        opacity: 0.2;
+                        will-change: transform, opacity;
+                    }
+                    .bokeh1 {
+                        animation-delay: 0s;
+                    }
+                    .bokeh2 {
+                        animation-delay: 1s;
+                    }
+                    .bokeh3 {
+                        animation-delay: 2s;
+                    }
+                    @keyframes move {
+                        0% {
+                            transform: translate(0px, 0px);
+                        }
+                        100% {
+                            transform: translate(40px, -40px);
+                        }
+                    }
+                `}
+            </style>
+        </svg>
+    );
 };
 
 export default BG;
