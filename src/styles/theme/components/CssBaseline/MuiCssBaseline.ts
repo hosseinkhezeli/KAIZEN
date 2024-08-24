@@ -8,6 +8,6 @@ export const MuiCssBaseline = {
   }
   input[type=number] {
       -moz-appearance: textfield;
-  }
+  },
 `,
 };

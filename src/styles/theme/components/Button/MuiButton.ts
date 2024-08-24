@@ -1,4 +1,6 @@
+import { ButtonOwnProps } from '@mui/material';
 import { Components, Theme } from '@mui/material/styles';
+import { PaletteOptions } from '@mui/material/styles/createPalette';
 
 export const MuiButton: Components<Theme>['MuiButton'] = {
   defaultProps: {
@@ -26,14 +28,23 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
         boxShadow: `0 6px 6px 0px ${theme.palette.text.primary}05`,
       },
       ':active': {
+        opacity: '0.9',
         '&.MuiButton-containedInherit': {
           boxShadow: `0 0px 0px 0px ${theme.palette.text.secondary}00`,
         },
       },
     }),
-    outlined: () => ({
-      borderStyle: 'dashed',
-      borderWidth: '2px',
-    }),
+    outlined: ({ theme, ownerState }) => {
+      const bgColor = () => {
+        if (
+          (ownerState.color satisfies ButtonOwnProps['color']) &&
+          ownerState.color !== 'inherit'
+        )
+          return theme.palette[ownerState?.color ?? 'primary'].main;
+      };
+      return {
+        backgroundColor: bgColor?.() + '09',
+      };
+    },
   },
 };

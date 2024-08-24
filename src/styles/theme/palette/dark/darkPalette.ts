@@ -2,15 +2,15 @@ import { PaletteOptions } from '@mui/material';
 
 export const darkPalette: PaletteOptions = {
   primary: {
-    light: '#de9124',
-    main: '#cb5920',
-    dark: '#c44e15',
+    light: '#fd7c3c',
+    main: '#e5682a',
+    dark: '#cb5920',
     contrastText: '#000000',
   },
   secondary: {
-    light: '#344D98',
-    main: '#1F2E5A',
-    dark: '#151F3D',
+    light: '#5781fd',
+    main: '#4668ce',
+    dark: '#344D98',
     contrastText: '#FFFFFF',
   },
   divider: '#E5E5E5',
@@ -38,7 +38,7 @@ export const darkPalette: PaletteOptions = {
   },
   info: {
     light: '#3fa6d2',
-    main: "#107AA7",
+    main: '#107AA7',
     dark: '#09445D',
     contrastText: '#ffffff',
   },
