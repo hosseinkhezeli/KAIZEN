@@ -34,50 +34,52 @@ const CustomBreadCrumbs: FC<ICustomBreadCrumbs> = memo(
         const location = currentPath.split('/').pop();
 
         const renderedBreadcrumbs = useMemo(() => {
-            return breadcrumbs.map((breadcrumb, idx) => (
-                <Link
-                    key={`${breadcrumb.href}-${idx}`}
-                    href={breadcrumb.href}
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        textDecoration: 'none',
-                        color:
-                            location || currentPath === breadcrumb.href
-                                ? palette.text.primary
-                                : palette.text.disabled,
-                        stroke:
-                            location || currentPath === breadcrumb.href
-                                ? palette.text.primary
-                                : palette.text.disabled,
-                        ...typography.body1,
-                    }}
-                    aria-current={
-                        location || currentPath === breadcrumb.href
-                            ? 'page'
-                            : undefined
-                    }
-                >
-                    <Typography
-                        component={
-                            typeof breadcrumb.label === 'string' ? 'p' : 'div'
-                        }
-                        sx={{
-                            transition: '0.2s ease all',
-                            ':hover': {
-                                color: 'text.primary',
-                                stroke: ({ palette }) => palette.text.primary,
-                            },
+            return breadcrumbs.map((breadcrumb, idx) => {
+                const isActive =
+                    location === breadcrumb.href ||
+                    currentPath === breadcrumb.href;
+                const textColor = isActive
+                    ? palette.text.primary
+                    : palette.text.disabled;
+
+                return (
+                    <Link
+                        key={`${breadcrumb.href}-${idx}`}
+                        href={breadcrumb.href}
+                        style={{
                             display: 'flex',
                             alignItems: 'center',
-                            stroke: ({ palette }) => palette.text.disabled,
+                            textDecoration: 'none',
+                            color: textColor,
+                            stroke: textColor,
+                            ...typography.body1,
                         }}
+                        aria-current={isActive ? 'page' : undefined}
                     >
-                        {breadcrumb.label}
-                    </Typography>
-                </Link>
-            ));
-        }, [breadcrumbs, location]);
+                        <Typography
+                            component={
+                                typeof breadcrumb.label === 'string'
+                                    ? 'p'
+                                    : 'div'
+                            }
+                            sx={{
+                                transition: '0.2s ease all',
+                                ':hover': {
+                                    color: 'text.primary',
+                                    stroke: ({ palette }) =>
+                                        palette.text.primary,
+                                },
+                                display: 'flex',
+                                alignItems: 'center',
+                                stroke: ({ palette }) => palette.text.disabled,
+                            }}
+                        >
+                            {breadcrumb.label}
+                        </Typography>
+                    </Link>
+                );
+            });
+        }, [breadcrumbs, location, currentPath, palette.text]);
 
         return (
             <Breadcrumbs

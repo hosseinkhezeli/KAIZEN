@@ -32,27 +32,18 @@ export default function RootLayout({
     children: ReactNode;
     params: { lang: Locale };
 }) {
+    const isRtl = params.lang === 'fa';
     return (
         <html
             lang={params.lang}
-            dir={params.lang === 'fa' ? 'rtl' : 'ltr'}
+            dir={isRtl ? 'rtl' : 'ltr'}
             style={{
-                textAlign: params.lang === 'fa' ? 'right' : 'left',
+                textAlign: isRtl ? 'right' : 'left',
                 overflowX: 'hidden',
             }}
-            className={params.lang === 'fa' ? 'fa-font' : 'en-font'}
+            className={isRtl ? 'fa-font' : 'en-font'}
         >
-            <Box
-                component={'body'}
-                sx={{
-                    backgroundColor: 'background.default',
-                    backgroundPosition: 'top right',
-                    backgroundRepeat: 'no-repeat !important',
-                    objectFit: 'contain',
-                    background:
-                        'linear-gradient(45deg, #F0F0F0 0%, #F0F0F0 75%, #fcb95222 90%, #faa21e33 95%, #f1981444 100%)',
-                }}
-            >
+            <Box component='body' sx={bodyStyles}>
                 <ProvidersLayout lang={params.lang}>
                     <MainLayout>{children}</MainLayout>
                 </ProvidersLayout>
@@ -60,3 +51,12 @@ export default function RootLayout({
         </html>
     );
 }
+
+const bodyStyles = {
+    backgroundColor: 'background.default',
+    backgroundPosition: 'top right',
+    backgroundRepeat: 'no-repeat !important',
+    objectFit: 'contain',
+    background:
+        'linear-gradient(45deg, #F0F0F0 0%, #F0F0F0 75%, #fcb95222 90%, #faa21e33 95%, #f1981444 100%)',
+};

@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import { FC, ReactNode, SyntheticEvent, useState } from 'react';
 import {
     BottomNavigation,
     BottomNavigationAction,
@@ -12,23 +12,51 @@ import {
     RectangleStackIcon,
 } from '@heroicons/react/24/outline';
 
-const CustomBottomNavigation = () => {
-    const [value, setValue] = useState(0);
+enum NavigationValue {
+    Settings = 0,
+    Cards,
+    Boards,
+    Home,
+}
+
+interface NavigationActionProps {
+    label: string;
+    icon: ReactNode;
+}
+
+const NavigationAction: FC<NavigationActionProps> = ({ label, icon }) => (
+    <>
+        <BottomNavigationAction label={label} icon={icon} />
+        <Divider
+            orientation='vertical'
+            variant='middle'
+            sx={{ height: 'auto' }}
+        />
+    </>
+);
+
+const CustomBottomNavigation: FC = () => {
+    const [value, setValue] = useState<NavigationValue>(
+        NavigationValue.Settings,
+    );
+
+    const handleChange = (event: SyntheticEvent, newValue: NavigationValue) => {
+        setValue(newValue);
+    };
+
     return (
-        <BottomNavigation
-            showLabels
-            value={value}
-            onChange={(event, newValue) => {
-                setValue(newValue);
-            }}
-        >
+        <BottomNavigation showLabels value={value} onChange={handleChange}>
             <BottomNavigationAction
-                label='Setting'
+                label={'Settings'}
                 icon={<Cog6ToothIcon strokeWidth={1} width={28} height={28} />}
             />
-            <Divider orientation='vertical' variant={'middle'} />
+            <Divider
+                orientation='vertical'
+                variant='middle'
+                sx={{ height: 'auto' }}
+            />
             <BottomNavigationAction
-                label='Cards'
+                label={'Cards'}
                 icon={
                     <RectangleStackIcon
                         strokeWidth={1}
@@ -37,10 +65,13 @@ const CustomBottomNavigation = () => {
                     />
                 }
             />
-            <Divider orientation='vertical' variant={'middle'} />
-
+            <Divider
+                orientation='vertical'
+                variant='middle'
+                sx={{ height: 'auto' }}
+            />
             <BottomNavigationAction
-                label='Boards'
+                label={'Boards'}
                 icon={
                     <RectangleGroupIcon
                         strokeWidth={1}
@@ -49,10 +80,13 @@ const CustomBottomNavigation = () => {
                     />
                 }
             />
-            <Divider orientation='vertical' variant={'middle'} />
-
+            <Divider
+                orientation='vertical'
+                variant='middle'
+                sx={{ height: 'auto' }}
+            />
             <BottomNavigationAction
-                label='Home'
+                label={'Home'}
                 icon={<HomeIcon strokeWidth={1} width={28} height={28} />}
             />
         </BottomNavigation>
