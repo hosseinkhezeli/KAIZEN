@@ -130,7 +130,7 @@ export const formatMinutesToHHMM = (minutes: number): string => {
 
 // Helper function to determine background color for outlined buttons
 
-export const getBackgroundColor = (
+export const getColorByOwnerProps = (
   color:
     | 'inherit'
     | 'primary'

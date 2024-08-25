@@ -1,14 +1,10 @@
 import { Components, Theme } from '@mui/material/styles';
-import { TextFieldProps } from '@mui/material';
+import { getColorByOwnerProps } from '@utils/methods';
 
 export const MuiInputBase: Components<Theme>['MuiInputBase'] = {
     defaultProps: { size: 'small' },
     styleOverrides: {
         root: ({ theme, ownerState }) => {
-            const mainColor = () => {
-                if (ownerState.color satisfies TextFieldProps['color'])
-                    return theme.palette[ownerState?.color ?? 'primary'].main;
-            };
             return {
                 borderRadius: '8px !important',
                 input: {
@@ -23,7 +19,11 @@ export const MuiInputBase: Components<Theme>['MuiInputBase'] = {
                 },
                 ':hover': {
                     '.MuiOutlinedInput-notchedOutline': {
-                        borderColor: mainColor?.() + 'cc !important',
+                        borderColor: getColorByOwnerProps?.(
+                            ownerState.color,
+                            theme,
+                            'cc !important',
+                        ),
                     },
                 },
             };
