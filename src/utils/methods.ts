@@ -1,7 +1,8 @@
+import { ButtonOwnProps } from '@mui/material/Button';
+import { Theme } from '@mui/material/styles';
+import { OverridableStringUnion } from '@mui/types';
 import { store } from '@states/store';
-import {
-  EMPTY_TEXT,
-} from '@utils/consts';
+import { EMPTY_TEXT } from '@utils/consts';
 import { useEffect, useState } from 'react';
 
 // Clears an object of undefined or empty string values
@@ -12,10 +13,8 @@ export const clearObject = <T extends object>(obj: T): T => {
   return Object.fromEntries(filteredEntries) as T;
 };
 
-
 // Handles text value, returns EMPTY_TEXT if value is undefined
 export const handleTextValue = (value?: string): string => value ?? EMPTY_TEXT;
-
 
 // Combines first and last name into a single string
 export const combineFullName = (
@@ -52,7 +51,6 @@ export const downloadFile = async (
   document.body.removeChild(anchor);
   window.URL.revokeObjectURL(href);
 };
-
 
 // Repeats a component a specified number of times
 export const RepeatComponent = ({
@@ -128,4 +126,33 @@ export const formatMinutesToHHMM = (minutes: number): string => {
   const hours = Math.floor(minutes / 60);
   const remainingMinutes = minutes % 60;
   return `${hours}:${remainingMinutes.toString().padStart(2, '0')}`;
+};
+
+// Helper function to determine background color for outlined buttons
+
+export const getBackgroundColor = (
+  color:
+    | 'inherit'
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'error'
+    | 'info'
+    | 'warning'
+    | 'default'
+    | 'transparent'
+    | undefined,
+  theme: Theme,
+  alpha?: string | number,
+): string | undefined => {
+  const isColorKey = (color: any): color is keyof Theme['palette'] => {
+    return color in theme.palette; // Assuming `theme` is accessible here
+  };
+  if (color && isColorKey(color)) {
+    const paletteColor = theme.palette[color];
+    if (typeof paletteColor === 'object' && 'main' in paletteColor) {
+      return `${paletteColor.main}${alpha || ''}`;
+    }
+  }
+  return undefined;
 };
