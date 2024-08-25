@@ -1,6 +1,10 @@
 'use client';
-import React from 'react';
-import { BottomNavigation, BottomNavigationAction } from '@mui/material';
+import React, { useState } from 'react';
+import {
+    BottomNavigation,
+    BottomNavigationAction,
+    Divider,
+} from '@mui/material';
 import {
     Cog6ToothIcon,
     HomeIcon,
@@ -9,7 +13,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 const CustomBottomNavigation = () => {
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
     return (
         <BottomNavigation
             showLabels
@@ -18,16 +22,39 @@ const CustomBottomNavigation = () => {
                 setValue(newValue);
             }}
         >
-            <BottomNavigationAction label='Setting' icon={<Cog6ToothIcon />} />
             <BottomNavigationAction
-                label='My Cards'
-                icon={<RectangleStackIcon />}
+                label='Setting'
+                icon={<Cog6ToothIcon strokeWidth={1} width={28} height={28} />}
             />
+            <Divider orientation='vertical' variant={'middle'} />
+            <BottomNavigationAction
+                label='Cards'
+                icon={
+                    <RectangleStackIcon
+                        strokeWidth={1}
+                        width={28}
+                        height={28}
+                    />
+                }
+            />
+            <Divider orientation='vertical' variant={'middle'} />
+
             <BottomNavigationAction
                 label='Boards'
-                icon={<RectangleGroupIcon />}
+                icon={
+                    <RectangleGroupIcon
+                        strokeWidth={1}
+                        width={28}
+                        height={28}
+                    />
+                }
             />
-            <BottomNavigationAction label='Home' icon={<HomeIcon />} />
+            <Divider orientation='vertical' variant={'middle'} />
+
+            <BottomNavigationAction
+                label='Home'
+                icon={<HomeIcon strokeWidth={1} width={28} height={28} />}
+            />
         </BottomNavigation>
     );
 };
