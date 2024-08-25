@@ -43,9 +43,9 @@ export const lightPalette: PaletteOptions = {
     contrastText: '#ffffff',
   },
   text: {
-    primary: '#090B11',
+    primary: '#1e2026',
     secondary: '#F0F0F0',
-    disabled: '#C6c6c6 ',
+    disabled: '#C6c6c6',
   },
   grey: {
     50: '#fafafa',

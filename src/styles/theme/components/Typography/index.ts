@@ -70,7 +70,7 @@ export const typography: Partial<TypographyVariants> = {
 
   body2: {
     fontWeight: 400,
-    fontSize: 'clamp(11px,2.2vw,14px)',
+    fontSize: 'clamp(12px,2.35vw,14px)',
     lineHeight: 'clamp(20px,3.85vw,24px)',
     letterSpacing: '0.01071em',
   },
