@@ -129,19 +129,19 @@ export const formatMinutesToHHMM = (minutes: number): string => {
 };
 
 // Helper function to determine background color for outlined buttons
-
+export type TColorKeys =
+  | 'inherit'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'error'
+  | 'info'
+  | 'warning'
+  | 'default'
+  | 'transparent'
+  | undefined;
 export const getColorByOwnerProps = (
-  color:
-    | 'inherit'
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'error'
-    | 'info'
-    | 'warning'
-    | 'default'
-    | 'transparent'
-    | undefined,
+  color: TColorKeys,
   theme: Theme,
   alpha?: string | number,
 ): string | undefined => {
