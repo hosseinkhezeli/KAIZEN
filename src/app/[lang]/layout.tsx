@@ -10,6 +10,8 @@ import '@styles/globals.css';
 
 //@Components
 import ProvidersLayout from '@components/ProvidersLayout';
+import Box from '@mui/material/Box';
+import MainLayout from '@/Layouts/main-layout/MainLayout';
 // ___________________________________________________________________
 
 //@Server Functions
@@ -40,17 +42,20 @@ export default function RootLayout({
             }}
             className={params.lang === 'fa' ? 'fa-font' : 'en-font'}
         >
-            <body
-                style={{
-                    backgroundColor: '#fff',
+            <Box
+                component={'body'}
+                sx={{
+                    backgroundColor: 'background.default',
                     backgroundPosition: 'top right',
                     backgroundRepeat: 'no-repeat',
                     background:
-                        'linear-gradient(45deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 75%, rgba(238,198,141,0.05) 90%, rgba(222,145,36,0.1) 95%, rgba(196,78,21,0.15) 100%)',
+                        'linear-gradient(45deg, #F0F0F0 0%, #F0F0F0 75%, #fcb95222 90%, #faa21e33 95%, #f1981444 100%)',
                 }}
             >
-                <ProvidersLayout lang={params.lang}>{children}</ProvidersLayout>
-            </body>
+                <ProvidersLayout lang={params.lang}>
+                    <MainLayout>{children}</MainLayout>
+                </ProvidersLayout>
+            </Box>
         </html>
     );
 }

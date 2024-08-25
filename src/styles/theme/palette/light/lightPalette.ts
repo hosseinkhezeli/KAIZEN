@@ -2,9 +2,9 @@ import { PaletteOptions } from '@mui/material/styles/createPalette';
 
 export const lightPalette: PaletteOptions = {
   primary: {
-    light: '#de9124',
-    main: '#cb5920',
-    dark: '#c44e15',
+    light: '#fcb952',
+    main: '#faa21e',
+    dark: '#f19814',
     contrastText: '#ffffff',
   },
   secondary: {
@@ -38,14 +38,14 @@ export const lightPalette: PaletteOptions = {
   },
   info: {
     light: '#3fa6d2',
-    main: "#107AA7",
+    main: '#107AA7',
     dark: '#09445D',
     contrastText: '#ffffff',
   },
   text: {
     primary: '#090B11',
     secondary: '#F0F0F0',
-    disabled: '#C6c6c6 '
+    disabled: '#C6c6c6 ',
   },
   grey: {
     50: '#fafafa',
