@@ -48,3 +48,14 @@ export const shock = keyframes`
         transform: translateY(100vh);
     }
 `;
+
+export const blinkNDrunk = keyframes`
+    0%, 50% ,100% {
+        transform: translate(-20%, 5%);
+        opacity: 50%;
+    }
+    25% ,75% {
+        transform: translate(0,0);
+        opacity: 100%;
+    }
+`;
