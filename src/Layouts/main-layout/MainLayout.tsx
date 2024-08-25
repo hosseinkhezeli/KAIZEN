@@ -13,7 +13,7 @@ import CustomBottomNavigation from '@components/custom-bottom-navigation/CustomB
 
 export default function MainLayout({ children }: { children: ReactNode }) {
     return (
-        <Stack height='100vh' width='100vw'>
+        <Stack height='100%' width='100%'>
             <KaizenAppBar />
             <Stack
                 component={'main'}
