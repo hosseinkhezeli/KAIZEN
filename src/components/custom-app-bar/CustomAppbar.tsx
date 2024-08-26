@@ -15,7 +15,7 @@ import { useTheme } from '@mui/material/styles';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const CustomAppbar = ({ onClick }: { onClick: () => void }) => {
-    const { direction } = useTheme();
+    const { direction, palette } = useTheme();
     return (
         <>
             <AppBar position='static'>
@@ -50,6 +50,10 @@ const CustomAppbar = ({ onClick }: { onClick: () => void }) => {
                                 width: 'auto',
                                 height: 14,
                                 paddingBottom: '2px',
+                                filter:
+                                    palette.mode === 'dark'
+                                        ? 'brightness(3)'
+                                        : 'unset',
                             }}
                         />
                     </Link>

@@ -15,7 +15,10 @@ export const MuiBottomNavigation: Components<Theme>['MuiBottomNavigation'] = {
         gap: '2%',
         padding: '4px 8px',
         border: '1px solid',
-        borderColor: theme.palette.text.disabled + '55 !important',
+        borderColor:
+          theme.palette.mode === 'light'
+            ? theme.palette.grey['700']
+            : theme.palette.grey['300'] + '55 !important',
         fontFamily: 'inherit',
       };
     },

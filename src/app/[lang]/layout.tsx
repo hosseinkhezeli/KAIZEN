@@ -43,7 +43,7 @@ export default function RootLayout({
             }}
             className={isRtl ? 'fa-font' : 'en-font'}
         >
-            <Box component='body' sx={bodyStyles}>
+            <Box component='body'>
                 <ProvidersLayout lang={params.lang}>
                     <MainLayout params={params}>{children}</MainLayout>
                 </ProvidersLayout>
@@ -51,12 +51,3 @@ export default function RootLayout({
         </html>
     );
 }
-
-const bodyStyles = {
-    backgroundColor: 'background.default',
-    backgroundPosition: 'top right',
-    backgroundRepeat: 'no-repeat !important',
-    objectFit: 'contain',
-    background:
-        'linear-gradient(45deg, #F0F0F0 0%, #F0F0F0 75%, #fcb95222 90%, #faa21e33 95%, #f1981444 100%)',
-};

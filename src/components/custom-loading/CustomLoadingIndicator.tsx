@@ -1,5 +1,5 @@
 //@3rd Party
-import React from 'react';
+import React, { FC } from 'react';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Mui
@@ -20,7 +20,7 @@ interface CircleProps {
 }
 // Define a type for CircleProps
 
-const Circle: React.FC<CircleProps> = ({
+const Circle: FC<CircleProps> = ({
     fill,
     radius,
     duration,
@@ -50,12 +50,16 @@ const Circle: React.FC<CircleProps> = ({
     );
 };
 
-const CustomLoadingIndicator: React.FC = () => {
+const CustomLoadingIndicator: FC = () => {
     return (
         <Stack
+            className={'Mui-Loading'}
             width='100vw'
             height='100vh'
-            sx={{ justifyContent: 'center', alignItems: 'center' }}
+            sx={{
+                justifyContent: 'center',
+                alignItems: 'center',
+            }}
         >
             <Box
                 sx={{

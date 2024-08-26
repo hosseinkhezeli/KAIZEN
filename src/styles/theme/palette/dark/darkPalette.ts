@@ -43,9 +43,9 @@ export const darkPalette: PaletteOptions = {
     contrastText: '#ffffff',
   },
   text: {
-    primary: '#ffffff', // White text for dark mode
-    secondary: '#090B11', // Light gray for secondary text
-    disabled: '#757575', // Darker gray for disabled text
+    primary: '#ffffff',
+    secondary: '#090B11',
+    disabled: '#757575',
   },
   grey: {
     50: '#fafafa',

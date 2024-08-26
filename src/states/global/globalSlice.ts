@@ -1,11 +1,8 @@
-import {
-  createSlice,
-  PayloadAction,
-} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { PaletteMode } from '@mui/material';
-import {Locale} from '@/i18n'
+import { Locale } from '@/i18n';
 
 // Define the GlobalState interface
 export interface IGlobalState {
@@ -16,9 +13,9 @@ export interface IGlobalState {
 
 // Initial state
 const initialState: IGlobalState = {
-  themeMode: 'light',
-  lang: 'fa',
-  isRtl: true,
+  themeMode: 'dark',
+  lang: 'en',
+  isRtl: false,
 };
 
 // Create the global slice with proper typing
@@ -26,8 +23,12 @@ const globalSlice = createSlice({
   name: 'global',
   initialState,
   reducers: {
-    changeThemeMode: (state, action: PayloadAction<PaletteMode | undefined>) => {
-      state.themeMode = action.payload!?? (state.themeMode === 'light' ? 'dark' : 'light');
+    changeThemeMode: (
+      state,
+      action: PayloadAction<PaletteMode | undefined>,
+    ) => {
+      state.themeMode =
+        action.payload! ?? (state.themeMode === 'light' ? 'dark' : 'light');
     },
     setLang: (state, action: PayloadAction<'fa' | 'en'>) => {
       state.lang = action.payload;
@@ -37,7 +38,8 @@ const globalSlice = createSlice({
 });
 
 // Custom hook to access global state
-export const useCommon = () => useSelector((state: RootState) => state.global as IGlobalState);
+export const useCommon = () =>
+  useSelector((state: RootState) => state.global as IGlobalState);
 
 // Export actions and reducer
 export const { changeThemeMode, setLang } = globalSlice.actions;

@@ -61,6 +61,12 @@ const CustomBottomNavigation: FC<TCustomBottomNavigation> = ({
             value={value}
             onChange={handleChange}
             dir={direction === 'ltr' ? 'rtl' : 'rtl'}
+            sx={{
+                transition: '0.3s ease all',
+                maxWidth: { xs: 322, sm: 344 },
+                height: { xs: 56, sm: 62 },
+                left: { xs: 'calc(50%  - 161px)', sm: 'calc(50% - 172px)' },
+            }}
         >
             <BottomNavigationAction
                 label={dictionary.home}
