@@ -13,6 +13,8 @@ export const MuiBottomNavigationAction: Components<Theme>['MuiBottomNavigationAc
         return {
           color: theme.palette.grey['700'],
           backgroundColor: 'transparent',
+          fontFamily: 'inherit',
+
           minWidth: '60px',
           maxWidth: '60px',
           transition: '0.2s eas all',

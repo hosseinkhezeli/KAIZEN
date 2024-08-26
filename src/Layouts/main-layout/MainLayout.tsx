@@ -9,9 +9,17 @@ import { Stack } from '@mui/material';
 //@Component
 import KaizenAppBar from '@/Layouts/main-layout/components/KaizenAppBar';
 import CustomBottomNavigation from '@components/custom-bottom-navigation/CustomBottomNavigation';
+import { getDictionary, Locale } from '@/i18n';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export default function MainLayout({ children }: { children: ReactNode }) {
+export default async function MainLayout({
+    children,
+    params,
+}: {
+    children: ReactNode;
+    params: { lang: Locale };
+}) {
+    const dictionary = await getDictionary(params?.lang || 'en');
     return (
         <Stack height='100%' width='100%'>
             <KaizenAppBar />
@@ -23,7 +31,7 @@ export default function MainLayout({ children }: { children: ReactNode }) {
             >
                 {children}
             </Stack>
-            <CustomBottomNavigation />
+            <CustomBottomNavigation dictionary={dictionary} />
         </Stack>
     );
 }

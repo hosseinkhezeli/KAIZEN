@@ -11,9 +11,11 @@ import { AppBar, Toolbar, Avatar } from '@mui/material';
 //@Assets
 import LogoIconSvg from '../../../public/LogoIcon.svg';
 import LogoTypoSvg from '../../../public/LogoType.svg';
+import { useTheme } from '@mui/material/styles';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const CustomAppbar = ({ onClick }: { onClick: () => void }) => {
+    const { direction } = useTheme();
     return (
         <>
             <AppBar position='static'>
@@ -21,6 +23,7 @@ const CustomAppbar = ({ onClick }: { onClick: () => void }) => {
                     sx={{
                         justifyContent: 'space-between',
                         alignItems: 'center',
+                        direction: direction === 'ltr' ? 'ltr' : 'rtl',
                     }}
                 >
                     <Link

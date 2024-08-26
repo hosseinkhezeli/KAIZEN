@@ -1,11 +1,14 @@
 import { FC } from 'react';
 import { Drawer, DrawerProps } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 const CustomXsDrawer: FC<DrawerProps> = ({ children, sx, ...rest }) => {
+    const { direction } = useTheme();
+
     return (
         <Drawer
             {...rest}
-            anchor='right'
+            anchor={direction === 'rtl' ? 'left' : 'right'}
             variant='temporary'
             sx={[
                 {
@@ -13,7 +16,9 @@ const CustomXsDrawer: FC<DrawerProps> = ({ children, sx, ...rest }) => {
                 },
                 ...(Array.isArray(sx) ? sx : [sx]),
             ]}
-        ></Drawer>
+        >
+            Menu
+        </Drawer>
     );
 };
 

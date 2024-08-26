@@ -45,7 +45,7 @@ export default function RootLayout({
         >
             <Box component='body' sx={bodyStyles}>
                 <ProvidersLayout lang={params.lang}>
-                    <MainLayout>{children}</MainLayout>
+                    <MainLayout params={params}>{children}</MainLayout>
                 </ProvidersLayout>
             </Box>
         </html>

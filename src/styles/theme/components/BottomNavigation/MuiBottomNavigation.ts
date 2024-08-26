@@ -16,6 +16,7 @@ export const MuiBottomNavigation: Components<Theme>['MuiBottomNavigation'] = {
         padding: '4px 8px',
         border: '1px solid',
         borderColor: theme.palette.text.disabled + '55 !important',
+        fontFamily: 'inherit',
       };
     },
   },
