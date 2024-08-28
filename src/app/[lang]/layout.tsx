@@ -10,7 +10,6 @@ import '@styles/globals.css';
 
 //@Components
 import ProvidersLayout from '@components/ProvidersLayout';
-import Box from '@mui/material/Box';
 // ___________________________________________________________________
 
 //@Server Functions
@@ -42,9 +41,9 @@ export default function RootLayout({
             }}
             className={isRtl ? 'fa-font' : 'en-font'}
         >
-            <Box component='body'>
+            <body>
                 <ProvidersLayout lang={params.lang}>{children}</ProvidersLayout>
-            </Box>
+            </body>
         </html>
     );
 }

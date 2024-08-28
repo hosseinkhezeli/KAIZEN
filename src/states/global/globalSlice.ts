@@ -13,7 +13,7 @@ export interface IGlobalState {
 
 // Initial state
 const initialState: IGlobalState = {
-  themeMode: 'dark',
+  themeMode: 'light',
   lang: 'en',
   isRtl: false,
 };
