@@ -5,8 +5,7 @@ import { i18n, type Locale } from '@/i18n';
 // ___________________________________________________________________
 
 //@Components
-import { Stack } from '@mui/material';
-import KaizenAppBar from '@/Layouts/main-layout/components/KaizenAppBar';
+import MainLayout from '@/Layouts/main-layout/MainLayout';
 // ___________________________________________________________________
 
 //@Server Functions
@@ -20,26 +19,12 @@ export const metadata: Metadata = {
 };
 // ___________________________________________________________________
 
-export default function RootLayout({
+export default function MainSectionLayout({
     children,
     params,
 }: {
     children: ReactNode;
     params: { lang: Locale };
 }) {
-    return (
-        <>
-            <Stack height='100%' width='100%'>
-                <KaizenAppBar />
-                <Stack
-                    component={'main'}
-                    flexGrow={1}
-                    height={'100%'}
-                    width={'100%'}
-                >
-                    {children}
-                </Stack>
-            </Stack>
-        </>
-    );
+    return <MainLayout params={params}>{children}</MainLayout>;
 }

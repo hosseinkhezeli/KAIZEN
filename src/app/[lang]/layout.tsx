@@ -11,7 +11,6 @@ import '@styles/globals.css';
 //@Components
 import ProvidersLayout from '@components/ProvidersLayout';
 import Box from '@mui/material/Box';
-import MainLayout from '@/Layouts/main-layout/MainLayout';
 // ___________________________________________________________________
 
 //@Server Functions
@@ -44,9 +43,7 @@ export default function RootLayout({
             className={isRtl ? 'fa-font' : 'en-font'}
         >
             <Box component='body'>
-                <ProvidersLayout lang={params.lang}>
-                    <MainLayout params={params}>{children}</MainLayout>
-                </ProvidersLayout>
+                <ProvidersLayout lang={params.lang}>{children}</ProvidersLayout>
             </Box>
         </html>
     );
