@@ -35,28 +35,31 @@ const CustomBottomNavigation: FC<TCustomBottomNavigation> = ({
                 },
             }}
         >
-            {navigationItems.map((item, idx) => (
-                <React.Fragment key={item.href}>
-                    <BottomNavigationAction
-                        label={dictionary[item.id]}
-                        icon={item.icon}
-                        onClick={(e) => handleChange(e, item.id)}
-                        showLabel
-                        aria-label={dictionary[item.id]}
-                        className={location === item.id ? 'Mui-selected' : ''}
-                    />
-                    {idx < navigationItems.length - 1 && (
-                        <Divider
-                            orientation='vertical'
-                            variant='middle'
-                            sx={{
-                                height: 'auto',
-                                borderColor: ({ palette }) =>
-                                    palette.text.disabled + '55',
-                            }}
-                        />
-                    )}
-                </React.Fragment>
+            {navigationItems.map((item, idx, arr) => (
+                <BottomNavigationAction
+                    key={item.href}
+                    label={dictionary[item.id]}
+                    icon={item.icon}
+                    onClick={(e) => handleChange(e, item.id)}
+                    showLabel
+                    aria-label={dictionary[item.id]}
+                    className={location === item.id ? 'Mui-selected' : ''}
+                    sx={{
+                        position: 'relative',
+                        ':before': {
+                            content: '""',
+                            position: 'absolute',
+                            top: '10%',
+                            right: 0,
+                            height: '80%',
+                            width: '1px',
+                            backgroundColor: 'text.disabled',
+                        },
+                        ...(arr.length - 2 < idx && {
+                            ':before': { display: 'none' },
+                        }),
+                    }}
+                />
             ))}
         </BottomNavigation>
     );

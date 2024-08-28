@@ -5,7 +5,7 @@ import { getColorByOwnerProps, TColorKeys } from '@utils/methods';
 
 const LIGHT_MODE_COLOR = '700';
 const DARK_MODE_COLOR = '300';
-const DEFAULT_MIN_WIDTH = '60px';
+const DEFAULT_MIN_WIDTH = '70px';
 const DEFAULT_MAX_WIDTH = '60px';
 const TRANSITION_STYLE = '0.2s ease all';
 
@@ -25,6 +25,7 @@ export const MuiBottomNavigationAction: Components<Theme>['MuiBottomNavigationAc
     styleOverrides: {
       root: ({ theme, ownerState }) => ({
         color: getColorByMode(theme),
+        width: '100%',
         backgroundColor: 'transparent',
         fontFamily: 'inherit',
         minWidth: DEFAULT_MIN_WIDTH,

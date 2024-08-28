@@ -12,7 +12,7 @@ export const MuiBottomNavigation: Components<Theme>['MuiBottomNavigation'] = {
         left: 8,
         width: 'calc(100% - 16px)',
         margin: '0 auto',
-        gap: '2%',
+        // gap: '2%',
         padding: '4px 8px',
         border: '1px solid',
         borderColor:
