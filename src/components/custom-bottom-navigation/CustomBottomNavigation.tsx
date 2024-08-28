@@ -16,7 +16,7 @@ type TCustomBottomNavigation = {
 const CustomBottomNavigation: FC<TCustomBottomNavigation> = ({
     dictionary,
 }) => {
-    const { value, handleChange, direction, navigationItems } =
+    const { value, handleChange, direction, navigationItems, location } =
         useCustomBottomNavigation();
     const bNMaxWidth = 290;
     return (
@@ -43,7 +43,7 @@ const CustomBottomNavigation: FC<TCustomBottomNavigation> = ({
                         onClick={(e) => handleChange(e, item.id)}
                         showLabel
                         aria-label={dictionary[item.id]}
-                        className={value === item.id ? 'Mui-selected' : ''}
+                        className={location === item.id ? 'Mui-selected' : ''}
                     />
                     {idx < navigationItems.length - 1 && (
                         <Divider

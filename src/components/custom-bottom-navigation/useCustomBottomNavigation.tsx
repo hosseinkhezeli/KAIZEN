@@ -23,9 +23,6 @@ interface INavigationItem {
 }
 
 const useCustomBottomNavigation = () => {
-    const [value, setValue] = useState<NavigationValue>(
-        NavigationValue.Settings,
-    );
     const { lang } = useParams<{ lang: Locale }>();
     const { push: navigateTo } = useRouter();
     const pathname = usePathname();
@@ -37,8 +34,11 @@ const useCustomBottomNavigation = () => {
             .join('')
             .split('/')
             .filter(Boolean)[0];
-        return path || NavigationValue.Home; // Default to Home if no path found
+        return path || NavigationValue.Home;
     }, [pathname, lang]);
+    const [value, setValue] = useState<NavigationValue>(
+        location as NavigationValue,
+    );
 
     const navigationItems: INavigationItem[] = [
         {
