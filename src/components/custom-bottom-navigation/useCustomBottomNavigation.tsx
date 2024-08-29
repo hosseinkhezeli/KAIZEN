@@ -1,4 +1,10 @@
-import React, { ReactNode, SyntheticEvent, useMemo, useState } from 'react';
+import React, {
+    ReactNode,
+    SyntheticEvent,
+    useMemo,
+    useState,
+    useTransition,
+} from 'react';
 import { useTheme } from '@mui/material/styles';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { Locale } from '@/i18n';
@@ -23,6 +29,7 @@ interface INavigationItem {
 }
 
 const useCustomBottomNavigation = () => {
+    const [isPending, startTransition] = useTransition();
     const { lang } = useParams<{ lang: Locale }>();
     const { push: navigateTo } = useRouter();
     const pathname = usePathname();
@@ -90,11 +97,13 @@ const useCustomBottomNavigation = () => {
     ];
 
     const handleChange = (event: SyntheticEvent, newValue: NavigationValue) => {
-        setValue(newValue);
-        const selectedItem = navigationItems.find(
-            (item) => item.id === newValue,
-        );
-        if (selectedItem) navigateTo(selectedItem.href);
+        startTransition(() => {
+            setValue(newValue);
+            const selectedItem = navigationItems.find(
+                (item) => item.id === newValue,
+            );
+            if (selectedItem) navigateTo(selectedItem.href);
+        });
     };
 
     return {
@@ -104,6 +113,7 @@ const useCustomBottomNavigation = () => {
         location,
         lang,
         navigationItems,
+        isPending,
     };
 };
 
