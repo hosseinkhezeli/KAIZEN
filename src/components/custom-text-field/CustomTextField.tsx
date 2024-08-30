@@ -1,48 +1,57 @@
 //@3rd Party
-import { FC } from 'react';
+import React, { ChangeEvent, forwardRef } from 'react';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Mui
 import {
     InputLabel,
     TextField,
-    BaseTextFieldProps,
     InputLabelProps,
     FormControlProps,
+    TextFieldProps,
 } from '@mui/material';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types
-interface ITextInput extends BaseTextFieldProps {
-    label: string; // Ensure label is a required prop
+interface ITextInput extends TextFieldProps<'outlined'> {
+    label: string;
     labelProps?: InputLabelProps;
     formControlProps?: FormControlProps;
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const TextInput: FC<ITextInput> = ({
-    label,
-    labelProps,
-    formControlProps,
-    ...textFieldProps
-}) => {
-    const inputId = `${label}-input`;
-    return (
-        <InputLabel
-            htmlFor={inputId}
-            {...labelProps}
-            sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                height: 'max-content',
-                my: '4px',
-                ...labelProps?.sx,
-            }}
-        >
-            {label}
-            <TextField id={inputId} {...textFieldProps} />
-        </InputLabel>
-    );
-};
-
+const TextInput = forwardRef<HTMLInputElement, ITextInput>(
+    (
+        { label, labelProps, formControlProps, onChange, ...textFieldProps },
+        ref,
+    ) => {
+        const inputId = `${label}-input`;
+        return (
+            <InputLabel
+                htmlFor={inputId}
+                {...labelProps}
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 'max-content',
+                    my: '4px',
+                    width: '100%',
+                    transform: 'none',
+                    fontWeight: 600,
+                    ...labelProps?.sx,
+                }}
+            >
+                {label}
+                <TextField
+                    id={inputId}
+                    inputRef={ref}
+                    {...textFieldProps}
+                    onChange={onChange}
+                />
+            </InputLabel>
+        );
+    },
+);
+TextInput.displayName = 'TextInput';
 export default TextInput;
