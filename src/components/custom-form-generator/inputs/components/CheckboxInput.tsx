@@ -1,20 +1,22 @@
-// components/CheckboxInput.tsx
+//@3rd Party
+import { useFormContext } from 'react-hook-form';
+import { FC } from 'react';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-import React from 'react';
+//@Mui
 import {
     FormControlLabel,
     Checkbox,
     FormHelperText,
     FormControl,
 } from '@mui/material';
-import { useFormContext } from 'react-hook-form';
-import { CheckboxProps } from '@components/custom-form-generator/inputs/components/type';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const CheckboxInput: React.FC<CheckboxProps> = ({
-    name,
-    label,
-    validation,
-}) => {
+//@Types
+import { CheckboxProps } from '@components/custom-form-generator/inputs/components/type';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const CheckboxInput: FC<CheckboxProps> = ({ name, label, validation }) => {
     const {
         register,
         formState: { errors },

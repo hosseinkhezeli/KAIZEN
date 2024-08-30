@@ -9,7 +9,7 @@ import '@styles/globals.css';
 // ___________________________________________________________________
 
 //@Components
-import ProvidersLayout from '@components/ProvidersLayout';
+import ProvidersLayout from '@/Layouts/providers/ProvidersLayout';
 // ___________________________________________________________________
 
 //@Server Functions

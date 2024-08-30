@@ -1,9 +1,15 @@
 'use client';
-import CustomForm from '@components/custom-form-generator/CustomForm';
+//@Mui
 import { Button, Stack, Typography } from '@mui/material';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//@Components & Hooks
+import CustomForm from '@components/custom-form-generator/CustomForm';
 import useSignInForm from '@/app/[lang]/(authentication)/sign-in/hooks/useSignInForm';
 import { cominIn, cominUp } from '@utils/animationKeyframes';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//@Types
 import { TAuth } from '@i18n/dictionary/types/auth';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     const { onSubmit, signInForm, inputList } = useSignInForm({ dictionary });
