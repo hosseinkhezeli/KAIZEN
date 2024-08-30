@@ -9,12 +9,12 @@ import { AppBar, Toolbar, Avatar } from '@mui/material';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Assets
-import LogoIconSvg from '../../../public/LogoIcon.svg';
-import LogoTypoSvg from '../../../public/LogoType.svg';
+import LogoIconSvg from '@assets/LogoIcon.svg';
+import LogoTypoSvg from '@assets/LogoType.svg';
 import { useTheme } from '@mui/material/styles';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const CustomAppbar = ({ onClick }: { onClick: () => void }) => {
+const CustomAppbar = ({ onClick }: { onClick?: () => void }) => {
     const { direction, palette } = useTheme();
     return (
         <>
@@ -34,13 +34,13 @@ const CustomAppbar = ({ onClick }: { onClick: () => void }) => {
                             gap: 4,
                         }}
                     >
-                        <Image
-                            src={LogoIconSvg}
-                            alt={'Kaizen Icon'}
-                            width={16}
-                            height={16}
-                            style={{ width: 28, height: 28 }}
-                        />
+                        {/*<Image*/}
+                        {/*    src={LogoIconSvg}*/}
+                        {/*    alt={'Kaizen Icon'}*/}
+                        {/*    width={16}*/}
+                        {/*    height={16}*/}
+                        {/*    style={{ width: 28, height: 28 }}*/}
+                        {/*/>*/}
                         <Image
                             src={LogoTypoSvg}
                             alt={'Kaizen Typo Icon'}
