@@ -43,7 +43,7 @@ body {
     background-repeat: no-repeat !important;
     object-fit: contain;
     background:
-            linear-gradient(45deg, ${palette.background.default}01 75%, ${palette.primary.light}22 90%, ${palette.primary.main}33 95%, ${palette.primary.dark}44 100%);
+            linear-gradient(45deg, ${palette.background.paper} 75%, ${palette.primary.light}22 90%, ${palette.primary.main}33 95%, ${palette.primary.dark}44 100%);
 }
 
 `,

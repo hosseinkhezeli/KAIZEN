@@ -6,7 +6,7 @@ import { i18n, type Locale } from '@/i18n';
 
 //@Components
 import { Stack } from '@mui/material';
-import KaizenAppBar from '@/Layouts/main-layout/components/KaizenAppBar';
+import KaizenLogo from '@components/logo/KaizenLogo';
 // ___________________________________________________________________
 
 //@Server Functions
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 // ___________________________________________________________________
 
-export default function RootLayout({
+export default function AuthLayout({
     children,
     params,
 }: {
@@ -30,13 +30,19 @@ export default function RootLayout({
     return (
         <>
             <Stack height='100%' width='100%'>
-                <KaizenAppBar />
                 <Stack
                     component={'main'}
                     flexGrow={1}
-                    height={'100%'}
-                    width={'100%'}
+                    sx={{
+                        width: '100%',
+                        height: '100%',
+                        flexDirection: {
+                            xs: 'column',
+                            sm: params.lang !== 'en' ? 'row' : 'row-reverse',
+                        },
+                    }}
                 >
+                    <KaizenLogo />
                     {children}
                 </Stack>
             </Stack>

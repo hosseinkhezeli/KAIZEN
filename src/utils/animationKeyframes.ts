@@ -59,3 +59,24 @@ export const blinkNDrunk = keyframes`
         opacity: 100%;
     }
 `;
+
+export const cominUp = keyframes`
+    0%{
+        flex-basis:0;
+        height:0;
+    }
+    100% {
+    flex-basis:100%;
+      height:100%;
+  }
+`;
+export const cominIn = keyframes`
+    0%{
+        flex-basis:0;
+        width:0;
+    }
+    100% {
+    flex-basis:100%;
+      width:100%;
+  }
+`;
