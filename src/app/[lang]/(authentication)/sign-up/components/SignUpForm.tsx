@@ -4,16 +4,16 @@ import { Button, Stack, Typography } from '@mui/material';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //@Components & Hooks
 import CustomForm from '@components/custom-form-generator/CustomForm';
-import useSignInForm from '@/app/[lang]/(authentication)/sign-in/hooks/useSignInForm';
 import { cominIn, cominUp } from '@utils/animationKeyframes';
 import Href from '@components/custom-link/CustomLink';
+import useSignUpForm from '@/app/[lang]/(authentication)/sign-up/hooks/useSignUpForm';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //@Types
 import { TAuth } from '@i18n/dictionary/types/auth';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
-    const { onSubmit, signInForm, inputList } = useSignInForm({ dictionary });
+const SignUpForm = ({ dictionary }: { dictionary: TAuth }) => {
+    const { onSubmit, signUpForm, inputList } = useSignUpForm({ dictionary });
 
     return (
             <Stack
@@ -35,37 +35,38 @@ const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
                     }}
             >
                 <Typography variant={'h6'} sx={{ textWrap: 'nowrap' }}>
-                    {dictionary.welcome_back},{dictionary.mate}!
+                    {dictionary.welcome}!
                 </Typography>
                 <CustomForm
-                        form={signInForm}
+                        form={signUpForm}
                         onSubmit={onSubmit}
                         formConfig={inputList}
                 >
-                    <Stack gap={1}>
+                    {/*<Stack gap={1}>*/}
 
-                        <Button
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                fullWidth
-                        >
-                            {dictionary.sign_in}
-                        </Button>
-                        <Href to={'/sign-up'}>
+                    {/*    <Button*/}
+                    {/*            type="submit"*/}
+                    {/*            variant="contained"*/}
+                    {/*            color="primary"*/}
+                    {/*            fullWidth*/}
+                    {/*    >*/}
+                    {/*        {dictionary.sign_up}*/}
+                    {/*    </Button>*/}
+                    {/*    <Href to={'/sign-in'}>*/}
 
-                            <Button
-                                    variant="outlined"
-                                    color="primary"
-                                    fullWidth
-                            >
-                                {dictionary.sign_up}
-                            </Button>
-                        </Href>
-                    </Stack>
+                    {/*        <Button*/}
+                    {/*                variant="outlined"*/}
+                    {/*                color="primary"*/}
+                    {/*                fullWidth*/}
+                    {/*        >*/}
+
+                    {/*            {dictionary.sign_in}*/}
+                    {/*        </Button>*/}
+                    {/*    </Href>*/}
+                    {/*</Stack>*/}
                 </CustomForm>
             </Stack>
     );
 };
 
-export default SignInForm;
+export default SignUpForm;

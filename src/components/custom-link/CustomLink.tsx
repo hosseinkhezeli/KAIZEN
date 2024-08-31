@@ -1,8 +1,13 @@
-import React, { ReactNode } from 'react';
+//@3rd Party
+import { ReactNode } from 'react';
 import Link from 'next/link';
 import { Route } from 'next';
 import { useParams } from 'next/navigation';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@Types
 import { Locale } from '@/i18n';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const Href = ({
     to,
@@ -12,7 +17,7 @@ const Href = ({
     children: ReactNode;
 }) => {
     const { lang } = useParams<{ lang: Locale }>();
-    return <Link href={lang + '/' + to}>{children}</Link>;
+    return <Link href={"/"+lang+to}>{children}</Link>;
 };
 
 export default Href;
