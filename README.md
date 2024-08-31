@@ -12,24 +12,23 @@ experience where you can organize your projects with ease, just like a dance!
 
 ## Technologies Used 🛠️
 
-- **Vite**: Fast and modern build tool.
-- **React**: A JavaScript library for building user interfaces.
+- **Next Js**: A Framework on top of React Js for building user interfaces.
+- **Next Js Turbopack**: An incremental bundler optimized for JavaScript and TypeScript, written in Rust.
 - **SWC**: Super-fast compiler for TypeScript and JavaScript.
 - **TypeScript**: Adds type safety to JavaScript.
 - **Axios**: Promise-based HTTP client for making API requests.
 - **TanStack Query**: Powerful data-fetching and state management.
 - **Redux Toolkit**: Simplifies state management.
 - **Material-UI (MUI)**: UI components for React.
-- **React Router DOM**: Declarative routing for React applications.
+- **React Hook Form**: A library designed for managing form state and validation.
 
 ## Installation Instructions 🚀
 
-1. **Clone the repository**:
+1. **Clone the server repository**:
    ```bash
-   git clone https://github.com/hosseinkhezeli/kaizen.git
-   cd kaizen
+   git clone https://github.com/hosseinkhezeli/Kaizen-server.git
+   cd mock-server
    ```
-
 2. **Install dependencies**:
    ```bash
    npm install
@@ -37,10 +36,25 @@ experience where you can organize your projects with ease, just like a dance!
 
 3. **Run the development server**:
    ```bash
+   node server/server.js
+   ```
+4. **Clone the repository**:
+   ```bash
+   git clone https://github.com/hosseinkhezeli/kaizen.git
+   cd kaizen
+   ```
+
+5. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+6. **Run the development server**:
+   ```bash
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:3000` (or the specified port).
+7. Open your browser and navigate to `http://localhost:3000` (or the specified port).
 
 ## Usage Instructions 📝
 
