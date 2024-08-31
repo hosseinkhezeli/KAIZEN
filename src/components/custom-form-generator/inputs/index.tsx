@@ -2,6 +2,7 @@ import TextInput from '@components/custom-form-generator/inputs/components/TextI
 import SelectInput from '@components/custom-form-generator/inputs/components/SelectInput';
 import RadioInput from '@components/custom-form-generator/inputs/components/RadioInput';
 import CheckboxInput from '@components/custom-form-generator/inputs/components/CheckboxInput';
+import OtpInput from '@components/custom-form-generator/inputs/components/OtpInput';
 
 const FormFieldMapping = {
     text: TextInput,
@@ -13,6 +14,7 @@ const FormFieldMapping = {
     select: SelectInput,
     radio: RadioInput,
     checkbox: CheckboxInput,
+    otp: OtpInput,
 };
 
 export default FormFieldMapping;

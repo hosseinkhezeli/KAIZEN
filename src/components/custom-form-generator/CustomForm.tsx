@@ -1,37 +1,43 @@
 //@3rd Party
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { FormProvider, UseFormReturn, FieldValues } from 'react-hook-form';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Components
 import FormFieldMapping from '@components/custom-form-generator/inputs';
 import Box from '@mui/material/Box';
+import { pop } from '@utils/animationKeyframes';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types
 import { InputProps } from '@components/custom-form-generator/inputs/components/type';
-interface DynamicFormProps {
+interface DynamicFormProps<T extends FieldValues> {
     formConfig: InputProps[];
     onSubmit: (data: any) => void;
-    children: ReactNode;
-    form: UseFormReturn<FieldValues, any, undefined>;
+    children?: ReactNode; // Made optional for flexibility
+    form: UseFormReturn<T | any, any, undefined>;
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const CustomForm: FC<DynamicFormProps> = ({
+const CustomForm = <T extends FieldValues>({
     formConfig,
     onSubmit,
     children,
     form: methods,
-}) => {
-    // const methods = useForm();
+}: DynamicFormProps<T>) => {
     return (
         <FormProvider {...methods}>
             <Box
                 component={'form'}
                 onSubmit={methods.handleSubmit(onSubmit)}
                 noValidate
-                sx={{ width: '100%', height: 'max-content', p: '1rem' }}
+                sx={{
+                    width: '100%',
+                    height: 'max-content',
+                    p: '1rem',
+                    opacity: 0,
+                    animation: `${pop} 0.5s ease 0.5s forwards`,
+                }}
             >
                 {formConfig.map((fieldConfig, idx) => {
                     const FieldComponent =
