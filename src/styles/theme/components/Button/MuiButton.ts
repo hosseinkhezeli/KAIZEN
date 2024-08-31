@@ -1,4 +1,5 @@
 import { Components, Theme } from '@mui/material/styles';
+import { getColorByOwnerProps } from '@utils/methods';
 
 export const MuiButton: Components<Theme>['MuiButton'] = {
   defaultProps: {
@@ -12,6 +13,8 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
     root: () => ({
       textTransform: 'none',
       transition: '0.1s ease all',
+      fontWeight: 500,
+      letterSpacing: 1,
       borderRadius: 8,
       ':active': {
         transform: 'translateY(0.5px)',
@@ -26,14 +29,14 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
         boxShadow: `0 6px 6px 0px ${theme.palette.text.primary}05`,
       },
       ':active': {
+        opacity: 0.9,
         '&.MuiButton-containedInherit': {
           boxShadow: `0 0px 0px 0px ${theme.palette.text.secondary}00`,
         },
       },
     }),
-    outlined: () => ({
-      borderStyle: 'dashed',
-      borderWidth: '2px',
+    outlined: ({ theme, ownerState }) => ({
+      backgroundColor: getColorByOwnerProps(ownerState.color, theme, '09'),
     }),
   },
 };

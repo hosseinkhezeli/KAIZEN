@@ -2,26 +2,26 @@ import { PaletteOptions } from '@mui/material/styles/createPalette';
 
 export const lightPalette: PaletteOptions = {
   primary: {
-    light: '#124b86',
-    main: '#001F3F',
-    dark: '#021223',
-    contrastText: '#FFFFFF',
+    light: '#fcb952',
+    main: '#faa21e',
+    dark: '#f19814',
+    contrastText: '#ffffff',
   },
   secondary: {
-    light: '#be2828',
-    main: '#8B0000',
-    dark: '#5e0404',
+    light: '#344D98',
+    main: '#1F2E5A',
+    dark: '#151F3D',
     contrastText: '#FFFFFF',
   },
   divider: '#E5E5E5',
   background: {
-    default: '#F0F0F0', // Light background
-    paper: '#ffffff', // Light paper background
+    default: '#F0F0F0',
+    paper: '#ffffff',
   },
   success: {
     light: '#87D498',
     main: '#4BBE64',
-    dark: '#318743',
+    dark: '#3a944e',
     contrastText: '#ffffff',
   },
   warning: {
@@ -31,21 +31,21 @@ export const lightPalette: PaletteOptions = {
     contrastText: '#000',
   },
   error: {
-    light: '#ff4040',
-    main: '#E20000',
-    dark: '#8f0202',
+    light: '#c22f2f',
+    main: '#ad0202',
+    dark: '#7e0707',
     contrastText: '#ffffff',
   },
   info: {
-    light: '#e3ba69',
-    main: '#A67C2B',
-    dark: '#674608',
+    light: '#3fa6d2',
+    main: '#107AA7',
+    dark: '#09445D',
     contrastText: '#ffffff',
   },
   text: {
-    primary: '#090B11', // Dark text for light mode
-    secondary: '#F0F0F0', // Gray text for secondary
-    disabled: '#C6c6c6 ', // Light gray for disabled text
+    primary: '#1e2026',
+    secondary: '#F0F0F0',
+    disabled: '#C6c6c6',
   },
   grey: {
     50: '#fafafa',

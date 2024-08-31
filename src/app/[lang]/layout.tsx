@@ -9,12 +9,12 @@ import '@styles/globals.css';
 // ___________________________________________________________________
 
 //@Components
-import ProvidersLayout from '@components/ProvidersLayout';
+import ProvidersLayout from '@/Layouts/providers/ProvidersLayout';
 // ___________________________________________________________________
 
 //@Server Functions
 export async function generateStaticParams() {
-    return i18n.locales.map((locale:Locale) => ({ lang: locale }));
+    return i18n.locales.map((locale: Locale) => ({ lang: locale }));
 }
 
 export const metadata: Metadata = {
@@ -24,25 +24,26 @@ export const metadata: Metadata = {
 // ___________________________________________________________________
 
 export default function RootLayout({
-                                       children,
-                                       params,
-                                   }: {
+    children,
+    params,
+}: {
     children: ReactNode;
     params: { lang: Locale };
 }) {
+    const isRtl = params.lang === 'fa';
     return (
-            <html
-                    lang={params.lang}
-                    dir={params.lang === 'fa' ? 'rtl' : 'ltr'}
-                    style={{
-                        textAlign: params.lang === 'fa' ? 'right' : 'left',
-                        overflowX: 'hidden',
-                    }}
-                    className={params.lang === 'fa' ? 'fa-font' : 'en-font'}
-            >
+        <html
+            lang={params.lang}
+            dir={isRtl ? 'rtl' : 'ltr'}
+            style={{
+                textAlign: isRtl ? 'right' : 'left',
+                overflowX: 'hidden',
+            }}
+            className={isRtl ? 'fa-font' : 'en-font'}
+        >
             <body>
-            <ProvidersLayout lang={params.lang}>{children}</ProvidersLayout>
+                <ProvidersLayout lang={params.lang}>{children}</ProvidersLayout>
             </body>
-            </html>
+        </html>
     );
 }

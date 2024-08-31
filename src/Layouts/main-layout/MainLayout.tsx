@@ -1,0 +1,37 @@
+//@3rd Party
+import { ReactNode } from 'react';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@Mui
+import { Stack } from '@mui/material';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@Component
+import KaizenAppBar from '@/Layouts/main-layout/components/KaizenAppBar';
+import CustomBottomNavigation from '@components/custom-bottom-navigation/CustomBottomNavigation';
+import { getDictionary, Locale } from '@/i18n';
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+export default async function MainLayout({
+    children,
+    params,
+}: {
+    children: ReactNode;
+    params: { lang: Locale };
+}) {
+    const dictionary = await getDictionary(params?.lang || 'en');
+    return (
+        <Stack height='100%' width='100%'>
+            <KaizenAppBar />
+            <Stack
+                component={'main'}
+                flexGrow={1}
+                height={'100%'}
+                width={'100%'}
+            >
+                {children}
+            </Stack>
+            <CustomBottomNavigation dictionary={dictionary} />
+        </Stack>
+    );
+}

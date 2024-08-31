@@ -1,13 +1,50 @@
-export const MuiCssBaseline = {
-  styleOverrides: `
-  :root {
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-  }
-  input[type=number] {
-      -moz-appearance: textfield;
-  }
+import { Components, Theme } from '@mui/material/styles';
+
+export const MuiCssBaseline: Components<Theme>['MuiCssBaseline'] = {
+  styleOverrides: ({ palette }) => `
+:root {
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type='number'] {
+        -moz-appearance: textfield;
+    }
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+* {
+    -webkit-text-fill-color: inherit !important;
+}
+
+a {
+    text-decoration: none;
+}
+html, body {
+   min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    font-family: inherit !important;
+    background-position: top right;
+    background-repeat: no-repeat !important;
+    object-fit: contain;
+    background:
+            linear-gradient(45deg, ${palette.background.paper} 75%, ${palette.primary.light}22 90%, ${palette.primary.main}33 95%, ${palette.primary.dark}44 100%);
+}
+
 `,
 };

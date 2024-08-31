@@ -1,6 +1,6 @@
 import { configureStore, Store } from '@reduxjs/toolkit';
 import GlobalSlice, { IGlobalState } from './global/globalSlice';
-import UserSlice from './user/userSlice';
+import UserSlice, { UserState } from './user/userSlice';
 import {
   FLUSH,
   REHYDRATE,
@@ -11,33 +11,31 @@ import {
   persistReducer,
 } from 'redux-persist';
 import storage from './customStorage';
-import { UserState } from './user/userSlice';
 
-// Persist configuration for global state
 const globalPersistConfig = {
   key: 'global',
   storage,
+  whitelist: ['themeMode'],
+  blacklist: ['isRtl'],
 };
 
-// Persist configuration for user state
 const userPersistConfig = {
   key: 'user',
   storage,
+  blacklist: ['isLogin'],
 };
 
-// Create persisted reducers
-const persistedGlobalReducer = persistReducer<IGlobalState >(
+const persistedGlobalReducer = persistReducer<IGlobalState>(
   globalPersistConfig,
-  GlobalSlice// Ensure you're using the reducer property
+  GlobalSlice,
 );
 
 const persistedUserReducer = persistReducer<UserState>(
   userPersistConfig,
-  UserSlice // Ensure you're using the reducer property
+  UserSlice,
 );
 
-// Configure the Redux store
-export const store:Store = configureStore({
+export const store: Store = configureStore({
   reducer: {
     global: persistedGlobalReducer,
     user: persistedUserReducer,
@@ -46,18 +44,10 @@ export const store:Store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
-        ignoredActions: [
-          FLUSH,
-          REHYDRATE,
-          PAUSE,
-          PERSIST,
-          PURGE,
-          REGISTER,
-        ],
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
 });
 
-// Define RootState and AppDispatch types
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

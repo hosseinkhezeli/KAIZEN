@@ -4,19 +4,15 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios';
 
-// Load environment variables
-const API_URL = process.env.API_URL ?? 'Env var `API_URL` is not defined';
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL ?? 'Env var `API_URL` is not defined';
 
-// Base URL for the Axios instance
 export const baseURL = `${API_URL}`;
 
-// Create an Axios instance
 export const http = axios.create({
   baseURL,
-  withCredentials: true,
 });
 
-// Request interceptor to add authorization token and headers
 http.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = localStorage.getItem('token');
@@ -31,7 +27,6 @@ http.interceptors.request.use(
   },
 );
 
-// Response interceptor to handle responses and errors
 http.interceptors.response.use(
   <T, D>(res: AxiosResponse<T, D>) => {
     return res.data; // Return only the response data

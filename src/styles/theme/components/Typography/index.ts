@@ -63,14 +63,14 @@ export const typography: Partial<TypographyVariants> = {
   },
   body1: {
     fontWeight: 400,
-    fontSize: 'clamp(18px,3.3vw,22px)',
+    fontSize: 'clamp(12px,2.35vw,16px)',
     lineHeight: 'clamp(31px,5.7vw,37px)',
-    letterSpacing: '0.00938em',
+    letterSpacing: '0.01071em',
   },
 
   body2: {
     fontWeight: 400,
-    fontSize: 'clamp(11px,2.2vw,14px)',
+    fontSize: 'clamp(12px,2.35vw,14px)',
     lineHeight: 'clamp(20px,3.85vw,24px)',
     letterSpacing: '0.01071em',
   },
