@@ -1,5 +1,5 @@
 //@Components & Methods
-import { getDictionary, i18n, Locale } from '@/i18n';
+import { getDictionaryServer, i18n, Locale } from '@/i18n';
 import SignUpForm from '@/app/[lang]/(authentication)/sign-up/components/SignUpForm';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -16,7 +16,7 @@ const SignUp = async ({
         lang: Locale;
     };
 })=>{
-    const dictionary = await getDictionary(params.lang);
+    const dictionary = await getDictionaryServer(params.lang);
     return (
             <SignUpForm dictionary={dictionary.auth}/>
     );

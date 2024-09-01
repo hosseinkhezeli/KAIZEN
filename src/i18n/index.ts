@@ -13,5 +13,5 @@ export const dictionaries = {
     import('@/i18n/dictionary/en/index').then((module) => module.default),
 };
 
-export const getDictionary = async (locale: Locale) =>
+export const getDictionaryServer = async (locale: Locale) =>
   dictionaries[locale]?.() ?? (await dictionaries.fa());

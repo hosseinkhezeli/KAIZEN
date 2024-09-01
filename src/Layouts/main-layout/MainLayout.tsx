@@ -9,7 +9,7 @@ import { Stack } from '@mui/material';
 //@Component
 import KaizenAppBar from '@/Layouts/main-layout/components/KaizenAppBar';
 import CustomBottomNavigation from '@components/custom-bottom-navigation/CustomBottomNavigation';
-import { getDictionary, Locale } from '@/i18n';
+import { getDictionaryServer, Locale } from '@/i18n';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export default async function MainLayout({
@@ -19,7 +19,7 @@ export default async function MainLayout({
     children: ReactNode;
     params: { lang: Locale };
 }) {
-    const dictionary = await getDictionary(params?.lang || 'en');
+    const dictionary = await getDictionaryServer(params?.lang || 'en');
     return (
         <Stack height='100%' width='100%'>
             <KaizenAppBar />
