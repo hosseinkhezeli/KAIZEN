@@ -6,7 +6,7 @@ interface BaseInputProps {
 }
 // Interface for TextField
 export interface TextFieldProps extends BaseInputProps {
-  type: 'text' | 'email' | 'password' | 'phone' | 'currency' | 'number';
+  type: 'text' | 'email' | 'password' | 'phone' | 'currency' | 'number' | 'otp';
   placeholder?: string;
 }
 

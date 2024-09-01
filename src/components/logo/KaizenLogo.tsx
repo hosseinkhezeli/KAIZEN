@@ -29,7 +29,7 @@ const KaizenLogo = () => {
                 alt={'Kaizen Icon'}
                 width={16}
                 height={16}
-                style={{ width: '30%', height: 'auto', maxWidth: 200 }}
+                style={{ width: '20%', height: 'auto', maxWidth: 200 }}
             />
             <Image
                 src={LogoTypoSvg}
@@ -37,7 +37,7 @@ const KaizenLogo = () => {
                 width={16}
                 height={16}
                 style={{
-                    width: '30%',
+                    width: '20%',
                     height: 'auto',
                     paddingBottom: '2px',
                     maxWidth: 200,

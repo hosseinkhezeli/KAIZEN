@@ -12,13 +12,13 @@ export const useGetOtpCode = () =>
     mutationFn: (params: TSendOtpDto) => getOtpService(params),
   });
 
-export const useCreateSignUp = (params: TSignUpDto) =>
+export const useCreateSignUp = () =>
   useMutation({
-    mutationKey: ['sign-up', params],
-    mutationFn: () => createSignUpService(params),
+    mutationKey: ['sign-up'],
+    mutationFn: (params: TSignUpDto) => createSignUpService(params),
   });
-export const useCreateSignIn = (params: TSignInDto) =>
+export const useCreateSignIn = () =>
   useMutation({
-    mutationKey: ['sign-in', params],
-    mutationFn: () => createSignInService(params),
+    mutationKey: ['sign-in'],
+    mutationFn: (params: TSignInDto) => createSignInService(params),
   });

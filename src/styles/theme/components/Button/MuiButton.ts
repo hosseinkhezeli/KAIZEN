@@ -14,7 +14,6 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
       textTransform: 'none',
       transition: '0.1s ease all',
       fontWeight: 500,
-      letterSpacing: 1,
       borderRadius: 8,
       ':active': {
         transform: 'translateY(0.5px)',
