@@ -31,12 +31,9 @@ const CustomBottomNavigation: FC<TCustomBottomNavigation> = ({
                 dir={direction}
                 sx={{
                     transition: '0.3s ease all',
-                    maxWidth: { xs: bNMaxWidth, sm: bNMaxWidth + 20 },
-                    height: { xs: 56, sm: 62 },
-                    left: {
-                        xs: `calc(50% - ${bNMaxWidth / 2}px)`,
-                        sm: `calc(50% - ${(bNMaxWidth + 20) / 2}px)`,
-                    },
+                    maxWidth: bNMaxWidth,
+                    height: 56,
+                    left: `calc(50% - ${bNMaxWidth / 2}px)`,
                 }}
             >
                 {navigationItems.map((item, idx, arr) => (
