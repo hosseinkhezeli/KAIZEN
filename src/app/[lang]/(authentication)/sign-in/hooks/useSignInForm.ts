@@ -92,7 +92,13 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
       onSuccess: (response) => {
         const { token, ...userInfo } = response;
         dispatch(setToken(token));
-        dispatch(setUserInfo(userInfo));
+        dispatch(
+          setUserInfo({
+            userId: userInfo.userId,
+            phoneNumber: userInfo.phoneNumber,
+            username: userInfo.username,
+          }),
+        );
         navigateTo(`/${lang ?? 'en'}/`);
         showSnackbar('You have been successfully logged in', 'success', {
           horizontal: 'center',
