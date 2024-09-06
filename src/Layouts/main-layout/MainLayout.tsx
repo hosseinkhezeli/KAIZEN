@@ -21,13 +21,17 @@ export default async function MainLayout({
 }) {
     const dictionary = await getDictionaryServer(params?.lang || 'en');
     return (
-        <Stack height='100%' width='100%'>
+        <Stack
+            height='100%'
+            width='100%'
+            flexDirection={{ xs: 'column', md: 'row' }}
+        >
             <KaizenAppBar />
             <Stack
                 component={'main'}
                 flexGrow={1}
                 height={'100%'}
-                width={'100%'}
+                width={'auto'}
             >
                 {children}
             </Stack>

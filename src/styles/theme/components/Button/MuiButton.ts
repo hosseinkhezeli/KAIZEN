@@ -19,19 +19,19 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
         transform: 'translateY(0.5px)',
       },
     }),
-    contained: ({ theme }) => ({
+    contained: ({ theme, ownerState }) => ({
       border: '1px solid',
       borderColor: `${theme.palette.text.secondary}10`,
-      '&.MuiButton-containedInherit': {
+      ...(ownerState.color === 'inherit' && {
         backgroundColor: `${theme.palette.background.paper} !important`,
         borderColor: `${theme.palette.text.primary}20`,
-        boxShadow: `0 6px 6px 0px ${theme.palette.text.primary}05`,
-      },
+        boxShadow: `0px 9px 12px -12px ${theme.palette.text.primary + '66'} !important`,
+      }),
       ':active': {
         opacity: 0.9,
-        '&.MuiButton-containedInherit': {
-          boxShadow: `0 0px 0px 0px ${theme.palette.text.secondary}00`,
-        },
+        ...(ownerState.color === 'inherit' && {
+          boxShadow: `0px 9px 12px -12px ${theme.palette.text.primary + '00'} !important`,
+        }),
       },
     }),
     outlined: ({ theme, ownerState }) => ({

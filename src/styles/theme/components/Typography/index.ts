@@ -77,9 +77,9 @@ export const typography: Partial<TypographyVariants> = {
 
   button: {
     fontWeight: 500,
-    fontSize: 'clamp(11px,2.2vw,14px)',
-    lineHeight: 'clamp(20px,3.85vw,24px)',
-    letterSpacing: '0.02857em',
+    fontSize: 'clamp(10px,1.85vw,12px)',
+    lineHeight: 'clamp(18px,3.31vw,21px)',
+    letterSpacing: '0.03333em',
   },
   caption: {
     fontWeight: 400,

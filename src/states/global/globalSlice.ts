@@ -18,7 +18,7 @@ const initialState: IGlobalState = {
   isRtl: false,
 };
 
-// Create the global slice with proper typing
+// Create the common slice with proper typing
 const globalSlice = createSlice({
   name: 'global',
   initialState,
@@ -37,7 +37,7 @@ const globalSlice = createSlice({
   },
 });
 
-// Custom hook to access global state
+// Custom hook to access common state
 export const useCommon = () =>
   useSelector((state: RootState) => state.global as IGlobalState);
 

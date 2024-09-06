@@ -14,26 +14,28 @@ import {
     RectangleGroupIcon,
     RectangleStackIcon,
 } from '@heroicons/react/24/outline';
+import { useMediaQuery } from '@mui/material';
 
-enum NavigationValue {
+export enum NavigationValue {
     Settings = 'settings',
     Cards = 'cards',
     Boards = 'boards',
     Home = 'home',
 }
 
-interface INavigationItem {
+export interface INavigationItem {
     href: string;
     icon: ReactNode;
     id: NavigationValue;
 }
-
 const useCustomBottomNavigation = () => {
     const [isPending, startTransition] = useTransition();
     const { lang } = useParams<{ lang: Locale }>();
     const { push: navigateTo } = useRouter();
     const pathname = usePathname();
-    const { direction } = useTheme();
+    const { direction, breakpoints } = useTheme();
+
+    const isSmallScreen = useMediaQuery(breakpoints.down('md'));
 
     const location = useMemo(() => {
         const path = pathname
@@ -114,6 +116,7 @@ const useCustomBottomNavigation = () => {
         lang,
         navigationItems,
         isPending,
+        isSmallScreen,
     };
 };
 
