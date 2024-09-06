@@ -1,10 +1,15 @@
 'use client';
+//@3rd Party
+import { FC, useMemo, useTransition } from 'react';
+import { useParams, usePathname, useRouter } from 'next/navigation';
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@Mui
 import {
     CSSObject,
     Divider,
     Drawer as MuiDrawer,
     DrawerProps,
-    IconButton,
     List,
     ListItem,
     ListItemButton,
@@ -13,26 +18,114 @@ import {
     styled,
     Theme,
 } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@Assets
 import {
     Cog6ToothIcon,
     HomeIcon,
     RectangleGroupIcon,
     RectangleStackIcon,
-    EllipsisHorizontalIcon,
-    ArrowLongLeftIcon,
 } from '@heroicons/react/24/outline';
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-import React, { SyntheticEvent, useMemo, useState, useTransition } from 'react';
-import { useParams, usePathname, useRouter } from 'next/navigation';
+//@Components
+import CustomDrawerHeader from '@components/custom-drawer/CustomDrawerHeader';
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@Types
 import { Locale } from '@/i18n';
 import {
     INavigationItem,
     NavigationValue,
 } from '@components/custom-bottom-navigation/useCustomBottomNavigation';
-import CustomDrawerHeader from '@components/custom-drawer/CustomDrawerHeader';
 import { TGlobal } from '@i18n/dictionary/types/global';
-import { Route } from 'next';
+interface ICustomMdDrawerProps extends DrawerProps {
+    onToggleHandle: (open?: boolean) => void;
+    dictionary: TGlobal;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const CustomMdDrawer: FC<ICustomMdDrawerProps> = ({
+    sx,
+    open = true,
+    onToggleHandle,
+    dictionary,
+    ...rest
+}) => {
+    const [isPending, startTransition] = useTransition();
+    const { lang } = useParams<{ lang: Locale }>();
+    const { push: navigateTo } = useRouter();
+    const pathname = usePathname();
+
+    const location = useMemo(() => {
+        const path = pathname
+            .split(lang)
+            .join('')
+            .split('/')
+            .filter(Boolean)[0];
+        return path || NavigationValue.Home;
+    }, [pathname, lang]);
+
+    const handleClick = (href: string) => {
+        startTransition(() => {
+            navigateTo(href);
+        });
+    };
+
+    return (
+        <Drawer
+            variant='permanent'
+            {...rest}
+            keepMounted
+            sx={[...(Array.isArray(sx) ? sx : [sx])]}
+            open={open}
+        >
+            <CustomDrawerHeader
+                open={open}
+                onClick={onToggleHandle}
+                dictionary={dictionary}
+            />
+            <Divider sx={{ my: '8px' }} />
+            <List>
+                {navigationItems.map((navItem, index) => (
+                    <ListItem
+                        key={navItem.id + index}
+                        sx={{ padding: open ? 'initial' : '0' }}
+                    >
+                        <ListItemButton
+                            disabled={isPending}
+                            onClick={() =>
+                                handleClick(
+                                    navItem.href.replace('{lang}', lang),
+                                )
+                            }
+                            sx={{
+                                gap: 1,
+                                justifyContent: open ? 'initial' : 'center',
+                            }}
+                        >
+                            <ListItemIcon
+                                className={
+                                    location === navItem.id ? 'selected' : ''
+                                }
+                                sx={{ minWidth: 0, justifyContent: 'center' }}
+                            >
+                                {navItem.icon}
+                            </ListItemIcon>
+                            <ListItemText
+                                primary={dictionary[navItem.id]}
+                                sx={{ display: open ? 'block' : 'none' }}
+                            />
+                        </ListItemButton>
+                    </ListItem>
+                ))}
+            </List>
+        </Drawer>
+    );
+};
+
+export default CustomMdDrawer;
 
 const drawerWidth = 240;
 
@@ -83,135 +176,26 @@ const Drawer = styled(MuiDrawer, {
         },
     ],
 }));
-interface ICustomMdDrawerProps extends DrawerProps {
-    onToggleHandle: (open?: boolean) => void;
-    dictionary: TGlobal;
-}
-export default function CustomMdDrawer({
-    sx,
-    open,
-    onToggleHandle,
-    dictionary,
-    ...rest
-}: ICustomMdDrawerProps) {
-    const [isPending, startTransition] = useTransition();
-    const { lang } = useParams<{ lang: Locale }>();
-    const { push: navigateTo } = useRouter();
-    const pathname = usePathname();
 
-    const location = useMemo(() => {
-        const path = pathname
-            .split(lang)
-            .join('')
-            .split('/')
-            .filter(Boolean)[0];
-        return path || NavigationValue.Home;
-    }, [pathname, lang]);
-    const handleClick = (href: string | Route) => {
-        startTransition(() => {
-            navigateTo(href);
-        });
-    };
-    const navigationItems: INavigationItem[] = [
-        {
-            href: `/${lang}/`,
-            icon: <HomeIcon width={22} height={22} stroke={'inherit'} />,
-            id: NavigationValue.Home,
-        },
-        {
-            href: `/${lang}/boards`,
-            icon: (
-                <RectangleGroupIcon width={22} height={22} stroke={'inherit'} />
-            ),
-            id: NavigationValue.Boards,
-        },
-        {
-            href: `/${lang}/cards`,
-            icon: (
-                <RectangleStackIcon width={22} height={22} stroke={'inherit'} />
-            ),
-            id: NavigationValue.Cards,
-        },
-        {
-            href: `/${lang}/settings`,
-            icon: <Cog6ToothIcon width={22} height={22} stroke={'inherit'} />,
-            id: NavigationValue.Settings,
-        },
-    ];
-
-    return (
-        <Drawer
-            variant='permanent'
-            {...rest}
-            keepMounted={true}
-            sx={[...(Array.isArray(sx) ? sx : [sx])]}
-            open={open}
-        >
-            <CustomDrawerHeader
-                open={open || false}
-                onClick={onToggleHandle}
-                dictionary={dictionary}
-            />
-            <Divider sx={{ my: '8px ' }} />
-            <List>
-                {navigationItems.map((navItem, index) => (
-                    <ListItem
-                        key={navItem.id + index}
-                        sx={[
-                            open
-                                ? {
-                                      padding: 'initial',
-                                  }
-                                : {
-                                      padding: '0',
-                                  },
-                        ]}
-                    >
-                        <ListItemButton
-                            disabled={isPending}
-                            onClick={() => handleClick(navItem.href)}
-                            sx={[
-                                {
-                                    gap: 1,
-                                },
-                                open
-                                    ? {
-                                          justifyContent: 'initial',
-                                      }
-                                    : {
-                                          justifyContent: 'center',
-                                      },
-                            ]}
-                        >
-                            <ListItemIcon
-                                className={
-                                    location === navItem.id ? 'selected' : ''
-                                }
-                                sx={[
-                                    {
-                                        minWidth: 0,
-                                        justifyContent: 'center',
-                                    },
-                                ]}
-                            >
-                                {navItem.icon}
-                            </ListItemIcon>
-                            <ListItemText
-                                primary={dictionary[navItem.id]}
-                                sx={[
-                                    open
-                                        ? {
-                                              display: 'block',
-                                          }
-                                        : {
-                                              display: 'none',
-                                          },
-                                ]}
-                            />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-        </Drawer>
-    );
-}
+const navigationItems: INavigationItem[] = [
+    {
+        href: '/{lang}/',
+        icon: <HomeIcon width={22} height={22} stroke={'inherit'} />,
+        id: NavigationValue.Home,
+    },
+    {
+        href: '/{lang}/boards',
+        icon: <RectangleGroupIcon width={22} height={22} stroke={'inherit'} />,
+        id: NavigationValue.Boards,
+    },
+    {
+        href: '/{lang}/cards',
+        icon: <RectangleStackIcon width={22} height={22} stroke={'inherit'} />,
+        id: NavigationValue.Cards,
+    },
+    {
+        href: '/{lang}/settings',
+        icon: <Cog6ToothIcon width={22} height={22} stroke={'inherit'} />,
+        id: NavigationValue.Settings,
+    },
+];
