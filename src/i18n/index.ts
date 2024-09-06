@@ -1,4 +1,7 @@
 import 'server-only';
+import fa from '@/i18n/dictionary/fa/index';
+import en from '@/i18n/dictionary/en/index';
+
 export const i18n = {
   defaultLocale: 'en',
   locales: ['en', 'fa'],
@@ -6,12 +9,11 @@ export const i18n = {
 
 export type Locale = (typeof i18n)['locales'][number];
 
-export const dictionaries = {
-  fa: () =>
-    import('@/i18n/dictionary/fa/index').then((module) => module.default),
-  en: () =>
-    import('@/i18n/dictionary/en/index').then((module) => module.default),
+const dictionaries = {
+  fa,
+  en,
 };
 
-export const getDictionaryServer = async (locale: Locale) =>
-  dictionaries[locale]?.() ?? (await dictionaries.fa());
+export const getDictionaryServer = (locale: Locale) => {
+  return dictionaries[locale] ?? dictionaries.fa;
+};

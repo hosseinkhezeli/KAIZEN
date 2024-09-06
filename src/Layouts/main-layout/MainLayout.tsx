@@ -1,3 +1,4 @@
+'use client';
 //@3rd Party
 import { ReactNode } from 'react';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -9,17 +10,20 @@ import { Stack } from '@mui/material';
 //@Component
 import KaizenAppBar from '@/Layouts/main-layout/components/KaizenAppBar';
 import CustomBottomNavigation from '@components/custom-bottom-navigation/CustomBottomNavigation';
-import { getDictionaryServer, Locale } from '@/i18n';
+import { Locale } from '@/i18n';
+import useHandleAuth from '@hooks/useHandleAuth';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-export default async function MainLayout({
+export default function MainLayout({
     children,
     params,
+    dictionary,
 }: {
     children: ReactNode;
     params: { lang: Locale };
+    dictionary: any;
 }) {
-    const dictionary = await getDictionaryServer(params?.lang || 'en');
+    useHandleAuth({ lang: params.lang || 'en' });
     return (
         <Stack
             height='100%'

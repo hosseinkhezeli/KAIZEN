@@ -45,7 +45,12 @@ export const MuiBottomNavigationAction: Components<Theme>['MuiBottomNavigationAc
       }),
       label: ({ theme }) => ({
         color: getColorByMode(theme),
-        ...theme.typography.body2,
+        [theme.breakpoints.down('sm')]: {
+          ...theme.typography.body2,
+        },
+        [theme.breakpoints.up('sm')]: {
+          ...theme.typography.caption,
+        },
         '.Mui-selected': {
           color: getColorByMode(theme),
         },

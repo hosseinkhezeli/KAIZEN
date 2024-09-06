@@ -1,9 +1,10 @@
 //@3rd Party
+import { Locale } from '@/i18n';
 import { TSignInDto, TSignUpDto } from '@/services/api/auth/types';
-import { setToken, setUserInfo } from '@states/user/userSlice';
-import { useRouter } from 'next/navigation';
+import { setLogout, setToken, setUserInfo } from '@states/user/userSlice';
+import { useParams, usePathname, useRouter } from 'next/navigation';
 import { enqueueSnackbar } from 'notistack';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,7 +49,9 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
   // State to manage the current step in the sign-in process
   const [step, setStep] = useState<number>(0);
   const dispatch = useDispatch();
+  const { lang } = useParams<{ lang: Locale }>();
   const { push: navigateTo } = useRouter();
+  const pathname = usePathname();
 
   // Input configuration for OTP and Sign In forms
   const inputListOtp: InputProps[] = [
@@ -66,7 +69,6 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
       name: 'otp',
       type: 'otp',
       label: dictionary.phone_number,
-      placeholder: '+98...',
       validation: { required: 'OTP is required' },
     },
   ];
@@ -91,11 +93,11 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
         const { token, ...userInfo } = response;
         dispatch(setToken(token));
         dispatch(setUserInfo(userInfo));
+        navigateTo(`/${lang ?? 'en'}/`);
         showSnackbar('You have been successfully logged in', 'success', {
           horizontal: 'center',
           vertical: 'top',
         });
-        navigateTo('/'); // Redirect after successful login
       },
       onError: () => {
         showSnackbar('Something went wrong!', 'error');
@@ -132,6 +134,9 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
   ) => {
     enqueueSnackbar({ variant, message, anchorOrigin });
   };
+  useEffect(() => {
+    if (pathname.includes('sign-in')) dispatch(setLogout(null));
+  }, []);
 
   return {
     onSubmitOtp,

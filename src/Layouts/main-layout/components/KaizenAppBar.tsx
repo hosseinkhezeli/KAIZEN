@@ -16,12 +16,12 @@ type TKaizenAppBar = {
     dictionary: TGlobal;
 };
 const KaizenAppBar: FC<TKaizenAppBar> = ({ dictionary }) => {
-    const [drawerOpen, setDrawerOpen] = useState(false);
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+    const [drawerOpen, setDrawerOpen] = useState(!isSmallScreen);
     const toggleDrawer = (open?: boolean) => {
         setDrawerOpen(open || !drawerOpen);
     };
-    const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
     return (
         <>
             {isSmallScreen ? (
@@ -39,7 +39,6 @@ const KaizenAppBar: FC<TKaizenAppBar> = ({ dictionary }) => {
                         onToggleHandle={toggleDrawer}
                         onClose={() => toggleDrawer(false)}
                         dictionary={dictionary}
-                        // onMouseEnter={() => toggleDrawer(true)}
                     />
                 </>
             )}
