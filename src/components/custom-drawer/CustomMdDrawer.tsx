@@ -31,6 +31,8 @@ import {
     NavigationValue,
 } from '@components/custom-bottom-navigation/useCustomBottomNavigation';
 import CustomDrawerHeader from '@components/custom-drawer/CustomDrawerHeader';
+import { TGlobal } from '@i18n/dictionary/types/global';
+import { Route } from 'next';
 
 const drawerWidth = 240;
 
@@ -83,18 +85,19 @@ const Drawer = styled(MuiDrawer, {
 }));
 interface ICustomMdDrawerProps extends DrawerProps {
     onToggleHandle: (open?: boolean) => void;
+    dictionary: TGlobal;
 }
 export default function CustomMdDrawer({
     sx,
     open,
     onToggleHandle,
+    dictionary,
     ...rest
 }: ICustomMdDrawerProps) {
     const [isPending, startTransition] = useTransition();
     const { lang } = useParams<{ lang: Locale }>();
     const { push: navigateTo } = useRouter();
     const pathname = usePathname();
-    const { direction } = useTheme();
 
     const location = useMemo(() => {
         const path = pathname
@@ -104,68 +107,37 @@ export default function CustomMdDrawer({
             .filter(Boolean)[0];
         return path || NavigationValue.Home;
     }, [pathname, lang]);
-    const [value, setValue] = useState<NavigationValue>(
-        location as NavigationValue,
-    );
-
+    const handleClick = (href: string | Route) => {
+        startTransition(() => {
+            navigateTo(href);
+        });
+    };
     const navigationItems: INavigationItem[] = [
         {
             href: `/${lang}/`,
-            icon: (
-                <HomeIcon
-                    strokeWidth={location === NavigationValue.Home ? 1.5 : 1}
-                    width={24}
-                    height={24}
-                />
-            ),
+            icon: <HomeIcon width={22} height={22} stroke={'inherit'} />,
             id: NavigationValue.Home,
         },
         {
             href: `/${lang}/boards`,
             icon: (
-                <RectangleGroupIcon
-                    strokeWidth={location === NavigationValue.Boards ? 1.5 : 1}
-                    width={24}
-                    height={24}
-                />
+                <RectangleGroupIcon width={22} height={22} stroke={'inherit'} />
             ),
             id: NavigationValue.Boards,
         },
         {
             href: `/${lang}/cards`,
             icon: (
-                <RectangleStackIcon
-                    strokeWidth={location === NavigationValue.Cards ? 1.5 : 1}
-                    width={24}
-                    height={24}
-                />
+                <RectangleStackIcon width={22} height={22} stroke={'inherit'} />
             ),
             id: NavigationValue.Cards,
         },
         {
             href: `/${lang}/settings`,
-            icon: (
-                <Cog6ToothIcon
-                    strokeWidth={
-                        location === NavigationValue.Settings ? 1.5 : 1
-                    }
-                    width={24}
-                    height={24}
-                />
-            ),
+            icon: <Cog6ToothIcon width={22} height={22} stroke={'inherit'} />,
             id: NavigationValue.Settings,
         },
     ];
-
-    const handleChange = (event: SyntheticEvent, newValue: NavigationValue) => {
-        startTransition(() => {
-            setValue(newValue);
-            const selectedItem = navigationItems.find(
-                (item) => item.id === newValue,
-            );
-            if (selectedItem) navigateTo(selectedItem.href);
-        });
-    };
 
     return (
         <Drawer
@@ -175,22 +147,32 @@ export default function CustomMdDrawer({
             sx={[...(Array.isArray(sx) ? sx : [sx])]}
             open={open}
         >
-            <CustomDrawerHeader open={open || false} onClick={onToggleHandle} />
+            <CustomDrawerHeader
+                open={open || false}
+                onClick={onToggleHandle}
+                dictionary={dictionary}
+            />
             <Divider sx={{ my: '8px ' }} />
-            <List
-                sx={{ display: 'flex', flexDirection: 'column', gap: 2, p: 0 }}
-            >
+            <List>
                 {navigationItems.map((navItem, index) => (
                     <ListItem
                         key={navItem.id + index}
-                        disablePadding
-                        sx={{ display: 'block' }}
+                        sx={[
+                            open
+                                ? {
+                                      padding: 'initial',
+                                  }
+                                : {
+                                      padding: '0',
+                                  },
+                        ]}
                     >
                         <ListItemButton
+                            disabled={isPending}
+                            onClick={() => handleClick(navItem.href)}
                             sx={[
                                 {
-                                    minHeight: 48,
-                                    p: 0,
+                                    gap: 1,
                                 },
                                 open
                                     ? {
@@ -202,6 +184,9 @@ export default function CustomMdDrawer({
                             ]}
                         >
                             <ListItemIcon
+                                className={
+                                    location === navItem.id ? 'selected' : ''
+                                }
                                 sx={[
                                     {
                                         minWidth: 0,
@@ -212,7 +197,7 @@ export default function CustomMdDrawer({
                                 {navItem.icon}
                             </ListItemIcon>
                             <ListItemText
-                                primary={navItem.id}
+                                primary={dictionary[navItem.id]}
                                 sx={[
                                     open
                                         ? {

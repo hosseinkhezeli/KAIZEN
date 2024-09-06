@@ -1,6 +1,6 @@
 'use client';
 //@3rd Party
-import { useState } from 'react';
+import { FC, useState } from 'react';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Components
@@ -9,9 +9,13 @@ import CustomXsDrawer from '@components/custom-drawer/CustomXSDrawer';
 import { useTheme } from '@mui/material/styles';
 import { useMediaQuery } from '@mui/material';
 import CustomMdDrawer from '@components/custom-drawer/CustomMdDrawer';
+import { TGlobal } from '@i18n/dictionary/types/global';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const KaizenAppBar = () => {
+type TKaizenAppBar = {
+    dictionary: TGlobal;
+};
+const KaizenAppBar: FC<TKaizenAppBar> = ({ dictionary }) => {
     const [drawerOpen, setDrawerOpen] = useState(false);
     const toggleDrawer = (open?: boolean) => {
         setDrawerOpen(open || !drawerOpen);
@@ -34,6 +38,7 @@ const KaizenAppBar = () => {
                         open={drawerOpen}
                         onToggleHandle={toggleDrawer}
                         onClose={() => toggleDrawer(false)}
+                        dictionary={dictionary}
                         // onMouseEnter={() => toggleDrawer(true)}
                     />
                 </>

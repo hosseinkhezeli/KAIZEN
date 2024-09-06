@@ -7,6 +7,11 @@ import { MuiButton } from '@styles/theme/components/Button/MuiButton';
 import { MuiButtonBase } from '@styles/theme/components/Button/MuiButtonBase';
 import { MuiCssBaseline } from '@styles/theme/components/CssBaseline/MuiCssBaseline';
 import { MuiInputLabel } from '@styles/theme/components/Label/MuiInputLabel';
+import { MuiList } from '@styles/theme/components/List/MuiList';
+import { MuiListItem } from '@styles/theme/components/List/MuiListItem';
+import { MuiListItemButton } from '@styles/theme/components/List/MuiListItemButton';
+import { MuiListItemIcon } from '@styles/theme/components/List/MuiListItemIcon';
+import { MuiListItemText } from '@styles/theme/components/List/MuiListItemText';
 import { MuiInputBase } from '@styles/theme/components/TextField/MuiInputBase';
 import { typography } from '@styles/theme/components/Typography';
 import { MuiTypography } from '@styles/theme/components/Typography/MuiTypography/MuiTypography';
@@ -36,6 +41,11 @@ export const customTheme = (mode: PaletteMode | undefined, isRtl: boolean) =>
       MuiAppBar,
       MuiBottomNavigation,
       MuiBottomNavigationAction,
+      MuiList,
+      MuiListItem,
+      MuiListItemButton,
+      MuiListItemIcon,
+      MuiListItemText,
     },
   });
 

@@ -11,6 +11,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import { TGlobal } from '@i18n/dictionary/types/global';
 
 const KaizenButton = () => {
     const { palette } = useTheme();
@@ -53,10 +54,13 @@ const KaizenButton = () => {
 const CustomDrawerHeader = ({
     open,
     onClick,
+    dictionary,
 }: {
     open: boolean;
     onClick: (open: boolean) => void;
+    dictionary: TGlobal;
 }) => {
+    const { direction } = useTheme();
     return (
         <Stack gap={2} alignItems={'center'} width={'100%'}>
             <Box
@@ -70,7 +74,15 @@ const CustomDrawerHeader = ({
                     onClick={() => onClick(!open)}
                 >
                     {open ? (
-                        <ArrowLongLeftIcon width={16} />
+                        <ArrowLongLeftIcon
+                            width={16}
+                            style={{
+                                transform:
+                                    direction === 'ltr'
+                                        ? 'none'
+                                        : 'rotate(180deg)',
+                            }}
+                        />
                     ) : (
                         <EllipsisHorizontalIcon width={16} />
                     )}
@@ -95,14 +107,8 @@ const CustomDrawerHeader = ({
                     color={'inherit'}
                     startIcon={<PlusIcon width={16} />}
                     fullWidth
-                    sx={
-                        {
-                            // boxShadow: (theme) =>
-                            //     `0px 9px 12px -12px ${theme.palette.text.primary + '66'} !important`,
-                        }
-                    }
                 >
-                    Add Project
+                    {dictionary.newProject}
                 </Button>
             ) : (
                 <IconButton

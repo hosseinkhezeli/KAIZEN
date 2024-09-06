@@ -26,7 +26,7 @@ export default async function MainLayout({
             width='100%'
             flexDirection={{ xs: 'column', md: 'row' }}
         >
-            <KaizenAppBar />
+            <KaizenAppBar dictionary={dictionary} />
             <Stack
                 component={'main'}
                 flexGrow={1}
