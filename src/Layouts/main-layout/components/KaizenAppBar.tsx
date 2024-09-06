@@ -39,6 +39,7 @@ const KaizenAppBar: FC<TKaizenAppBar> = ({ dictionary }) => {
                         onToggleHandle={toggleDrawer}
                         onClose={() => toggleDrawer(false)}
                         dictionary={dictionary}
+                        sx={{ minWidth: 40 }}
                     />
                 </>
             )}

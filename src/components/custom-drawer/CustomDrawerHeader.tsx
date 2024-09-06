@@ -62,11 +62,16 @@ const CustomDrawerHeader = ({
 }) => {
     const { direction } = useTheme();
     return (
-        <Stack gap={2} alignItems={'center'} width={'100%'}>
+        <Stack
+            gap={2}
+            alignItems={'center'}
+            width={'100%'}
+            justifyItems={'center'}
+        >
             <Box
                 display={'flex'}
                 justifyContent={'space-between'}
-                width={'100%'}
+                width={open ? '100%' : 'max-content'}
             >
                 {open && <KaizenButton />}
                 <IconButton
@@ -88,7 +93,12 @@ const CustomDrawerHeader = ({
                     )}
                 </IconButton>
             </Box>
-            <Box display={'flex'} gap={1} alignItems={'center'} width={'100%'}>
+            <Box
+                display={'flex'}
+                gap={1}
+                alignItems={'center'}
+                width={open ? '100%' : 'max-content'}
+            >
                 <Avatar
                     variant={'rounded'}
                     sx={{
@@ -107,12 +117,16 @@ const CustomDrawerHeader = ({
                     color={'inherit'}
                     startIcon={<PlusIcon width={16} />}
                     fullWidth
+                    sx={{ width: open ? '100%' : 'max-content' }}
                 >
                     {dictionary.newProject}
                 </Button>
             ) : (
                 <IconButton
-                    sx={{ width: 'max-content', alignSelf: 'end' }}
+                    sx={{
+                        width: open ? '100%' : 'max-content',
+                        alignSelf: open ? 'end' : 'none',
+                    }}
                     onClick={() => onClick(!open)}
                 >
                     <PlusIcon width={16} />

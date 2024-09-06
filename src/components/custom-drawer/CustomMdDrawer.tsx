@@ -146,9 +146,9 @@ const closedMixin = (theme: Theme): CSSObject => ({
     }),
     padding: '8px',
     overflowX: 'hidden',
-    width: `calc(${theme.spacing(7)} + 1px)`,
+    // width: `calc(${theme.spacing(2)} + 1px)`,
     [theme.breakpoints.up('sm')]: {
-        width: `calc(${theme.spacing(6)} + 1px)`,
+        width: `calc(${theme.spacing(7)} + 1px)`,
     },
 });
 

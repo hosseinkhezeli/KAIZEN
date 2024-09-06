@@ -13,6 +13,7 @@ import { MuiListItemButton } from '@styles/theme/components/List/MuiListItemButt
 import { MuiListItemIcon } from '@styles/theme/components/List/MuiListItemIcon';
 import { MuiListItemText } from '@styles/theme/components/List/MuiListItemText';
 import { MuiInputBase } from '@styles/theme/components/TextField/MuiInputBase';
+import { MuiTooltip } from '@styles/theme/components/Tooltip/MuiTooltip';
 import { typography } from '@styles/theme/components/Typography';
 import { MuiTypography } from '@styles/theme/components/Typography/MuiTypography/MuiTypography';
 import { lightPalette } from './palette/light/lightPalette';
@@ -46,6 +47,7 @@ export const customTheme = (mode: PaletteMode | undefined, isRtl: boolean) =>
       MuiListItemButton,
       MuiListItemIcon,
       MuiListItemText,
+      MuiTooltip,
     },
   });
 
