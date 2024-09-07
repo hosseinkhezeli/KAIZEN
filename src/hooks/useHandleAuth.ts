@@ -1,3 +1,4 @@
+'use client';
 import { Locale } from '@/i18n';
 import { useGetUser } from '@states/user/userSlice';
 import { usePathname, useRouter } from 'next/navigation';

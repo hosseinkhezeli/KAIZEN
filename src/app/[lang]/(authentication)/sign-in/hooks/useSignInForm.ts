@@ -1,3 +1,4 @@
+'use client';
 //@3rd Party
 import { Locale } from '@/i18n';
 import { TSignInDto, TSignUpDto } from '@/services/api/auth/types';
