@@ -3,22 +3,30 @@ import { FC, ReactNode } from 'react';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Mui
-import { Divider, Stack, Typography, Box } from '@mui/material';
+import { Divider, Stack, Typography, Box, BoxProps } from '@mui/material';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types
 type TOverViewCardProps = {
     title: string;
+    colSpan?: string;
+    containerProps?: BoxProps;
     children: ReactNode;
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const OverViewCard: FC<TOverViewCardProps> = ({ title, children }) => {
+const OverViewCard: FC<TOverViewCardProps> = ({
+    title,
+    children,
+    colSpan,
+    containerProps,
+}) => {
     return (
         <>
             <Stack
                 sx={{
                     p: '16px 16px',
+                    gridColumn: colSpan,
                     border: '1px solid',
                     borderColor: 'divider',
                     borderRadius: 3,
@@ -37,11 +45,10 @@ const OverViewCard: FC<TOverViewCardProps> = ({ title, children }) => {
                     sx={{ borderStyle: 'dotted', borderBottomWidth: '2px' }}
                 />
                 <Box
-                    sx={{
-                        display: 'flex',
-                        gap: 2,
-                        flexWrap: { xs: 'wrap', sm: 'nowrap' },
-                    }}
+                    display={'flex'}
+                    gap={2}
+                    flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
+                    {...containerProps}
                 >
                     {children}
                 </Box>

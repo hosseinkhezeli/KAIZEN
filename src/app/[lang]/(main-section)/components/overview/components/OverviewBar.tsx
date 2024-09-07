@@ -24,12 +24,13 @@ const OverviewBar: FC<TOverviewBarProps> = ({ overviewInfo }) => {
         <Box
             sx={{
                 display: 'flex',
-                p: { xs: '4px 8px', sm: '8px 16px' },
-                border: '1px solid',
-                borderColor: 'divider',
+                p: { xs: '4px 8px', sm: '8px 12px' },
                 borderRadius: 3,
                 gap: { xs: 1, sm: 2 },
-                backgroundColor: 'background.paper',
+                border: '1px solid',
+                borderColor: 'secondary.dark',
+                backgroundColor: ({ palette }) =>
+                    palette.secondary.light + '10',
                 minHeight: { xs: 40, sm: 60 },
                 width: { xs: '100%', sm: 'max-content' },
                 alignSelf: { xs: 'center', sm: 'end' },

@@ -21,11 +21,12 @@ const OverviewChip: FC<TOverviewProps> = ({ count, label }) => {
                 display: 'flex',
                 alignItems: 'center',
                 gap: 1,
-                backgroundColor: 'grey.800',
                 borderRadius: 2,
-                p: { xs: '0 8px', md: '4px 12px' },
+                p: { xs: '0 4px', md: '4px 8px' },
                 border: '1px solid',
-                borderColor: 'divider',
+                borderColor: 'secondary.dark',
+                backgroundColor: ({ palette }) =>
+                    palette.secondary.light + '20',
             }}
         >
             <Typography variant={'body2'} fontWeight={600} lineHeight={'100%'}>
