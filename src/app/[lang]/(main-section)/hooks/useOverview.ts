@@ -6,7 +6,12 @@ const useOverview = () => {
   const { data: dashboardRes, isLoading: isLoadingDashboard } = useGetDashboard(
     { userId: user?.userId },
   );
-  return { dashboardRes, isLoadingDashboard };
+  const overviewInfo = [
+    { count: dashboardRes?.count, label: 'Active Boards' },
+    { count: dashboardRes?.count, label: 'Task Cards' },
+    { count: dashboardRes?.count, label: 'To-Dos' },
+  ];
+  return { dashboardRes, isLoadingDashboard, overviewInfo };
 };
 
 export default useOverview;

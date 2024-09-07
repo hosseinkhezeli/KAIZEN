@@ -1,80 +1,33 @@
 'use client';
-import React from 'react';
+//@Mui
+import { Container, LinearProgress, Skeleton, Typography } from '@mui/material';
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@Component & Methods
 import useOverview from '@/app/[lang]/(main-section)/hooks/useOverview';
-import {
-    Container,
-    Divider,
-    LinearProgress,
-    Skeleton,
-    Stack,
-    Typography,
-} from '@mui/material';
 import BoardCard from '@/app/[lang]/(main-section)/components/overview/components/BoardCard';
-import Box from '@mui/material/Box';
-import { TDashboard } from '@i18n/dictionary/types/dashboard';
+import OverviewBar from '@/app/[lang]/(main-section)/components/overview/components/OverviewBar';
+import OverViewCard from '@/app/[lang]/(main-section)/components/overview/components/OverViewCard';
 import { RepeatComponent } from '@utils/methods';
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//@Types
+import { TDashboard } from '@i18n/dictionary/types/dashboard';
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
-    const { isLoadingDashboard, dashboardRes } = useOverview();
+    const { isLoadingDashboard, dashboardRes, overviewInfo } = useOverview();
     return (
-        <Container
-            sx={{ mx: '0', display: 'flex', flexDirection: 'column', gap: 2 }}
-        >
-            {isLoadingDashboard && <LinearProgress />}
-            <Typography variant={'h4'} fontWeight={400}>
-                {dictionary.overview}
-            </Typography>
-            <Box
-                sx={{
-                    display: 'flex',
-                    p: '8px 16px',
-                    border: '1px solid',
-                    borderColor: 'grey.200',
-                    borderRadius: 3,
-                    gap: 2,
-                    backgroundColor: 'background.paper',
-                    minHeight: 60,
-                }}
+        <>
+            <Container
+                sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
             >
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Typography variant={'caption'}>
-                        Ongoing Boards :
-                    </Typography>
-                    <Typography variant={'body2'} fontWeight={600}>
-                        {dashboardRes?.count}
-                    </Typography>
-                </Box>
-                <Divider
-                    orientation={'vertical'}
-                    sx={{
-                        borderStyle: 'dotted',
-                        borderRightWidth: '2px',
-                        height: '42px',
-                    }}
-                />
-            </Box>
-
-            <Stack
-                sx={{
-                    p: '16px 16px',
-                    border: '1px solid',
-                    borderColor: 'grey.200',
-                    borderRadius: 3,
-                    gap: 2,
-                    backgroundColor: 'background.paper',
-                }}
-            >
-                <Typography
-                    variant={'body1'}
-                    fontWeight={400}
-                    lineHeight={'100%'}
-                >
-                    {dictionary.boards}
+                <Typography variant={'h4'} fontWeight={400}>
+                    {dictionary.overview}
                 </Typography>
-                <Divider
-                    sx={{ borderStyle: 'dotted', borderBottomWidth: '2px' }}
-                />
-                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+                <OverviewBar overviewInfo={overviewInfo} />
+
+                <OverViewCard title={dictionary.boards}>
                     {isLoadingDashboard ? (
                         <RepeatComponent
                             times={3}
@@ -106,9 +59,21 @@ const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
                             <BoardCard boardInfo={boardInfo} key={idx} />
                         ))
                     )}
-                </Box>
-            </Stack>
-        </Container>
+                </OverViewCard>
+            </Container>
+
+            {isLoadingDashboard && (
+                <LinearProgress
+                    sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100vw',
+                        zIndex: 9999,
+                    }}
+                />
+            )}
+        </>
     );
 };
 

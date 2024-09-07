@@ -18,9 +18,10 @@ const BoardCard = ({ boardInfo }: { boardInfo?: IGetDashboardData }) => {
         <Stack
             onClick={() => navigateTo(`${lang}/boards/${boardInfo?.id}`)}
             sx={{
-                p: '4px 8px',
+                p: '8px 12px',
                 border: '1px solid',
-                borderColor: 'grey.200',
+                borderColor: 'divider',
+                backgroundColor: 'grey.800',
                 borderRadius: 3,
                 flexBasis: { xs: '100%', sm: '50%', md: '33%' },
                 position: 'relative',
@@ -35,7 +36,7 @@ const BoardCard = ({ boardInfo }: { boardInfo?: IGetDashboardData }) => {
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: 2,
+                    gap: 1,
                 }}
             >
                 <DocumentIcon width={16} height={16} />
@@ -109,21 +110,21 @@ const BoardCard = ({ boardInfo }: { boardInfo?: IGetDashboardData }) => {
                 </Box>
             )}
 
-            <Box
-                sx={{
-                    position: 'absolute',
-                    width: '100%',
-                    height: '100%',
-                    top: '0',
-                    left: '0',
-                    borderRadius: 3,
-                    backgroundColor: 'transparent',
-                    opacity: '15%',
-                    backgroundImage: (theme) => rndPatternGenerator(theme),
-                    backgroundBlendMode: 'multiply',
-                    zIndex: 1,
-                }}
-            />
+            {/*<Box*/}
+            {/*    sx={{*/}
+            {/*        position: 'absolute',*/}
+            {/*        width: '100%',*/}
+            {/*        height: '100%',*/}
+            {/*        top: '0',*/}
+            {/*        left: '0',*/}
+            {/*        borderRadius: 3,*/}
+            {/*        backgroundColor: 'transparent',*/}
+            {/*        opacity: '5%',*/}
+            {/*        backgroundImage: (theme) => rndPatternGenerator(theme),*/}
+            {/*        backgroundBlendMode: 'multiply',*/}
+            {/*        zIndex: 1,*/}
+            {/*    }}*/}
+            {/*/>*/}
         </Stack>
     );
 };
