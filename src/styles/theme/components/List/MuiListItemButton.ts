@@ -11,8 +11,8 @@ export const MuiListItemButton: Components<Theme>['MuiListItemButton'] = {
       minWidth: 32,
       transition: '0.2s ease all',
       borderRadius: 8,
-      stroke: theme.palette.grey['700'],
-      color: theme.palette.grey['700'],
+      stroke: theme.palette.grey['400'],
+      color: theme.palette.grey['400'],
       ':active': {
         transform: 'translateY(0.5px)',
         opacity: 0.9,

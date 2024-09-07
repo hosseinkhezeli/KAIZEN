@@ -8,6 +8,7 @@ export const MuiBottomNavigation: Components<Theme>['MuiBottomNavigation'] = {
         backdropFilter: 'blur(8px)',
         borderRadius: '8px',
         position: 'fixed',
+        zIndex: 10,
         bottom: 8,
         left: 8,
         width: 'calc(100% - 16px)',
