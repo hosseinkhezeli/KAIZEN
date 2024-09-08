@@ -14,8 +14,8 @@ export const MuiButtonBase: Components<Theme>['MuiButtonBase'] = {
         minWidth: 32,
       },
       [theme.breakpoints.up('lg')]: {
-        minHeight: 38,
-        minWidth: 38,
+        minHeight: 34,
+        minWidth: 34,
       },
     }),
   },

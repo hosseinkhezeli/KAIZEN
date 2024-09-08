@@ -86,7 +86,7 @@ const CustomMdDrawer: FC<ICustomMdDrawerProps> = ({
                 onClick={onToggleHandle}
                 dictionary={dictionary}
             />
-            <Divider sx={{ my: '8px' }} />
+            <Divider sx={{ mt: '16px', mb: '8px' }} />
             <List>
                 {navigationItems.map((navItem, index) => (
                     <ListItem
