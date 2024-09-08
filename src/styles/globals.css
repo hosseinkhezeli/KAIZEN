@@ -7,14 +7,14 @@
 
 /* ------------------------ Libre_Franklin ------------------------ */
 @font-face {
-    font-family: 'Libre Franklin';
-    src: url('../../public/fonts/Libre_Franklin/LibreFranklin-VariableFont_wght.ttf');
+    font-family: 'Roboto Flex';
+    src: url('../../public/fonts/Libre_Franklin/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf');
     font-display: fallback;
 }
 
 .en-font {
     font-family:
-        Libre Franklin,
+            Roboto Flex,
         sans-serif;
 }
 
