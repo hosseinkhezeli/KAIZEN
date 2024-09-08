@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Mui
-import { Stack } from '@mui/material';
+import { Container, Stack } from '@mui/material';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Component
@@ -12,6 +12,7 @@ import KaizenAppBar from '@/Layouts/main-layout/components/KaizenAppBar';
 import CustomBottomNavigation from '@components/custom-bottom-navigation/CustomBottomNavigation';
 import { Locale } from '@/i18n';
 import useHandleAuth from '@hooks/useHandleAuth';
+import KaizenBreadCrumbs from '@/app/[lang]/(main-section)/components/KaizenBreadCrumbs';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export default function MainLayout({
@@ -37,6 +38,9 @@ export default function MainLayout({
                 height={'100%'}
                 width={'auto'}
             >
+                <Container>
+                    <KaizenBreadCrumbs />
+                </Container>
                 {children}
             </Stack>
             <CustomBottomNavigation dictionary={dictionary} />
