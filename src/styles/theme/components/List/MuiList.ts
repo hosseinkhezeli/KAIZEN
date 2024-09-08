@@ -7,7 +7,7 @@ export const MuiList: Components<Theme>['MuiList'] = {
       display: 'flex',
       flexDirection: 'column',
       gap: 2,
-      p: 0,
+      padding: 0,
     }),
   },
 };
