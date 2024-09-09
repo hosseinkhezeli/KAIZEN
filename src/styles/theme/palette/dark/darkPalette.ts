@@ -16,7 +16,7 @@ export const darkPalette: PaletteOptions = {
   divider: '#3b3b3b',
   background: {
     default: '#131313',
-    paper: '#171717',
+    paper: '#262626',
   },
   success: {
     light: '#87D498',
