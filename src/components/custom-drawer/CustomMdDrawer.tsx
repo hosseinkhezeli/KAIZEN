@@ -100,6 +100,9 @@ const CustomMdDrawer: FC<ICustomMdDrawerProps> = ({
                                     navItem.href.replace('{lang}', lang),
                                 )
                             }
+                            className={
+                                location === navItem.id ? 'selected' : ''
+                            }
                             sx={{
                                 gap: 1,
                                 justifyContent: open ? 'initial' : 'center',

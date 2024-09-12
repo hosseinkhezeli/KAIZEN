@@ -37,9 +37,9 @@ export const darkPalette: PaletteOptions = {
     contrastText: '#ffffff',
   },
   info: {
-    light: '#3fa6d2',
-    main: '#107AA7',
-    dark: '#09445D',
+    light: '#6673f8',
+    main: '#4C5CF4',
+    dark: '#3342d0',
     contrastText: '#ffffff',
   },
   text: {
@@ -56,7 +56,7 @@ export const darkPalette: PaletteOptions = {
     500: '#9e9e9e',
     600: '#757575',
     700: '#3a3a3a',
-    800: '#282828',
+    800: '#2c2c2c',
     900: '#1c1c1c',
     A100: '#d5d5d5',
     A200: '#aaaaaa',

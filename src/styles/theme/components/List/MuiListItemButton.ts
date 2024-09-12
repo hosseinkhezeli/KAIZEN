@@ -13,12 +13,15 @@ export const MuiListItemButton: Components<Theme>['MuiListItemButton'] = {
       borderRadius: 8,
       stroke: theme.palette.grey['400'],
       color: theme.palette.grey['400'],
+      '&.selected': {
+        backgroundColor: 'rgba(0, 0, 0, 0.07)',
+      },
       ':active': {
         transform: 'translateY(0.5px)',
         opacity: 0.9,
       },
       ':hover': {
-        backgroundColor: 'rgba(0, 0, 0, 0.08) !important',
+        backgroundColor: 'rgba(0, 0, 0, 0.1)',
         color: theme.palette.text.primary,
         stroke: theme.palette.text.primary,
       },

@@ -8,6 +8,7 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
     disableFocusRipple: true,
     disableTouchRipple: true,
     variant: 'contained',
+    color: 'inherit',
   },
   styleOverrides: {
     root: () => ({
@@ -28,6 +29,12 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
         backgroundColor: `${theme.palette.background.paper} !important`,
         borderColor: `${theme.palette.text.disabled}`,
         boxShadow: `0px 9px 12px -12px ${theme.palette.grey[800] + '66'} !important`,
+      }),
+      ...(ownerState.color === 'info' && {
+        color:
+          theme.palette.mode === 'light'
+            ? theme.palette.text.secondary + ' !important'
+            : theme.palette.text.primary + ' !important',
       }),
       ':active': {
         opacity: 0.9,
