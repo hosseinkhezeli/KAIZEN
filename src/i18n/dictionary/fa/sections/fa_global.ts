@@ -5,4 +5,5 @@ export const fa_global: TGlobal = {
   settings: 'تنظیمات',
   boards: 'برد',
   cards: 'کارت',
+  newProject: 'پروژه جدید',
 };

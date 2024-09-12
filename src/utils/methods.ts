@@ -1,5 +1,5 @@
 import { ButtonOwnProps } from '@mui/material/Button';
-import { Theme } from '@mui/material/styles';
+import { Theme, useTheme } from '@mui/material/styles';
 import { OverridableStringUnion } from '@mui/types';
 import { store } from '@states/store';
 import { EMPTY_TEXT } from '@utils/consts';
@@ -156,3 +156,22 @@ export const getColorByOwnerProps = (
   }
   return undefined;
 };
+export function truncateString(str: string, maxLength: number): string {
+  if (maxLength <= 0) {
+    return '';
+  }
+
+  if (str.length <= maxLength) {
+    return str;
+  }
+
+  return str.slice(0, maxLength - 3) + '...';
+}
+export function rndPatternGenerator(theme: Theme): string {
+  const patterns = [
+    `repeating-radial-gradient( circle at 0 0, transparent 0, ${theme.palette.primary.light}55 21px ), repeating-linear-gradient( ${theme.palette.primary.light}55, transparent )`,
+    `radial-gradient(circle at center center, transparent, transparent), repeating-radial-gradient(circle at center center, ${theme.palette.primary.light}55, ${theme.palette.primary.light}55, 21px, transparent 42px, transparent 21px)`,
+    `linear-gradient(30deg, ${theme.palette.primary.main}20 12%, transparent 12.5%, transparent 87%, ${theme.palette.primary.main}20 87.5%, ${theme.palette.primary.main}20), linear-gradient(150deg, ${theme.palette.primary.main}20 12%, transparent 12.5%, transparent 87%, ${theme.palette.primary.main}20 87.5%, ${theme.palette.primary.main}20), linear-gradient(30deg, ${theme.palette.primary.main}20 12%, transparent 12.5%, transparent 87%, ${theme.palette.primary.main}20 87.5%, ${theme.palette.primary.main}20), linear-gradient(150deg, ${theme.palette.primary.main}20 12%, transparent 12.5%, transparent 87%, ${theme.palette.primary.main}20 87.5%, ${theme.palette.primary.main}20), linear-gradient(60deg, ${theme.palette.primary.main}30 25%, transparent 25.5%, transparent 75%, ${theme.palette.primary.main}30 75%, ${theme.palette.primary.main}30), linear-gradient(60deg, ${theme.palette.primary.main}30 25%, transparent 25.5%, transparent 75%, ${theme.palette.primary.main}30 75%, ${theme.palette.primary.main}30)`,
+  ];
+  return patterns[Math.floor(Math.random() * 3)];
+}

@@ -15,7 +15,7 @@ import storage from './customStorage';
 const globalPersistConfig = {
   key: 'global',
   storage,
-  whitelist: ['themeMode'],
+  whitelist: ['themeMode', 'lang'],
   blacklist: ['isRtl'],
 };
 

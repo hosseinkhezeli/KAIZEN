@@ -1,7 +1,7 @@
 //@3rd Party
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { i18n, type Locale } from '@/i18n';
+import { getDictionaryServer, i18n, type Locale } from '@/i18n';
 // ___________________________________________________________________
 
 //@Components
@@ -26,5 +26,10 @@ export default function MainSectionLayout({
     children: ReactNode;
     params: { lang: Locale };
 }) {
-    return <MainLayout params={params}>{children}</MainLayout>;
+    const dictionary = getDictionaryServer(params?.lang || 'en');
+    return (
+        <MainLayout params={params} dictionary={dictionary}>
+            {children}
+        </MainLayout>
+    );
 }

@@ -10,6 +10,7 @@ const CustomXsDrawer: FC<DrawerProps> = ({ children, sx, ...rest }) => {
             {...rest}
             anchor={direction === 'rtl' ? 'left' : 'right'}
             variant='temporary'
+            keepMounted={false}
             sx={[
                 {
                     display: { xs: 'flex', md: 'none' },

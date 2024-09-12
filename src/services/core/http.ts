@@ -18,6 +18,7 @@ http.interceptors.request.use(
     const token = localStorage.getItem('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+      document.cookie = `token=${token}; path=/; max-age=3600`;
     }
     config.headers.Accept = 'application/json';
     return config;

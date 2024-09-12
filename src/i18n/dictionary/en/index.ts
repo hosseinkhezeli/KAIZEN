@@ -1,4 +1,5 @@
 import { en_auth } from '@i18n/dictionary/en/sections/en.auth';
+import { en_dashboard } from '@i18n/dictionary/en/sections/en_dashboard';
 import { en_global } from '@i18n/dictionary/en/sections/en_global';
 import { en_languages } from '@i18n/dictionary/en/sections/en_languages';
 
@@ -7,5 +8,8 @@ export default {
   ...en_global,
   auth: {
     ...en_auth,
+  },
+  dashboard: {
+    ...en_dashboard,
   },
 };

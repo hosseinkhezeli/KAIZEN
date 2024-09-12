@@ -1,6 +1,6 @@
 //@Components & Methods
 import SignInForm from '@/app/[lang]/(authentication)/sign-in/components/SignInForm';
-import { getDictionary, i18n, Locale } from '@/i18n';
+import { getDictionaryServer, i18n, Locale } from '@/i18n';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Server Functions
@@ -16,7 +16,7 @@ const SignIn = async ({
         lang: Locale;
     };
 }) => {
-    const dictionary = await getDictionary(params.lang);
+    const dictionary = await getDictionaryServer(params.lang);
     return <SignInForm dictionary={dictionary.auth} />;
 };
 

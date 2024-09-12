@@ -3,4 +3,5 @@ export type TGlobal = {
   boards: string;
   cards: string;
   settings: string;
+  newProject: string;
 };

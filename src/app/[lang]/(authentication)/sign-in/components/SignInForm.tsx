@@ -12,7 +12,16 @@ import { TAuth } from '@i18n/dictionary/types/auth';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
-    const { onSubmit, signInForm, inputList } = useSignInForm({ dictionary });
+    // Destructure the custom hook for handling sign-in logic
+    const {
+        onSubmitOtp,
+        otpForm,
+        inputListOtp,
+        onSubmitSignIn,
+        signInForm,
+        inputListSignIn,
+        step,
+    } = useSignInForm({ dictionary });
 
     return (
         <Stack
@@ -33,22 +42,24 @@ const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
                 alignItems: 'center',
             }}
         >
-            <Typography variant={'h6'} sx={{ textWrap: 'nowrap' }}>
-                {dictionary.welcome_back},{dictionary.mate}!
+            <Typography variant='h6' sx={{ textWrap: 'nowrap' }}>
+                {`${dictionary.welcome_back}, ${dictionary.mate}!`}
             </Typography>
             <CustomForm
-                form={signInForm}
-                onSubmit={onSubmit}
-                formConfig={inputList}
+                form={step === 0 ? otpForm : signInForm}
+                onSubmit={step === 0 ? onSubmitOtp : onSubmitSignIn}
+                formConfig={step === 0 ? inputListOtp : inputListSignIn}
             >
-                <Button
-                    type='submit'
-                    variant='contained'
-                    color='primary'
-                    fullWidth
-                >
-                    {dictionary.sign_in}
-                </Button>
+                <Stack gap={1}>
+                    <Button
+                        type='submit'
+                        variant='contained'
+                        color='primary'
+                        fullWidth
+                    >
+                        {step === 0 ? dictionary.send_code : dictionary.sign_in}
+                    </Button>
+                </Stack>
             </CustomForm>
         </Stack>
     );

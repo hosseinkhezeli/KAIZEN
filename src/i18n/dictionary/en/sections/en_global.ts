@@ -5,4 +5,5 @@ export const en_global: TGlobal = {
   settings: 'Setting',
   boards: 'Boards',
   cards: 'Cards',
+  newProject: 'New Project',
 };

@@ -8,31 +8,39 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
     disableFocusRipple: true,
     disableTouchRipple: true,
     variant: 'contained',
+    color: 'inherit',
   },
   styleOverrides: {
     root: () => ({
       textTransform: 'none',
       transition: '0.1s ease all',
       fontWeight: 500,
-      letterSpacing: 1,
       borderRadius: 8,
       ':active': {
         transform: 'translateY(0.5px)',
       },
     }),
-    contained: ({ theme }) => ({
+    contained: ({ theme, ownerState }) => ({
+      color: theme.palette.text.primary,
+      stroke: theme.palette.text.primary,
       border: '1px solid',
       borderColor: `${theme.palette.text.secondary}10`,
-      '&.MuiButton-containedInherit': {
+      ...(ownerState.color === 'inherit' && {
         backgroundColor: `${theme.palette.background.paper} !important`,
-        borderColor: `${theme.palette.text.primary}20`,
-        boxShadow: `0 6px 6px 0px ${theme.palette.text.primary}05`,
-      },
+        borderColor: `${theme.palette.text.disabled}`,
+        boxShadow: `0px 9px 12px -12px ${theme.palette.grey[800] + '66'} !important`,
+      }),
+      ...(ownerState.color === 'info' && {
+        color:
+          theme.palette.mode === 'light'
+            ? theme.palette.text.secondary + ' !important'
+            : theme.palette.text.primary + ' !important',
+      }),
       ':active': {
         opacity: 0.9,
-        '&.MuiButton-containedInherit': {
-          boxShadow: `0 0px 0px 0px ${theme.palette.text.secondary}00`,
-        },
+        ...(ownerState.color === 'inherit' && {
+          boxShadow: `0px 9px 12px -12px ${theme.palette.grey[800] + '00'} !important`,
+        }),
       },
     }),
     outlined: ({ theme, ownerState }) => ({

@@ -13,7 +13,7 @@ import { useTheme } from '@mui/material/styles';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // @Assets
-import { ChevronRightIcon } from '@heroicons/react/24/outline';
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types
@@ -23,7 +23,7 @@ interface IBreadcrumb {
 }
 
 interface ICustomBreadCrumbs extends BreadcrumbsProps {
-    breadcrumbs: IBreadcrumb[];
+    breadcrumbs: IBreadcrumb[] | undefined[];
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -31,34 +31,34 @@ const CustomBreadCrumbs: FC<ICustomBreadCrumbs> = memo(
     ({ breadcrumbs, sx, ...rest }) => {
         const { palette, typography } = useTheme();
         const currentPath = usePathname();
-        const location = currentPath.split('/').pop();
+        const location = currentPath?.split('/').pop();
 
         const renderedBreadcrumbs = useMemo(() => {
-            return breadcrumbs.map((breadcrumb, idx) => {
+            return breadcrumbs?.map((breadcrumb, idx) => {
                 const isActive =
-                    location === breadcrumb.href ||
-                    currentPath === breadcrumb.href;
+                    location === breadcrumb?.href ||
+                    currentPath === breadcrumb?.href;
                 const textColor = isActive
                     ? palette.text.primary
                     : palette.text.disabled;
 
                 return (
                     <Link
-                        key={`${breadcrumb.href}-${idx}`}
-                        href={breadcrumb.href}
+                        key={`${breadcrumb?.href}-${idx}`}
+                        href={breadcrumb?.href ?? '/'}
                         style={{
                             display: 'flex',
                             alignItems: 'center',
                             textDecoration: 'none',
                             color: textColor,
                             stroke: textColor,
-                            ...typography.body1,
+                            ...typography.caption,
                         }}
                         aria-current={isActive ? 'page' : undefined}
                     >
                         <Typography
                             component={
-                                typeof breadcrumb.label === 'string'
+                                typeof breadcrumb?.label === 'string'
                                     ? 'p'
                                     : 'div'
                             }
@@ -72,9 +72,10 @@ const CustomBreadCrumbs: FC<ICustomBreadCrumbs> = memo(
                                 display: 'flex',
                                 alignItems: 'center',
                                 stroke: ({ palette }) => palette.text.disabled,
+                                ...typography.caption,
                             }}
                         >
-                            {breadcrumb.label}
+                            {breadcrumb?.label}
                         </Typography>
                     </Link>
                 );
@@ -86,7 +87,7 @@ const CustomBreadCrumbs: FC<ICustomBreadCrumbs> = memo(
                 maxItems={2}
                 separator={
                     <ChevronRightIcon
-                        style={{ stroke: palette.text.disabled }}
+                        style={{ fill: palette.text.disabled }}
                         width={16}
                         height={16}
                         strokeWidth={2}
@@ -94,7 +95,7 @@ const CustomBreadCrumbs: FC<ICustomBreadCrumbs> = memo(
                 }
                 aria-label='breadcrumb'
                 {...rest}
-                sx={sx}
+                sx={[...[{ my: '1rem' }], ...(Array.isArray(sx) ? sx : [sx])]}
             >
                 {renderedBreadcrumbs}
             </Breadcrumbs>
