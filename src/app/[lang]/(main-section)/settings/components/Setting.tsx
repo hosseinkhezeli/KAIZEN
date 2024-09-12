@@ -19,10 +19,10 @@ export const Setting = () => {
                 border: '1px solid',
                 padding: '8px 16px',
                 borderColor: ({ palette }) => palette.grey[300] + '33',
-                backgroundColor: ({ palette }) => palette.grey[800],
+                backgroundColor: ({ palette }) => palette.grey[800] + '55',
             }}
         >
-            <Stack sx={{ flexBasis: '30%' }}>
+            <Stack sx={{ flexBasis: '30%', height: '100%' }}>
                 <SettingList
                     settingMenuList={settingMenuList}
                     selectedItem={selectedItem}
@@ -33,7 +33,8 @@ export const Setting = () => {
                 flexGrow={1}
                 gap={2}
                 sx={{
-                    height: '100%',
+                    boxSizing: 'border-box',
+                    height: 'calc(100% - 53px)',
                     marginTop: '52px',
                     borderRadius: '8px',
                     border: '1px solid',

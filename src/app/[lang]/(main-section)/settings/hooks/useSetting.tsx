@@ -1,3 +1,4 @@
+'use client';
 //@3rd Party
 import {
     ForwardRefExoticComponent,
@@ -18,6 +19,7 @@ import {
 
 //@Component
 import ThemeSetting from '@/app/[lang]/(main-section)/settings/components/ThemeSetting';
+import LanguageSetting from '@/app/[lang]/(main-section)/settings/components/LanguageSetting';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types
@@ -49,11 +51,12 @@ const useSetting = () => {
         {
             label: 'Theme',
             icon: PaintBrushIcon,
-            component: ThemeSetting,
+            component: () => <ThemeSetting />,
         },
         {
             label: 'Language',
             icon: LanguageIcon,
+            component: () => <LanguageSetting />,
         },
     ];
 

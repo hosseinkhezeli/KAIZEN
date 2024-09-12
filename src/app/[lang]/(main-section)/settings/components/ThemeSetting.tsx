@@ -15,6 +15,7 @@ import {
 import Box from '@mui/material/Box';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
 import customTheme from '@styles/theme/theme';
+import { pop } from '@utils/animationKeyframes';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const ThemeSetting = () => {
@@ -25,20 +26,35 @@ const ThemeSetting = () => {
     };
     return (
         <>
-            <Typography variant='body1' fontWeight={500}>
+            <Typography
+                variant='body1'
+                fontWeight={500}
+                sx={{
+                    opacity: '0',
+                    animation: `${pop} 0.2s ease forwards`,
+                }}
+            >
                 Select Theme
             </Typography>
-            <Typography variant='body2'>
+            <Typography
+                variant='body2'
+                sx={{
+                    opacity: '0',
+                    animation: `${pop} 0.2s ease 0.1s forwards`,
+                }}
+            >
                 Customize your workspace,make it more enjoyable and comfortable
                 to work.
             </Typography>
             <Box width={'100%'} display={'flex'} gap={4}>
                 <ThemeCard
+                    idx={0}
                     themeMode={'light'}
                     isSelected={palette.mode === 'light'}
                     onClickSelect={onClickHandle}
                 />
                 <ThemeCard
+                    idx={1}
                     themeMode={'dark'}
                     isSelected={palette.mode === 'dark'}
                     onClickSelect={onClickHandle}
@@ -53,10 +69,12 @@ const ThemeCard = ({
     isSelected,
     onClickSelect,
     themeMode,
+    idx,
 }: {
     themeMode: PaletteMode;
     isSelected: boolean;
     onClickSelect: () => void;
+    idx: number;
 }) => {
     return (
         <Stack
@@ -69,6 +87,8 @@ const ThemeCard = ({
                 outline: '1px solid',
                 outlineColor: isSelected ? 'primary.main' : 'grey.700',
                 overflow: 'hidden',
+                opacity: '0',
+                animation: `${pop} 0.2s ease 0.${idx * 2}s forwards`,
                 transition: '0.2s ease all',
                 ':hover': {
                     transform: 'scale(101%)',

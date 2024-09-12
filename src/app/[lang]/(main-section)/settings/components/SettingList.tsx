@@ -63,6 +63,11 @@ const SettingList: FC<TSettingList> = ({
                             <ListItemButton
                                 sx={{ gap: 1 }}
                                 onClick={() => onClickHandle(settingItem)}
+                                className={
+                                    selectedItem?.label === settingItem.label
+                                        ? 'selected'
+                                        : ''
+                                }
                             >
                                 <ListItemIcon
                                     sx={{ minWidth: '20px', width: '20px' }}
@@ -77,12 +82,12 @@ const SettingList: FC<TSettingList> = ({
                                 </ListItemIcon>
                                 <ListItemText
                                     primary={settingItem.label}
-                                    className={
-                                        selectedItem?.label ===
-                                        settingItem.label
-                                            ? 'selected'
-                                            : ''
-                                    }
+                                    // className={
+                                    //     selectedItem?.label ===
+                                    //     settingItem.label
+                                    //         ? 'selected'
+                                    //         : ''
+                                    // }
                                 />
                             </ListItemButton>
                         </ListItem>
@@ -106,6 +111,11 @@ const SettingList: FC<TSettingList> = ({
                             <ListItemButton
                                 sx={{ gap: 1 }}
                                 onClick={() => onClickHandle(settingItem)}
+                                className={
+                                    selectedItem?.label === settingItem.label
+                                        ? 'selected'
+                                        : ''
+                                }
                             >
                                 <ListItemIcon
                                     sx={{ minWidth: '20px', width: '20px' }}
@@ -120,12 +130,12 @@ const SettingList: FC<TSettingList> = ({
                                 </ListItemIcon>
                                 <ListItemText
                                     primary={settingItem.label}
-                                    className={
-                                        selectedItem?.label ===
-                                        settingItem.label
-                                            ? 'selected'
-                                            : ''
-                                    }
+                                    // className={
+                                    //     selectedItem?.label ===
+                                    //     settingItem.label
+                                    //         ? 'selected'
+                                    //         : ''
+                                    // }
                                 />
                             </ListItemButton>
                         </ListItem>
