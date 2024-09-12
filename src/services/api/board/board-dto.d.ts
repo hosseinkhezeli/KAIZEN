@@ -1,8 +1,9 @@
-interface IGetBoardParamsDTO {
-  userId: string;
-}
 interface IGetDashboardParamsDTO {
   userId: string;
+}
+
+interface IGetBoardParamsDTO {
+  boardId: string;
 }
 interface IGetDashboardRes {
   count: number;
@@ -21,10 +22,4 @@ interface IGetBoardDTO {
   count: number;
 }
 
-interface IGetBoardSingeParamsDTO {
-  boardId: string;
-}
-
-interface IGetBoardSingleDTO {
-  data: IBoard;
-}
+type IGetBoardRes = IBoard;

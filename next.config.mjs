@@ -9,6 +9,12 @@ const nextConfig = {
                 pathname:'/data/**',
                 port:""
             },
+            {
+                protocol: 'https',
+                hostname: 'mui.com/static/images',
+                pathname:'/**',
+                port:""
+            },
         ],
     }
 };

@@ -1,4 +1,4 @@
 export const routes = {
-  dashboard: ({ userId }: IGetDashboardParamsDTO) =>
-    `/boards/dashboard/data?userId=${userId}`,
+  dashboard: `/boards/dashboard/data`,
+  board: ({ boardId }: IGetBoardParamsDTO) => `/boards/${boardId}`,
 };
