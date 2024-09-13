@@ -4,9 +4,11 @@ const useBoard = (boardId: string) => {
   const { data: boardRes, isLoading: isLoadingBoard } = useGetBoard({
     boardId,
   });
+
   const boardTitle = boardRes?.title;
   const members = boardRes?.members;
-  return { isLoadingBoard, boardTitle, members };
+  const bgImageUrl = boardRes?.background;
+  return { isLoadingBoard, boardTitle, members, boardRes, bgImageUrl };
 };
 
 export default useBoard;
