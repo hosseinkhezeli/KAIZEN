@@ -29,7 +29,7 @@ const ProvidersLayout: FC<IProvidersLayout> = ({ children, lang }) => {
         <QueryClientProvider client={queryClient}>
             <Provider store={store}>
                 <PersistGate
-                    loading={<CustomLoadingIndicator />}
+                    // loading={<CustomLoadingIndicator />}
                     persistor={persistor}
                 >
                     <ThemeProvider lang={lang}>
