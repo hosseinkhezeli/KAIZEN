@@ -1,26 +1,29 @@
 'use client';
 
 import useBoard from '@/app/[lang]/(main-section)/boards/[boardId]/hooks/useBoard';
-import {
-    Avatar,
-    AvatarGroup,
-    Box,
-    Button,
-    Container,
-    LinearProgress,
-    Typography,
-} from '@mui/material';
-import { PlusIcon, UserIcon } from '@heroicons/react/24/outline';
+import { Container, LinearProgress } from '@mui/material';
 import React from 'react';
 import BoardHeader from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardHeader';
 import BoardTabs from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardTabs';
 
 const Board = ({ boardId }: { boardId: string }) => {
-    const { isLoadingBoard, boardTitle, members } = useBoard(boardId);
+    const { isLoadingBoard, boardTitle, members, boardRes, bgImageUrl } =
+        useBoard(boardId);
     return (
-        <Container sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <BoardHeader boardTitle={boardTitle} members={members} />
-            <BoardTabs />
+        <Container
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 2,
+                height: '100%',
+            }}
+        >
+            <BoardHeader
+                boardTitle={boardTitle}
+                members={members}
+                bgImageUrl={bgImageUrl}
+            />
+            <BoardTabs boardInfo={boardRes} />
             {isLoadingBoard && (
                 <LinearProgress
                     sx={{
