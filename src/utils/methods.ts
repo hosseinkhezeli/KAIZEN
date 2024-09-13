@@ -1,6 +1,5 @@
-import { ButtonOwnProps } from '@mui/material/Button';
-import { Theme, useTheme } from '@mui/material/styles';
-import { OverridableStringUnion } from '@mui/types';
+import { Locale } from '@/i18n';
+import { Theme } from '@mui/material/styles';
 import { store } from '@states/store';
 import { EMPTY_TEXT } from '@utils/consts';
 import { useEffect, useState } from 'react';
@@ -175,3 +174,55 @@ export function rndPatternGenerator(theme: Theme): string {
   ];
   return patterns[Math.floor(Math.random() * 3)];
 }
+
+export function formatDate(date?: Date) {
+  const newDate = new Date(date ?? Date.now());
+  const year = newDate?.getFullYear?.();
+  const month = String(newDate?.getMonth?.() ?? 0 + 1)?.padStart(2, '0'); // Months are zero-based
+  const day = String(newDate?.getDate?.())?.padStart(2, '0');
+  return date ? `${year}/${month}/${day}` : '';
+}
+
+export const getShortMonthName = (monthIndex: number, locale: Locale) => {
+  if (locale === 'fa') {
+    // Persian month names (shortened)
+    const persianMonths = [
+      'فروردین', // Farvardin (1)
+      'اردیبهشت', // Ordibehesht (2)
+      'خرداد', // Khordad (3)
+      'تیر', // Tir (4)
+      'مرداد', // Mordad (5)
+      'شهریور', // Shahrivar (6)
+      'مهر', // Mehr (7)
+      'آبان', // Aban (8)
+      'آذر', // Azar (9)
+      'دی', // Dey (10)
+      'بهمن', // Bahman (11)
+      'اسفند', // Esfand (12)
+    ];
+    return persianMonths[monthIndex];
+  } else if (locale === 'en') {
+    // Use the built-in toLocaleString for English month names
+    const date = new Date(2023, monthIndex); // Year is arbitrary
+    return date.toLocaleString('en', { month: 'short' });
+  } else {
+    throw new Error(`Unsupported locale: ${locale}`);
+  }
+};
+
+export const getRandomColorKey = () => {
+  const statuses = [
+    'primary',
+    'secondary',
+    'warning',
+    'error',
+    'info',
+    'success',
+  ];
+
+  // Generate a random index based on the length of the statuses array
+  const randomIndex = Math.floor(Math.random() * statuses.length);
+
+  // Return the randomly selected status
+  return statuses[randomIndex];
+};
