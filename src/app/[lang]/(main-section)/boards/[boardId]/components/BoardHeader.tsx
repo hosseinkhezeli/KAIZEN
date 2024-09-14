@@ -143,7 +143,7 @@ const BoardHeader: FC<TBoarderHeaderProps> = ({
                         height: '100%',
                         objectFit: 'cover',
                         zIndex: 0,
-                        objectPosition: 'top',
+                        objectPosition: 'center',
                     }}
                 />
             )}

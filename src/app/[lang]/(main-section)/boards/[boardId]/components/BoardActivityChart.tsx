@@ -36,6 +36,10 @@ const ActivityChart = ({ data }: { data: IBoardActivityLog[] | undefined }) => {
                     overflowX: 'auto',
                     whiteSpace: 'nowrap',
                     padding: '8px',
+                    border: '1px solid',
+                    borderColor: 'divider',
+                    borderRadius: 2,
+                    pb: '8px',
                 }}
             >
                 <Box
@@ -50,7 +54,13 @@ const ActivityChart = ({ data }: { data: IBoardActivityLog[] | undefined }) => {
                         </Typography>
                     ))}
                 </Box>
-                <Grid container spacing={0.7} sx={{ minWidth: '200%' }}>
+                <Grid
+                    container
+                    spacing={0.7}
+                    sx={{
+                        minWidth: '200%',
+                    }}
+                >
                     {daysInYear.map((day) => {
                         const dateString = day.toISOString().split('T')[0];
                         const contributionCount =

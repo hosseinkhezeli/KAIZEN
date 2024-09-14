@@ -32,3 +32,24 @@ html, body {
 .Mui-Loading {
     background-color: #121212;
 }
+/* Custom Scrollbar Styles for Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Width of the scrollbar */
+
+}
+
+::-webkit-scrollbar-track {
+    background: #ffffff11; /* Background of the scrollbar track */
+    border-radius: 9999px; /* Rounded corners for the thumb */
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7a7a7a; /* Color of the scrollbar thumb */
+    border-radius: 9999px; /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the thumb on hover */
+}
