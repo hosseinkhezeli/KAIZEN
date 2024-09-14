@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import { Stack, Tab, Tabs } from '@mui/material';
 import BoardOverview from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardOverview';
 import { Properties } from 'csstype';
+import BoardColumn from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardColumn';
 interface TabPanelProps {
     children?: ReactNode;
     index: number;
@@ -65,7 +66,7 @@ const BoardTabs: FC<TBoardTabs> = ({ boardInfo }) => {
                 <BoardOverview boardInfo={boardInfo} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                Item Two
+                <BoardColumn />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
                 Item Three
