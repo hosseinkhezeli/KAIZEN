@@ -8,8 +8,10 @@ export const MuiTabs: Components<Theme>['MuiTabs'] = {
       minHeight: 48,
       padding: '4px 8px',
       width: 'max-content',
-      backgroundColor: theme.palette.grey[800],
-      borderRadius: '8px',
+      border: '1px solid',
+      borderColor: '#2C2E30',
+      backgroundColor: 'transparent',
+      borderRadius: '16px',
     }),
     flexContainer: ({ ownerState, theme }) => ({
       display: 'flex',
@@ -21,7 +23,7 @@ export const MuiTabs: Components<Theme>['MuiTabs'] = {
       }),
     }),
     indicator: ({ ownerState, theme }) => ({
-      background: theme.palette.primary.main,
+      background: '#293545',
       ...(ownerState.orientation === 'horizontal' && {
         height: 'calc(100% - 8px)',
       }),

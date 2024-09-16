@@ -26,9 +26,8 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
       border: '1px solid',
       borderColor: `${theme.palette.text.secondary}10`,
       ...(ownerState.color === 'inherit' && {
-        backgroundColor: `${theme.palette.background.paper} !important`,
-        borderColor: `${theme.palette.text.disabled}`,
-        boxShadow: `0px 9px 12px -12px ${theme.palette.grey[800] + '66'} !important`,
+        color: '#000',
+        backgroundColor: `#fff !important`,
       }),
       ...(ownerState.color === 'info' && {
         color:

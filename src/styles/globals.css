@@ -5,16 +5,16 @@
     font-display: fallback;
 }
 
-/* ------------------------ Libre_Franklin ------------------------ */
+/* ------------------------ Nunito ------------------------ */
 @font-face {
-    font-family: 'Roboto Flex';
-    src: url('../../public/fonts/Libre_Franklin/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf');
+    font-family: 'Nunito';
+    src: url('../../public/fonts/Nunito/Nunito-VariableFont_wght.ttf');
     font-display: fallback;
 }
 
 .en-font {
     font-family:
-            Roboto Flex,
+            Nunito,
         sans-serif;
 }
 
@@ -34,8 +34,8 @@ html, body {
 }
 /* Custom Scrollbar Styles for Chrome, Edge, and Safari */
 ::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
-    height: 12px; /* Width of the scrollbar */
+    width: 6px; /* Width of the scrollbar */
+    height: 6px; /* Width of the scrollbar */
 
 }
 
