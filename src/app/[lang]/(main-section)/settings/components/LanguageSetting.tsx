@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useTransition } from 'react';
+import React, { useTransition } from 'react';
 import { useDispatch } from 'react-redux';
 import { setLang, useCommon } from '@states/global/globalSlice';
 import { Typography } from '@mui/material';
@@ -11,7 +11,7 @@ import { Locale } from '@/i18n';
 import { usePathname, useRouter } from 'next/navigation';
 import { pop } from '@styles/animationKeyframes';
 
-type TlanguageOptions = {
+type languageOptions = {
     label: string;
     id: Locale;
     icon: string;
@@ -79,7 +79,7 @@ const LanguageSetting = () => {
 
 export default LanguageSetting;
 
-const languageOptions: TlanguageOptions[] = [
+const languageOptions: languageOptions[] = [
     {
         label: 'فارسی',
         id: 'fa',
@@ -99,7 +99,7 @@ const LanguageOptionButton = ({
     isSelected,
 }: {
     idx: number;
-    option: TlanguageOptions;
+    option: languageOptions;
     onClickHandle: (id: Locale) => void;
     isSelected: boolean;
 }) => {
@@ -125,7 +125,7 @@ const LanguageOptionButton = ({
                     transform: 'scale(101%)',
                 },
                 zIndex: 2,
-                fontFamily: option.id === 'fa' ? 'Noto Sans' : 'Roboto Flex',
+                fontFamily: option.id === 'fa' ? 'Noto Sans' : 'Nunito',
             }}
             onClick={() => onClickHandle(option.id as Locale)}
         >

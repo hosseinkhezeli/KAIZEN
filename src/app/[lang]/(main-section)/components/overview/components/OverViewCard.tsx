@@ -3,7 +3,7 @@ import { FC, ReactNode } from 'react';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Mui
-import { Divider, Stack, Typography, Box, BoxProps } from '@mui/material';
+import { Divider, Typography, Box, BoxProps } from '@mui/material';
 import CustomCard from '@components/custom-card/CustomCard';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -23,37 +23,32 @@ const OverViewCard: FC<TOverViewCardProps> = ({
     containerProps,
 }) => {
     return (
-        <CustomCard>
-            <Stack
-                sx={{
-                    p: '16px 16px',
+        <CustomCard
+            outerBoxProps={{
+                sx: {
                     gridColumn: colSpan,
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    borderRadius: 3,
-                    gap: 2,
-                    backgroundColor: 'background.paper',
-                }}
+                },
+            }}
+            innerBoxProps={{
+                sx: {
+                    display: 'flex',
+                    flexDirection: 'column',
+                    p: '16px 16px',
+                },
+            }}
+        >
+            <Typography variant={'body1'} fontWeight={400} lineHeight={'100%'}>
+                {title}
+            </Typography>
+            <Divider sx={{ borderStyle: 'dotted', borderBottomWidth: '2px' }} />
+            <Box
+                display={'flex'}
+                gap={2}
+                flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
+                {...containerProps}
             >
-                <Typography
-                    variant={'body1'}
-                    fontWeight={400}
-                    lineHeight={'100%'}
-                >
-                    {title}
-                </Typography>
-                <Divider
-                    sx={{ borderStyle: 'dotted', borderBottomWidth: '2px' }}
-                />
-                <Box
-                    display={'flex'}
-                    gap={2}
-                    flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
-                    {...containerProps}
-                >
-                    {children}
-                </Box>
-            </Stack>
+                {children}
+            </Box>
         </CustomCard>
     );
 };

@@ -38,7 +38,7 @@ export default function MainLayout({
                 height={'100%'}
                 width={'auto'}
             >
-                <Container>
+                <Container id={'breadcrumbs'}>
                     <KaizenBreadCrumbs />
                 </Container>
                 {children}

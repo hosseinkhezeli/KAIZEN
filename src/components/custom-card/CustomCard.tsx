@@ -1,31 +1,48 @@
 import React, { FC, ReactNode } from 'react';
 import Box from '@mui/material/Box';
+import { BoxProps } from '@mui/material';
 
 type TCustomCardProps = {
     children: ReactNode;
+    outerBoxProps?: BoxProps;
+    innerBoxProps?: BoxProps;
 };
 
-const CustomCard: FC<TCustomCardProps> = ({ children }) => {
+const CustomCard: FC<TCustomCardProps> = ({
+    children,
+    outerBoxProps,
+    innerBoxProps,
+}) => {
+    const { sx: outerSx, ...outerProps } = outerBoxProps ?? {};
+    const { sx: innerSx, ...innerProps } = innerBoxProps ?? {};
     return (
         <Box
-            sx={{
-                display: 'inline-block',
-                padding: '1px',
-                borderRadius: '24px',
-                background: 'linear-gradient(135deg, #434445,70%, #598fe1)',
-                width: '100%',
-                height: '100%',
-            }}
-        >
-            <Box
-                sx={{
+            {...outerProps}
+            sx={[
+                {
+                    display: 'inline-block',
+                    padding: '1px',
+                    borderRadius: '24px',
+                    background: 'linear-gradient(135deg, #434445,70%, #598fe1)',
                     width: '100%',
                     height: '100%',
-                    padding: '20px',
-                    background:
-                        'linear-gradient(135deg, #2c2e30 -25%, #1a1f24 25%, #1a1f24 50%, #16202d 75%, #192b45 125%)',
-                    borderRadius: '24px',
-                }}
+                },
+                ...(Array.isArray(outerSx) ? outerSx : [outerSx]),
+            ]}
+        >
+            <Box
+                {...innerProps}
+                sx={[
+                    {
+                        width: '100%',
+                        height: '100%',
+                        padding: '20px',
+                        background:
+                            'linear-gradient(135deg, #2c2e30 -25%, #1a1f24 25%, #1a1f24 50%, #16202d 75%, #192b45 125%)',
+                        borderRadius: '24px',
+                    },
+                    ...(Array.isArray(innerSx) ? innerSx : [innerSx]),
+                ]}
             >
                 {children}
             </Box>
