@@ -10,12 +10,12 @@ export const MuiIconButton: Components<Theme>['MuiIconButton'] = {
     root: ({ theme, ownerState }) => ({
       backgroundColor:
         ownerState.color === 'default'
-          ? theme.palette.background.paper
+          ? theme.palette.grey[800]
           : getColorByOwnerProps(ownerState.color, theme),
       border: '1px solid',
       borderColor:
         ownerState.color === 'default'
-          ? theme.palette.text.disabled
+          ? theme.palette.divider
           : getColorByOwnerProps(ownerState.color, theme),
       padding: '4px',
       minWidth: 32,

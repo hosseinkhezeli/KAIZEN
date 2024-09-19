@@ -6,12 +6,12 @@ export const MuiTab: Components<Theme>['MuiTab'] = {
     disableTouchRipple: true,
   },
   styleOverrides: {
-    root: ({ ownerState, theme }) => ({
+    root: ({ theme }) => ({
       padding: '12px 16px',
       width: 'max-content',
       minHeight: 'max-content',
-      color: '#7B7F81',
-      stroke: '#7B7F81',
+      color: theme.palette?.text?.disabled,
+      stroke: theme.palette?.text?.secondary,
       ...theme.typography.caption,
       textTransform: 'none',
       transition: 'transform 0.2s',
@@ -20,10 +20,9 @@ export const MuiTab: Components<Theme>['MuiTab'] = {
       },
       '&.Mui-selected': {
         backgroundColor: 'transparent',
-        // transition: 'background-color transform 0.2s',
         zIndex: 10,
-        color: '#FDFEFF',
-        stroke: '#FDFEFF',
+        color: theme.palette?.text?.primary,
+        stroke: theme.palette?.text?.primary,
         borderRadius: theme.shape.borderRadius * 2,
         fontWeight: 500,
       },

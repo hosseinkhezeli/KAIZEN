@@ -2,7 +2,7 @@ import { Components, Theme } from '@mui/material/styles';
 
 export const MuiMenuItem: Components<Theme>['MuiMenuItem'] = {
   styleOverrides: {
-    root: ({ ownerState, theme }) => ({
+    root: ({ theme }) => ({
       ...theme.typography.caption,
     }),
   },

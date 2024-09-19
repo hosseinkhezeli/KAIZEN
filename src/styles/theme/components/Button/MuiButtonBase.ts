@@ -5,9 +5,8 @@ export const MuiButtonBase: Components<Theme>['MuiButtonBase'] = {
     disableRipple: true,
     component: 'button',
   },
-
   styleOverrides: {
-    root: ({ theme, ownerState }) => ({
+    root: ({ theme }) => ({
       minHeight: 38,
       minWidth: 38,
       [theme.breakpoints.between('md', 'lg')]: {
