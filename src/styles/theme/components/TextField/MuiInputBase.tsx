@@ -6,7 +6,7 @@ export const MuiInputBase: Components<Theme>['MuiInputBase'] = {
     styleOverrides: {
         root: ({ theme, ownerState }) => {
             return {
-                borderRadius: '8px !important',
+                borderRadius: '24px !important',
                 input: {
                     ...theme.typography.body2,
                 },

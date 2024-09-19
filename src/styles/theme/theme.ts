@@ -14,6 +14,7 @@ import { MuiListItemButton } from '@styles/theme/components/List/MuiListItemButt
 import { MuiListItemIcon } from '@styles/theme/components/List/MuiListItemIcon';
 import { MuiListItemText } from '@styles/theme/components/List/MuiListItemText';
 import { MuiMenu } from '@styles/theme/components/Menu/MuiMenu';
+import { MuiMenuItem } from '@styles/theme/components/Menu/MuiMenuItem';
 import { MuiTab } from '@styles/theme/components/Tabs/MuiTab';
 import { MuiTabs } from '@styles/theme/components/Tabs/MuiTabs';
 import { MuiInputBase } from '@styles/theme/components/TextField/MuiInputBase';
@@ -56,6 +57,7 @@ export const customTheme = (mode: PaletteMode | undefined, isRtl: boolean) =>
       MuiTabs,
       MuiAvatar,
       MuiMenu,
+      MuiMenuItem,
     },
   });
 

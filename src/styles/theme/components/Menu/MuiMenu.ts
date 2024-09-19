@@ -10,6 +10,8 @@ export const MuiMenu: Components<Theme>['MuiMenu'] = {
       backdropFilter: 'blur(13px)',
       borderRadius: 16,
       padding: '8px 0px',
+      border: '1px solid',
+      borderColor: '#2C2E30',
     }),
   },
 };

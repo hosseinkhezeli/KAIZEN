@@ -1,4 +1,3 @@
-import { ButtonBaseProps } from '@mui/material';
 import { Components, Theme } from '@mui/material/styles';
 
 export const MuiButtonBase: Components<Theme>['MuiButtonBase'] = {
@@ -6,16 +5,7 @@ export const MuiButtonBase: Components<Theme>['MuiButtonBase'] = {
     disableRipple: true,
     component: 'button',
   },
-  variants: [
-    {
-      props: { type: 'reset' },
-      style: {
-        borderRadius: '72px', // Adjust for desired roundness
-        padding: '8px 16px', // Optional: adjust padding
-        // Add any other styles you want for the rounded variant
-      },
-    },
-  ],
+
   styleOverrides: {
     root: ({ theme, ownerState }) => ({
       minHeight: 38,
@@ -30,9 +20,6 @@ export const MuiButtonBase: Components<Theme>['MuiButtonBase'] = {
         minHeight: 34,
         maxHeight: 36,
         minWidth: 34,
-      },
-      '&.rounded': {
-        borderRadius: '72px !important',
       },
     }),
   },
