@@ -19,9 +19,23 @@ const Cards = () => {
         setAnchorEl(null);
     };
     return (
-        <div style={{ backgroundColor: 'black', height: '100%', padding: 24 }}>
+        <div
+            style={{
+                backgroundColor: 'black',
+                height: '50%',
+                padding: 24,
+                width: '50%',
+            }}
+        >
             <CustomCard>
                 <>
+                    <Button color={'primary'}>Button</Button>
+                    <Button color={'primary'} variant={'outlined'}>
+                        Button Inherit Outline
+                    </Button>
+                    <Button color={'primary'} variant={'text'}>
+                        Button Inherit Outline
+                    </Button>
                     <Box display={'flex'} justifyContent={'space-between'}>
                         <Typography color={'#FAFAFA'}>Overview</Typography>
                         <InformationCircleIcon
@@ -76,7 +90,7 @@ const Cards = () => {
                         <MenuItem onClick={handleClose} disableRipple>
                             <InformationCircleIcon
                                 stroke={'#717375'}
-                                width={32}
+                                width={24}
                                 strokeWidth={1.5}
                             />
                             Edit
@@ -84,7 +98,7 @@ const Cards = () => {
                         <MenuItem onClick={handleClose} disableRipple>
                             <InformationCircleIcon
                                 stroke={'#717375'}
-                                width={32}
+                                width={24}
                                 strokeWidth={1.5}
                             />
                             Duplicate
@@ -93,7 +107,7 @@ const Cards = () => {
                         <MenuItem onClick={handleClose} disableRipple>
                             <InformationCircleIcon
                                 stroke={'#717375'}
-                                width={32}
+                                width={24}
                                 strokeWidth={1.5}
                             />
                             Archive
@@ -101,7 +115,7 @@ const Cards = () => {
                         <MenuItem onClick={handleClose} disableRipple>
                             <InformationCircleIcon
                                 stroke={'#717375'}
-                                width={32}
+                                width={24}
                                 strokeWidth={1.5}
                             />
                             More

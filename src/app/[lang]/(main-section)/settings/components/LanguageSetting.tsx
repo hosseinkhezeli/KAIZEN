@@ -9,7 +9,7 @@ import Box from '@mui/material/Box';
 import Image from 'next/image';
 import { Locale } from '@/i18n';
 import { usePathname, useRouter } from 'next/navigation';
-import { pop } from '@utils/animationKeyframes';
+import { pop } from '@styles/animationKeyframes';
 
 type TlanguageOptions = {
     label: string;

@@ -1,7 +1,5 @@
 import React, { FC, ReactNode } from 'react';
 import Box from '@mui/material/Box';
-import { Typography } from '@mui/material';
-import { InformationCircleIcon } from '@heroicons/react/24/outline';
 
 type TCustomCardProps = {
     children: ReactNode;
