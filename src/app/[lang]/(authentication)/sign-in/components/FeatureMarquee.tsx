@@ -1,5 +1,4 @@
 'use client';
-import React from 'react';
 import { Container } from '@mui/material';
 import Marquee from '@components/custom-marquee/CustomMarquee';
 import FeatureCard from '@/app/[lang]/(authentication)/sign-in/components/FeatureCard';
@@ -13,11 +12,11 @@ import {
 
 const FeatureMarquee = () => {
     const values = [
-        <FeatureCard {...textContent[0]} />,
-        <FeatureCard {...textContent[1]} />,
-        <FeatureCard {...textContent[2]} />,
-        <FeatureCard {...textContent[3]} />,
-        <FeatureCard {...textContent[4]} />,
+        <FeatureCard {...textContent[0]} key={0} />,
+        <FeatureCard {...textContent[1]} key={1} />,
+        <FeatureCard {...textContent[2]} key={2} />,
+        <FeatureCard {...textContent[3]} key={3} />,
+        <FeatureCard {...textContent[4]} key={4} />,
     ];
     return (
         <Container

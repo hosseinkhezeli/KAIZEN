@@ -1,7 +1,6 @@
 'use client';
 import { Stack, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import { ReactNode } from 'react';
 
 const FeatureCard = ({
     title,
@@ -21,6 +20,7 @@ const FeatureCard = ({
                 background: 'rgba(0, 0, 0, 0.1)',
                 boxShadow: 'rgba(0, 0, 0, 0.15) 0px 5px 15px 0px',
                 backdropFilter: 'blur(20px)',
+                transition:'0.3s ease background',
                 border: '1px solid',
                 borderColor: '#2C2E30',
                 borderRadius: '24px',
@@ -28,6 +28,9 @@ const FeatureCard = ({
                 minHeight: 200,
                 position: 'relative',
                 overflow: 'hidden',
+                ":hover":{
+                    background: 'linear-gradient(135deg, #2c2e30 -25%, #1a1f24 25%, #1a1f24 50%, #16202d 75%, #192b45 125%)',,
+                }
             }}
         >
             <Stack sx={{}}>
