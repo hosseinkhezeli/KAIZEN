@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import Overview from '@/app/[lang]/(main-section)/components/overview';
 import { getDictionaryServer, type Locale } from '@/i18n';
 
