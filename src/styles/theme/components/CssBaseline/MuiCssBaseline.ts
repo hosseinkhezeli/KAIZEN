@@ -39,7 +39,7 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: inherit !important;
-    background:${palette.background.default};
+    background:${palette.background.default}
 }
 
 `,

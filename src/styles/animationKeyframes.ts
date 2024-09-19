@@ -72,7 +72,7 @@ export const cominUp = keyframes`
 `;
 export const cominIn = keyframes`
   0%{
-    transform: translateX(100%);
+    transform: translateX(-100%);
     opacity: 0;
   }
   100% {
@@ -81,11 +81,19 @@ export const cominIn = keyframes`
   }
 `;
 
-export const intro = keyframes`
+export const introXs = keyframes`
   0%{
     transform: scale(200%) translateY(15%);
   }
   100% {
     transform: scale(100%) translateY(0%);
+  }
+`;
+export const introSm = keyframes`
+  0%{
+    transform: scale(200%) translateX(-25%);
+  }
+  100% {
+    transform: scale(100%) translateX(0%);
   }
 `;

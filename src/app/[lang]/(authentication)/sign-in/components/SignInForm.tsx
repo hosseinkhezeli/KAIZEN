@@ -1,6 +1,6 @@
 'use client';
 //@Mui
-import { Button, Stack, Typography } from '@mui/material';
+import { Button, Container, Stack, Typography } from '@mui/material';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //@Components & Hooks
 import CustomForm from '@components/custom-form-generator/CustomForm';
@@ -9,6 +9,7 @@ import { cominIn, cominUp } from '@styles/animationKeyframes';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //@Types
 import { TAuth } from '@i18n/dictionary/types/auth';
+import Marquee from '@components/custom-marquee/CustomMarquee';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
@@ -22,7 +23,6 @@ const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
         inputListSignIn,
         step,
     } = useSignInForm({ dictionary });
-
     return (
         <Stack
             sx={{
@@ -32,6 +32,7 @@ const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
                 maxWidth: { xs: '100%', sm: '50%' },
                 transform: { xs: 'translateY(100%)', sm: 'translateX(100%)' },
                 opacity: 0,
+                zIndex: 2,
                 animation: {
                     xs: `${cominUp} 0.5s ease 1s forwards`,
                     sm: `${cominIn} 0.5s ease 1s forwards`,

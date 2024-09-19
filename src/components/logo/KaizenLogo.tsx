@@ -11,7 +11,7 @@ import { useTheme } from '@mui/material/styles';
 //@Assets
 import LogoIconSvg from '@assets/LogoIcon.svg';
 import LogoTypoSvg from '@assets/LogoType.svg';
-import { intro } from '@styles/animationKeyframes';
+import { introSm, introXs } from '@styles/animationKeyframes';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const KaizenLogo = () => {
@@ -23,8 +23,15 @@ const KaizenLogo = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                transform: 'scale(200%) translateY(15%)',
-                animation: `${intro} 0.5s 1s ease forwards`,
+                transform: {
+                    xs: 'scale(200%) translateY(15%)',
+                    sm: 'scale(200%) translateX(-25%)',
+                },
+
+                animation: {
+                    xs: `${introXs} 0.5s 1s ease forwards`,
+                    sm: `${introSm} 0.5s 1s ease forwards`,
+                },
                 placeItems: 'center',
                 gap: 2,
             }}
