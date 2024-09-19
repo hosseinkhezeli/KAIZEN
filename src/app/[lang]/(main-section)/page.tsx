@@ -5,8 +5,8 @@ import { getDictionaryServer, type Locale } from '@/i18n';
 export default function Home({ params }: { params: { lang: Locale } }) {
     const dictionary = getDictionaryServer(params.lang);
     return (
-        <Box>
+        <>
             <Overview dictionary={dictionary.dashboard} />
-        </Box>
+        </>
     );
 }
