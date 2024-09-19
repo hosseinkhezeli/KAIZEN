@@ -15,7 +15,7 @@ import {
 import Box from '@mui/material/Box';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
 import customTheme from '@styles/theme/theme';
-import { pop } from '@utils/animationKeyframes';
+import { pop } from '@styles/animationKeyframes';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const ThemeSetting = () => {

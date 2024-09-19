@@ -62,21 +62,30 @@ export const blinkNDrunk = keyframes`
 
 export const cominUp = keyframes`
     0%{
-        flex-basis:0;
-        height:0;
+        transform: translateY(100%);
+      opacity: 0;
     }
     100% {
-    flex-basis:100%;
-      height:100%;
+      transform: translateY(0);
+      opacity: 1;
   }
 `;
 export const cominIn = keyframes`
-    0%{
-        flex-basis:0;
-        width:0;
-    }
-    100% {
-    flex-basis:100%;
-      width:100%;
+  0%{
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+export const intro = keyframes`
+  0%{
+    transform: scale(200%) translateY(15%);
+  }
+  100% {
+    transform: scale(100%) translateY(0%);
   }
 `;

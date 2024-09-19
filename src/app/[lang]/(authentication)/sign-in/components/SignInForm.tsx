@@ -5,7 +5,7 @@ import { Button, Stack, Typography } from '@mui/material';
 //@Components & Hooks
 import CustomForm from '@components/custom-form-generator/CustomForm';
 import useSignInForm from '@/app/[lang]/(authentication)/sign-in/hooks/useSignInForm';
-import { cominIn, cominUp } from '@utils/animationKeyframes';
+import { cominIn, cominUp } from '@styles/animationKeyframes';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //@Types
 import { TAuth } from '@i18n/dictionary/types/auth';
@@ -26,41 +26,60 @@ const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     return (
         <Stack
             sx={{
-                backgroundColor: 'background.default',
+                backgroundColor: 'background.paper',
                 p: { xs: '1rem 15%', sm: '0 10%' },
-                flexBasis: '0%',
+                flexBasis: '100%',
                 maxWidth: { xs: '100%', sm: '50%' },
+                transform: { xs: 'translateY(100%)', sm: 'translateX(100%)' },
+                opacity: 0,
                 animation: {
-                    xs: `${cominUp} 0.5s ease forwards`,
-                    sm: `${cominIn} 0.5s ease forwards`,
+                    xs: `${cominUp} 0.5s ease 1s forwards`,
+                    sm: `${cominIn} 0.5s ease 1s forwards`,
                 },
                 borderRadius: {
-                    xs: '24px 24px 0 0',
+                    xs: '24px 24px 0 0 ',
                     sm: '0px 24px 24px 0px',
                 },
                 justifyContent: 'center',
                 alignItems: 'center',
             }}
         >
-            <Typography variant='h6' sx={{ textWrap: 'nowrap' }}>
+            <Typography
+                variant='h6'
+                sx={{
+                    textWrap: 'nowrap',
+                    // opacity: '0',
+                    // animation: `${pop} 0.5s ease 1s forwards`,
+                }}
+            >
                 {`${dictionary.welcome_back}, ${dictionary.mate}!`}
             </Typography>
-            <CustomForm
-                form={step === 0 ? otpForm : signInForm}
-                onSubmit={step === 0 ? onSubmitOtp : onSubmitSignIn}
-                formConfig={step === 0 ? inputListOtp : inputListSignIn}
+            <Stack
+                sx={{
+                    width: '100%',
+                    maxWidth: 400,
+                    mx: 'auto',
+                }}
             >
-                <Stack gap={1}>
-                    <Button
-                        type='submit'
-                        variant='contained'
-                        color='primary'
-                        fullWidth
-                    >
-                        {step === 0 ? dictionary.send_code : dictionary.sign_in}
-                    </Button>
-                </Stack>
-            </CustomForm>
+                <CustomForm
+                    form={step === 0 ? otpForm : signInForm}
+                    onSubmit={step === 0 ? onSubmitOtp : onSubmitSignIn}
+                    formConfig={step === 0 ? inputListOtp : inputListSignIn}
+                >
+                    <Stack gap={1}>
+                        <Button
+                            type='submit'
+                            variant='contained'
+                            color='primary'
+                            fullWidth
+                        >
+                            {step === 0
+                                ? dictionary.send_code
+                                : dictionary.sign_in}
+                        </Button>
+                    </Stack>
+                </CustomForm>
+            </Stack>
         </Stack>
     );
 };
