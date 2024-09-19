@@ -85,11 +85,6 @@ const BoardHeader: FC<TBoarderHeaderProps> = ({
                                       src={member.profilePictureUrl}
                                       sx={{
                                           filter: `blur(${idx / 3}px)`,
-                                          width: { xs: 32, lg: 36 },
-                                          height: { xs: 32, lg: 36 },
-                                          border: 'none',
-                                          stroke: ({ palette }) =>
-                                              palette.grey[400],
                                       }}
                                   >
                                       <UserIcon
@@ -106,11 +101,6 @@ const BoardHeader: FC<TBoarderHeaderProps> = ({
                                       src={''}
                                       sx={{
                                           filter: `blur(${idx / 3}px)`,
-                                          width: { xs: 32, lg: 36 },
-                                          height: { xs: 32, lg: 36 },
-                                          border: 'none',
-                                          stroke: ({ palette }) =>
-                                              palette.grey[400],
                                       }}
                                   >
                                       <UserIcon

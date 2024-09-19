@@ -89,12 +89,9 @@ const CustomDrawerHeader = ({
                         <Avatar
                             variant={'rounded'}
                             sx={{
-                                width: { xs: 32, lg: 34 },
-                                height: { xs: 32, lg: 34 },
                                 backgroundColor: 'grey.800',
                                 border: '1px solid',
                                 borderColor: 'divider',
-                                stroke: ({ palette }) => palette.grey[400],
                             }}
                         >
                             <UserIcon

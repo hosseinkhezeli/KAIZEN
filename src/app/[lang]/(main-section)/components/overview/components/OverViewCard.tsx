@@ -4,6 +4,7 @@ import { FC, ReactNode } from 'react';
 
 //@Mui
 import { Divider, Stack, Typography, Box, BoxProps } from '@mui/material';
+import CustomCard from '@components/custom-card/CustomCard';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types
@@ -22,7 +23,7 @@ const OverViewCard: FC<TOverViewCardProps> = ({
     containerProps,
 }) => {
     return (
-        <>
+        <CustomCard>
             <Stack
                 sx={{
                     p: '16px 16px',
@@ -53,7 +54,7 @@ const OverViewCard: FC<TOverViewCardProps> = ({
                     {children}
                 </Box>
             </Stack>
-        </>
+        </CustomCard>
     );
 };
 

@@ -6,7 +6,6 @@ import { Container, LinearProgress, Skeleton, Typography } from '@mui/material';
 //@Component & Methods
 import useOverview from '@/app/[lang]/(main-section)/hooks/useOverview';
 import BoardCard from '@/app/[lang]/(main-section)/components/overview/components/BoardCard';
-import OverviewBar from '@/app/[lang]/(main-section)/components/overview/components/OverviewBar';
 import OverViewCard from '@/app/[lang]/(main-section)/components/overview/components/OverViewCard';
 import { RepeatComponent } from '@utils/methods';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,8 +29,11 @@ const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
             >
                 <Typography variant={'h4'} fontWeight={400}>
                     {dictionary.overview}
+                    <Typography variant={'subtitle1'} fontWeight={400}>
+                        Effortlessly organize and prioritize your tasks to boost
+                        productivity and achieve your goals.
+                    </Typography>
                 </Typography>
-                <OverviewBar overviewInfo={overviewInfo} />
                 <Box
                     sx={{
                         display: 'grid',
@@ -65,92 +67,92 @@ const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
                             ))
                         )}
                     </OverViewCard>
-                    <OverViewCard
-                        title={'Task Cards'}
-                        containerProps={{ sx: {} }}
-                    >
-                        {isLoadingDashboard ? (
-                            <RepeatComponent
-                                times={3}
-                                render={(index) => (
-                                    <Skeleton
-                                        key={index}
-                                        variant='rectangular'
-                                        width={'100%'}
-                                        height={'100%'}
-                                        sx={{
-                                            p: '8px 12px',
-                                            border: '1px solid',
-                                            borderColor: 'divider',
-                                            backgroundColor: 'grey.800',
-                                            borderRadius: 3,
-                                            flexBasis: {
-                                                xs: '100%',
-                                                sm: '50%',
-                                                md: '33%',
-                                            },
-                                            position: 'relative',
-                                            transition:
-                                                '0.3s ease border-color',
-                                            gap: 1,
-                                            ':hover': {
-                                                borderColor: 'primary.main',
-                                            },
-                                            minHeight: '18vw',
-                                        }}
-                                    />
-                                )}
-                            />
-                        ) : (
-                            dashboardRes?.data
-                                ?.slice(0, 2)
-                                ?.map((boardInfo, idx) => (
-                                    <BoardCard
-                                        boardInfo={boardInfo}
-                                        key={idx}
-                                    />
-                                ))
-                        )}
-                    </OverViewCard>
-                    <OverViewCard title={'To-Do'} colSpan={'span 2'}>
-                        {isLoadingDashboard ? (
-                            <RepeatComponent
-                                times={3}
-                                render={(index) => (
-                                    <Skeleton
-                                        key={index}
-                                        variant='rectangular'
-                                        width={'100%'}
-                                        height={'100%'}
-                                        sx={{
-                                            p: '8px 12px',
-                                            border: '1px solid',
-                                            borderColor: 'divider',
-                                            backgroundColor: 'grey.800',
-                                            borderRadius: 3,
-                                            flexBasis: {
-                                                xs: '100%',
-                                                sm: '50%',
-                                                md: '33%',
-                                            },
-                                            position: 'relative',
-                                            transition:
-                                                '0.3s ease border-color',
-                                            gap: 1,
-                                            ':hover': {
-                                                borderColor: 'primary.main',
-                                            },
-                                            minHeight: '18vw',
-                                        }}
-                                    />
-                                )}
-                            />
-                        ) : (
-                            dashboardRes?.data?.map((boardInfo, idx) => (
-                                <BoardCard boardInfo={boardInfo} key={idx} />
-                            ))
-                        )}
-                    </OverViewCard>
+                    {/*<OverViewCard*/}
+                    {/*    title={'Task Cards'}*/}
+                    {/*    containerProps={{ sx: {} }}*/}
+                    {/*>*/}
+                    {/*    {isLoadingDashboard ? (*/}
+                    {/*        <RepeatComponent*/}
+                    {/*            times={3}*/}
+                    {/*            render={(index) => (*/}
+                    {/*                <Skeleton*/}
+                    {/*                    key={index}*/}
+                    {/*                    variant='rectangular'*/}
+                    {/*                    width={'100%'}*/}
+                    {/*                    height={'100%'}*/}
+                    {/*                    sx={{*/}
+                    {/*                        p: '8px 12px',*/}
+                    {/*                        border: '1px solid',*/}
+                    {/*                        borderColor: 'divider',*/}
+                    {/*                        backgroundColor: 'grey.800',*/}
+                    {/*                        borderRadius: 3,*/}
+                    {/*                        flexBasis: {*/}
+                    {/*                            xs: '100%',*/}
+                    {/*                            sm: '50%',*/}
+                    {/*                            md: '33%',*/}
+                    {/*                        },*/}
+                    {/*                        position: 'relative',*/}
+                    {/*                        transition:*/}
+                    {/*                            '0.3s ease border-color',*/}
+                    {/*                        gap: 1,*/}
+                    {/*                        ':hover': {*/}
+                    {/*                            borderColor: 'primary.main',*/}
+                    {/*                        },*/}
+                    {/*                        minHeight: '18vw',*/}
+                    {/*                    }}*/}
+                    {/*                />*/}
+                    {/*            )}*/}
+                    {/*        />*/}
+                    {/*    ) : (*/}
+                    {/*        dashboardRes?.data*/}
+                    {/*            ?.slice(0, 2)*/}
+                    {/*            ?.map((boardInfo, idx) => (*/}
+                    {/*                <BoardCard*/}
+                    {/*                    boardInfo={boardInfo}*/}
+                    {/*                    key={idx}*/}
+                    {/*                />*/}
+                    {/*            ))*/}
+                    {/*    )}*/}
+                    {/*</OverViewCard>*/}
+                    {/*<OverViewCard title={'To-Do'} colSpan={'span 2'}>*/}
+                    {/*    {isLoadingDashboard ? (*/}
+                    {/*        <RepeatComponent*/}
+                    {/*            times={3}*/}
+                    {/*            render={(index) => (*/}
+                    {/*                <Skeleton*/}
+                    {/*                    key={index}*/}
+                    {/*                    variant='rectangular'*/}
+                    {/*                    width={'100%'}*/}
+                    {/*                    height={'100%'}*/}
+                    {/*                    sx={{*/}
+                    {/*                        p: '8px 12px',*/}
+                    {/*                        border: '1px solid',*/}
+                    {/*                        borderColor: 'divider',*/}
+                    {/*                        backgroundColor: 'grey.800',*/}
+                    {/*                        borderRadius: 3,*/}
+                    {/*                        flexBasis: {*/}
+                    {/*                            xs: '100%',*/}
+                    {/*                            sm: '50%',*/}
+                    {/*                            md: '33%',*/}
+                    {/*                        },*/}
+                    {/*                        position: 'relative',*/}
+                    {/*                        transition:*/}
+                    {/*                            '0.3s ease border-color',*/}
+                    {/*                        gap: 1,*/}
+                    {/*                        ':hover': {*/}
+                    {/*                            borderColor: 'primary.main',*/}
+                    {/*                        },*/}
+                    {/*                        minHeight: '18vw',*/}
+                    {/*                    }}*/}
+                    {/*                />*/}
+                    {/*            )}*/}
+                    {/*        />*/}
+                    {/*    ) : (*/}
+                    {/*        dashboardRes?.data?.map((boardInfo, idx) => (*/}
+                    {/*            <BoardCard boardInfo={boardInfo} key={idx} />*/}
+                    {/*        ))*/}
+                    {/*    )}*/}
+                    {/*</OverViewCard>*/}
                 </Box>
             </Container>
 
