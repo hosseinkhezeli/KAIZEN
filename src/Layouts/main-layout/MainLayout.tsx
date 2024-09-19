@@ -27,8 +27,8 @@ export default function MainLayout({
     useHandleAuth({ lang: params.lang || 'en' });
     return (
         <Stack
-            height='100vh'
-            width='100vw'
+            height='100%'
+            width='100%'
             flexDirection={{ xs: 'column', md: 'row' }}
         >
             <KaizenAppBar dictionary={dictionary} />

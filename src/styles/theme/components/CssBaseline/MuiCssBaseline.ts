@@ -39,9 +39,6 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: inherit !important;
-    background-position: top right;
-    background-repeat: no-repeat !important;
-    object-fit: contain;
     background:${palette.background.default};
 }
 
