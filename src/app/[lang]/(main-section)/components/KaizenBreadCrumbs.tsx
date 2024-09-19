@@ -6,7 +6,11 @@ import { usePathname } from 'next/navigation';
 
 const KaizenBreadCrumbs = () => {
     const pathname = usePathname();
-    const locations = useMemo(() => pathname?.split('/')?.slice(1), [pathname]);
+    const locations = useMemo(
+        () => pathname?.split('/')?.slice(1)?.filter(Boolean),
+        [pathname],
+    );
+
     return (
         <CustomBreadCrumbs
             breadcrumbs={[
@@ -21,7 +25,7 @@ const KaizenBreadCrumbs = () => {
                         ),
                     },
                 ],
-                ...(locations.length
+                ...(locations?.length
                     ? locations?.map((location) => ({
                           href: location,
                           label:
