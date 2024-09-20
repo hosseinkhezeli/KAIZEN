@@ -157,7 +157,7 @@ const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
                         <OverViewCard
                             rowSpan={'3 / 4'}
                             backgroundColor={(theme: Theme) =>
-                                theme.palette.background?.default
+                                theme.palette.secondary?.dark + '10'
                             }
                             borderColor={(theme: Theme) =>
                                 theme.palette.grey[900]

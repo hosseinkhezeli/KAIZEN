@@ -14,7 +14,7 @@ const LiveDateTime: React.FC = () => {
             const formattedDate = now
                 .toISOString()
                 .split('T')[0]
-                .replace(/-/g, ':');
+                .replace(/-/g, ' / ');
             const formattedTime = now.toTimeString().split(' ')[0];
 
             setDateTime({
@@ -43,7 +43,8 @@ const LiveDateTime: React.FC = () => {
                 gap={2}
                 height={'min-content'}
                 sx={{
-                    backgroundColor: '#ffffff0a',
+                    backgroundColor: '#0000000a',
+                    mixBlendMode: 'lighten',
                     backdropFilter: 'blur(5px)',
                     px: 2,
                     borderRadius: 4,
@@ -55,6 +56,7 @@ const LiveDateTime: React.FC = () => {
                 :
                 <TimeColumn value={Number(second)} />
             </Box>
+            {dateTime.date}
         </Stack>
     );
 };
@@ -73,7 +75,7 @@ const TimeColumn = ({ value }: { value: number }) => {
             }}
         >
             <Typography
-                fontSize={26}
+                fontSize={24}
                 sx={{
                     opacity: 0.5,
                     display: 'block',
@@ -90,7 +92,7 @@ const TimeColumn = ({ value }: { value: number }) => {
                 {value.toString().padStart(2, '0')}
             </Typography>
             <Typography
-                fontSize={26}
+                fontSize={24}
                 sx={{
                     opacity: 0.5,
                     transform: 'scale(80%)',
