@@ -23,7 +23,7 @@ export const MuiTabs: Components<Theme>['MuiTabs'] = {
       }),
     }),
     indicator: ({ ownerState, theme }) => ({
-      background: theme.palette.secondary?.dark,
+      background: theme.palette.secondary?.dark + '88',
       ...(ownerState.orientation === 'horizontal' && {
         height: 'calc(100% - 8px)',
       }),

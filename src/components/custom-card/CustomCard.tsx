@@ -23,7 +23,8 @@ const CustomCard: FC<TCustomCardProps> = ({
                     display: 'inline-block',
                     padding: '1px',
                     borderRadius: '24px',
-                    background: 'linear-gradient(135deg, #434445,70%, #598fe1)',
+                    background: ({ palette }) =>
+                        `linear-gradient(135deg, ${palette.grey[600]},70%, ${palette.secondary.light})`,
                     width: '100%',
                     height: '100%',
                 },
@@ -37,8 +38,8 @@ const CustomCard: FC<TCustomCardProps> = ({
                         width: '100%',
                         height: '100%',
                         padding: '20px',
-                        background:
-                            'linear-gradient(135deg, #2c2e30 -25%, #1a1f24 25%, #1a1f24 50%, #16202d 75%, #192b45 125%)',
+                        background: ({ palette }) =>
+                            `linear-gradient(135deg, ${palette.grey[800]} -25%, ${palette.grey[900]} 25%, ${palette.grey[900]} 50%, ${palette.grey[900]} 75%, ${palette.secondary.dark} 125%)`,
                         borderRadius: '24px',
                     },
                     ...(Array.isArray(innerSx) ? innerSx : [innerSx]),

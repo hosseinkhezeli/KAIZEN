@@ -8,9 +8,9 @@ export const darkPalette: PaletteOptions = {
     contrastText: '#000000',
   },
   secondary: {
-    light: '#6a97d2',
-    main: '#456288',
-    dark: '#293545',
+    light: '#598fe1',
+    main: '#264065',
+    dark: '#192b45',
     contrastText: '#FFFFFF',
   },
   divider: '#202020',

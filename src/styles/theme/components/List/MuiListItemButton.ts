@@ -7,10 +7,10 @@ export const MuiListItemButton: Components<Theme>['MuiListItemButton'] = {
       minHeight: 32,
       fontWeight: 500,
       alignItems: 'center',
-      padding: '0 4px',
+      padding: '0 8px',
       minWidth: 32,
       transition: '0.2s ease all',
-      borderRadius: 8,
+      borderRadius: 72,
       stroke: theme.palette.grey['400'],
       color: theme.palette.grey['400'],
       '&.selected': {
