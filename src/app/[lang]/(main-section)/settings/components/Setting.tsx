@@ -14,10 +14,11 @@ export const Setting = () => {
     return (
         <Stack
             sx={{
-                height: `calc(100vh - ${HEADER_HEIGHT}px)`,
+                height: `calc(100vh - ${(HEADER_HEIGHT ?? 0) * 4}px)`,
                 borderTop: '1px solid',
                 borderColor: 'divider',
                 flexGrow: 1,
+                py: '2rem',
             }}
         >
             <Container
