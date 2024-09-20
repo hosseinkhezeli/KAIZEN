@@ -30,5 +30,15 @@ export const MuiIconButton: Components<Theme>['MuiIconButton'] = {
         boxShadow: `0 0px 0px 0px ${theme.palette.grey[800]}20`,
       },
     }),
+    colorInherit: ({ theme, ownerState }) => ({
+      backgroundColor:
+        theme?.palette?.common?.[
+          theme.palette?.mode === 'light' ? 'black' : 'white'
+        ] + ' !important',
+      stroke:
+        theme?.palette?.common?.[
+          theme.palette?.mode === 'light' ? 'white' : 'black'
+        ] + ' !important',
+    }),
   },
 };
