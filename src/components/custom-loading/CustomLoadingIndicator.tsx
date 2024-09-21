@@ -61,63 +61,69 @@ const CustomLoadingIndicator: FC = () => {
                 alignItems: 'center',
             }}
         >
-            <Box
-                sx={{
-                    animation: `${blinkNDrunk} 3s ease infinite`,
-                    filter: 'blur(15px)',
-                }}
-                width='200px'
-                height='200px'
-            >
-                <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 100 100'
-                    preserveAspectRatio='xMidYMid'
-                    width='200'
-                    height='200'
-                    style={{
-                        shapeRendering: 'auto',
-                        display: 'block',
-                        background: 'transparent',
-                    }}
-                    xmlnsXlink='http://www.w3.org/1999/xlink'
-                >
-                    <g>
-                        <g transform='translate(0 -7.5)'>
-                            <Circle
-                                fill='#faa21e'
-                                radius={10}
-                                duration={3}
-                                transformValues='0 50 50;360 50 50'
-                                animateValues='0;15;0'
-                            />
-                            <Circle
-                                fill='#344D98'
-                                radius={10}
-                                duration={1}
-                                transformValues='180 50 50;540 50 50'
-                                animateValues='15;0;15'
-                            />
-                            <Circle
-                                fill='#3fa6d2'
-                                radius={7}
-                                duration={1.5}
-                                transformValues='180 50 50;540 50 50'
-                                animateValues='0;15;0'
-                            />
-                            <Circle
-                                fill='#faa21e'
-                                radius={12}
-                                duration={4}
-                                transformValues='0 50 50;360 50 50'
-                                animateValues='0;15;0'
-                            />
-                        </g>
-                    </g>
-                </svg>
-            </Box>
+            <LoadingSvg />
         </Stack>
     );
 };
 
 export default CustomLoadingIndicator;
+
+export const LoadingSvg = () => {
+    return (
+        <Box
+            sx={{
+                animation: `${blinkNDrunk} 3s ease infinite`,
+                filter: 'blur(15px)',
+            }}
+            width='200px'
+            height='200px'
+        >
+            <svg
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 100 100'
+                preserveAspectRatio='xMidYMid'
+                width='200'
+                height='200'
+                style={{
+                    shapeRendering: 'auto',
+                    display: 'block',
+                    background: 'transparent',
+                }}
+                xmlnsXlink='http://www.w3.org/1999/xlink'
+            >
+                <g>
+                    <g transform='translate(0 -7.5)'>
+                        <Circle
+                            fill='#faa21e'
+                            radius={10}
+                            duration={3}
+                            transformValues='0 50 50;360 50 50'
+                            animateValues='0;15;0'
+                        />
+                        <Circle
+                            fill='#344D98'
+                            radius={10}
+                            duration={1}
+                            transformValues='180 50 50;540 50 50'
+                            animateValues='15;0;15'
+                        />
+                        <Circle
+                            fill='#3fa6d2'
+                            radius={7}
+                            duration={1.5}
+                            transformValues='180 50 50;540 50 50'
+                            animateValues='0;15;0'
+                        />
+                        <Circle
+                            fill='#faa21e'
+                            radius={12}
+                            duration={4}
+                            transformValues='0 50 50;360 50 50'
+                            animateValues='0;15;0'
+                        />
+                    </g>
+                </g>
+            </svg>
+        </Box>
+    );
+};

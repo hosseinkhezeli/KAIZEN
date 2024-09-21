@@ -1,10 +1,13 @@
 // PromotedEvents.tsx
 import React from 'react';
-import Box from '@mui/material/Box';
 import { Button, Stack, Typography } from '@mui/material';
 import Image from 'next/image';
 import LogoIconSvg from '@assets/LogoIcon.svg';
 import { MegaphoneIcon } from '@heroicons/react/24/outline';
+import CustomLoadingIndicator, {
+    LoadingSvg,
+} from '@components/custom-loading/CustomLoadingIndicator';
+import Box from '@mui/material/Box';
 
 const fetchPromotedEvents = async (): Promise<any> => {
     const response = await fetch('https://api.dastyar.io/cms/promoted-events');
@@ -35,39 +38,55 @@ const AdsCard: React.FC = async () => {
                     justifyContent: 'space-between',
                 }}
             >
-                <Typography variant='h2' component='p' dir={'rtl'}>
-                    {ad.title}
-                </Typography>
-                <Button
+                <Stack
                     sx={{
-                        color: 'common.white',
-                        stroke: 'common.white',
-                        background: `linear-gradient(to right, transparent,80%, ${ad.color})`,
-                        maxHeight: 'auto',
-                        height: 'auto',
-                        fontFamily: 'Noto Sans',
+                        width: '100%',
+                        height: '100%',
+                        backdropFilter: 'blur(10px)',
+                        backgroundColor: '#FFFFFF20',
+                        borderRadius: 6,
+                        p: 2,
+                        justifyContent: 'space-evenly',
+                    }}
+                >
+                    <Typography component='p' dir={'rtl'} textAlign={'center'}>
+                        {ad.title}
+                    </Typography>
+                    <Button
+                        sx={{
+                            color: 'common.white',
+                            stroke: 'common.white',
+                            // background: `linear-gradient(to right, transparent,80%, ${ad.color})`,
+                            maxHeight: 'auto',
+                            height: 'auto',
+                            fontFamily: 'Noto Sans',
+                            zIndex: 1,
+                            mx: 'auto',
+                        }}
+                    >
+                        <MegaphoneIcon
+                            stroke={'inherit'}
+                            width={24}
+                            height={24}
+                        />
+                        همین الان وارد شو
+                    </Button>
+                </Stack>
+
+                <Box
+                    width={100}
+                    height={100}
+                    mx={'auto'}
+                    sx={{
+                        mixBlendMode: 'lighten',
+                        position: 'absolute',
+                        top: '-20%',
+                        left: '50%',
                         zIndex: 1,
                     }}
-                    fullWidth
                 >
-                    <MegaphoneIcon stroke={'inherit'} width={24} height={24} />
-                    همین الان وارد شو
-                </Button>
-                <Image
-                    src={LogoIconSvg}
-                    alt={'Kaizen Icon'}
-                    width={16}
-                    height={16}
-                    style={{
-                        width: 250,
-                        height: 250,
-                        position: 'absolute',
-                        left: -0,
-                        bottom: -0,
-                        opacity: '0.1',
-                        zIndex: 0,
-                    }}
-                />
+                    <LoadingSvg />
+                </Box>
             </Stack>
         );
     } catch (error) {

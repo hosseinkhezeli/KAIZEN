@@ -63,9 +63,14 @@ const EventCardLoaded: FC<BoardCardLoadedProps> = ({ boardInfo, page }) => {
                     <PlusIcon width={22} stroke={'inherit'} />
                 </IconButton>
             </Box>
-            <Typography variant={'h1'} component={'span'} sx={styles.counter}>
-                +{page + 1}
-            </Typography>
+            {/*<Typography*/}
+            {/*    fontSize={150}*/}
+            {/*    fontWeight={200}*/}
+            {/*    component={'span'}*/}
+            {/*    sx={styles.counter}*/}
+            {/*>*/}
+            {/*    +{page + 1}*/}
+            {/*</Typography>*/}
         </Stack>
     );
 };
@@ -114,8 +119,8 @@ const styles = {
     counter: {
         position: 'absolute',
         right: 0,
-        bottom: -0,
-        fontSize: 150,
+        bottom: 20,
+        fontSize: 100,
         opacity: '0.1',
     },
 };

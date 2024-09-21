@@ -64,6 +64,7 @@ const OverViewCard: FC<TOverViewCardProps> = ({
                             variant={'h6'}
                             fontWeight={400}
                             lineHeight={'100%'}
+                            fontSize={20}
                         >
                             {title}
                         </Typography>

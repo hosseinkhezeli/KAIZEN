@@ -19,6 +19,7 @@ import { EventCardProvider } from '@/app/[lang]/(main-section)/components/overvi
 import { Theme } from '@mui/material/styles';
 import AdsCard from '@/app/[lang]/(main-section)/components/overview/components/AdsCard/AdsCard';
 import TimeCard from '@/app/[lang]/(main-section)/components/overview/components/TimeCard/TimeCard';
+import GameCard from '@/app/[lang]/(main-section)/components/overview/components/GameCard/GameCard';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
     const { isLoadingDashboard, dashboardRes, overviewInfo } = useOverview();
@@ -127,7 +128,19 @@ const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
                             />
                         </OverViewCard>
 
-                        <Stack sx={{ gridRow: '2 / 4' }}>
+                        <OverViewCard
+                            rowSpan={'2 / 4'}
+                            backgroundColor={(theme: Theme) =>
+                                theme.palette.secondary?.dark + '10'
+                            }
+                            borderColor={(theme: Theme) =>
+                                theme.palette.grey[900]
+                            }
+                        >
+                            {/*<TimeCard />*/}
+                            <GameCard />
+                        </OverViewCard>
+                        <Stack sx={{ gridRow: '3/ 4' }}>
                             <Typography
                                 sx={{
                                     display: 'flex',
@@ -144,27 +157,16 @@ const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
                                 </Typography>
                             </Typography>
                             <OverViewCard
-                                backgroundColor={(theme: Theme) =>
-                                    `linear-gradient(135deg, ${theme.palette.grey[800]} -25%, ${theme.palette.grey[900]} 25%, ${theme.palette.grey[900]} 50%, ${theme.palette.grey[900]} 75%, ${theme.palette.primary.dark} 150%)`
-                                }
-                                borderColor={(theme: Theme) =>
-                                    `linear-gradient(135deg, ${theme.palette.grey[600]},70%, ${theme.palette.primary.light})`
-                                }
+                            // backgroundColor={(theme: Theme) =>
+                            //     `linear-gradient(135deg, ${theme.palette.grey[800]} -25%, ${theme.palette.grey[900]} 25%, ${theme.palette.grey[900]} 50%, ${theme.palette.grey[900]} 75%, ${theme.palette.primary.dark} 150%)`
+                            // }
+                            // borderColor={(theme: Theme) =>
+                            //     `linear-gradient(135deg, ${theme.palette.grey[600]},70%, ${theme.palette.primary.light})`
+                            // }
                             >
                                 <AdsCard />
                             </OverViewCard>
                         </Stack>
-                        <OverViewCard
-                            rowSpan={'3 / 4'}
-                            backgroundColor={(theme: Theme) =>
-                                theme.palette.secondary?.dark + '10'
-                            }
-                            borderColor={(theme: Theme) =>
-                                theme.palette.grey[900]
-                            }
-                        >
-                            <TimeCard />
-                        </OverViewCard>
                     </Box>
                 </Container>
             </Stack>
