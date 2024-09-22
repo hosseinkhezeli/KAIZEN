@@ -7,7 +7,7 @@ interface IGetBoardParamsDTO {
 }
 interface IGetDashboardRes {
   count: number;
-  data: IGetDashboardData[];
+  data: { boards: IGetDashboardData[]; cards: ICard[] };
 }
 interface IGetDashboardData {
   id: string;

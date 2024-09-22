@@ -1,12 +1,8 @@
 // PromotedEvents.tsx
 import React from 'react';
 import { Button, Stack, Typography } from '@mui/material';
-import Image from 'next/image';
-import LogoIconSvg from '@assets/LogoIcon.svg';
 import { MegaphoneIcon } from '@heroicons/react/24/outline';
-import CustomLoadingIndicator, {
-    LoadingSvg,
-} from '@components/custom-loading/CustomLoadingIndicator';
+import { LoadingSvg } from '@components/custom-loading/CustomLoadingIndicator';
 import Box from '@mui/material/Box';
 
 const fetchPromotedEvents = async (): Promise<any> => {
