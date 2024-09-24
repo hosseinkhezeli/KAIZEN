@@ -1,7 +1,6 @@
 //@3rd Party
 import { FC } from 'react';
-import { changeThemeMode } from '@states/global/globalSlice';
-import { useDispatch } from 'react-redux';
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Mui
@@ -16,13 +15,14 @@ import Box from '@mui/material/Box';
 import { ThemeProvider, useTheme } from '@mui/material/styles';
 import customTheme from '@styles/theme/theme';
 import { pop } from '@styles/animationKeyframes';
+import useGlobalStore from '@states/global/globalSlice';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const ThemeSetting = () => {
     const { palette } = useTheme();
-    const dispatch = useDispatch();
+    const { changeThemeMode } = useGlobalStore();
     const onClickHandle = () => {
-        dispatch(changeThemeMode());
+        changeThemeMode();
     };
     return (
         <>

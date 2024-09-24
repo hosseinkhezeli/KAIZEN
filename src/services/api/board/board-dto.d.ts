@@ -1,5 +1,5 @@
 interface IGetDashboardParamsDTO {
-  userId: string;
+  userId?: string;
 }
 
 interface IGetBoardParamsDTO {

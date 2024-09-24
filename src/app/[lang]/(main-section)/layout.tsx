@@ -27,9 +27,5 @@ export default function MainSectionLayout({
     params: { lang: Locale };
 }) {
     const dictionary = getDictionaryServer(params?.lang || 'en');
-    return (
-        <MainLayout params={params} dictionary={dictionary}>
-            {children}
-        </MainLayout>
-    );
+    return <MainLayout dictionary={dictionary}>{children}</MainLayout>;
 }

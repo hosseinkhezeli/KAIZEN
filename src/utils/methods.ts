@@ -1,6 +1,6 @@
 import { Locale } from '@/i18n';
 import { Theme } from '@mui/material/styles';
-import { store } from '@states/store';
+
 import { EMPTY_TEXT } from '@utils/consts';
 import { useEffect, useState } from 'react';
 
@@ -27,9 +27,8 @@ export const combineFullName = (
 
 // Handles user logout
 export const logoutUser = (): void => {
-  localStorage.clear();
-  store.dispatch({ type: 'logout' });
-  window.open('/login', '_self');
+  // localStorage.clear();
+  // window.open('/login', '_self');
 };
 
 // Downloads a file from a given link

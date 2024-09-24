@@ -1,24 +1,30 @@
-'use client';
-
-import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
-
+// Create a noop storage for server-side rendering
 const createNoopStorage = () => {
   return {
-    getItem(_key: any) {
+    getItem(_key: string) {
       return Promise.resolve(null);
     },
-    setItem(_key: any, value: any) {
+    setItem(_key: string, value: string) {
       return Promise.resolve(value);
     },
-    removeItem(_key: any) {
+    removeItem(_key: string) {
       return Promise.resolve();
     },
   };
 };
 
-const storage =
+// Create a storage object that uses localStorage in the browser
+export const storage =
   typeof window !== 'undefined'
-    ? createWebStorage('local')
-    : createNoopStorage();
-
-export default storage;
+    ? {
+        getItem: (key: string) => Promise.resolve(localStorage.getItem(key)),
+        setItem: (key: string, value: string) => {
+          localStorage.setItem(key, value);
+          return Promise.resolve(value);
+        },
+        removeItem: (key: string) => {
+          localStorage.removeItem(key);
+          return Promise.resolve();
+        },
+      }
+    : createNoopStorage(); // Use noop storage if not in the browser

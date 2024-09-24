@@ -1,8 +1,8 @@
 import { useGetDashboard } from '@/services/api/board/hooks';
-import { useGetUser } from '@states/user/userSlice';
+import useUserStore from '@states/user/userSlice';
 
 const useOverview = () => {
-  const { user } = useGetUser();
+  const { user } = useUserStore();
   const { data: dashboardRes, isLoading: isLoadingDashboard } = useGetDashboard(
     { userId: user?.userId },
   );

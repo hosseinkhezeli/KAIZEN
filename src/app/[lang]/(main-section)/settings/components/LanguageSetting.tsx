@@ -1,7 +1,6 @@
 'use client';
 import React, { useTransition } from 'react';
-import { useDispatch } from 'react-redux';
-import { setLang, useCommon } from '@states/global/globalSlice';
+import useGlobalStore from '@states/global/globalSlice';
 import { Typography } from '@mui/material';
 import SvgIranFlag from '@assets/icon/ir.svg';
 import SvgUSAFlag from '@assets/icon/us.svg';
@@ -21,11 +20,11 @@ const LanguageSetting = () => {
     const pathname = usePathname();
     const [isNavigating, startNavigation] = useTransition();
     const { push: navigateTo } = useRouter();
-    const dispatch = useDispatch();
-    const { lang } = useCommon();
+    const { setLang, lang } = useGlobalStore();
+
     const onClickHandle = (id: Locale) => {
         startNavigation(() => {
-            dispatch(setLang(id));
+            setLang(id);
             if (pathname.startsWith('/fa')) {
                 {
                 }
