@@ -1,6 +1,5 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import { Divider, Stack, Typography } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 import CustomCard from '@/components/custom-card/CustomCard';
 import AdsCard from '@/app/[lang]/(main-section)/components/overview/components/ads-card/index';
 
