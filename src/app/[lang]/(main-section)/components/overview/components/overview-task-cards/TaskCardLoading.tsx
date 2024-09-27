@@ -1,22 +1,21 @@
 import { Box, Skeleton, Stack } from '@mui/material';
-import { DocumentIcon } from '@heroicons/react/24/outline';
+import { RectangleStackIcon } from '@heroicons/react/24/outline';
 
-const BoardCardLoading = ({ idx }: { idx: number }) => (
-    <Stack sx={styles.card(idx)}>
-        <Box sx={styles.header}>
-            <DocumentIcon width={16} height={16} />
-            <Skeleton variant='text' sx={{ flexGrow: 1, minHeight: 0 }} />
-        </Box>
-        <Box sx={styles.description}>
-            <Skeleton variant='text' sx={{ flexGrow: 1, minHeight: 0 }} />
-        </Box>
-        <Box sx={styles.labels}>
-            <Skeleton variant='text' width={50} />
-            <Skeleton variant='text' width={50} />
-        </Box>
-        <Skeleton variant='rectangular' sx={styles.skeleton} />
-    </Stack>
-);
+export function TaskCardLoading({ idx }: { idx: number }) {
+    return (
+        <Stack sx={styles.card(idx)}>
+            <Box sx={styles.header}>
+                <RectangleStackIcon width={22} />
+                <Skeleton variant='text' sx={{ flexGrow: 1, minHeight: 0 }} />
+            </Box>
+            <Box sx={styles.description}>
+                <Skeleton variant='text' sx={{ flexGrow: 1, minHeight: 0 }} />
+            </Box>
+
+            <Skeleton variant='rectangular' sx={styles.skeleton} />
+        </Stack>
+    );
+}
 
 const styles = {
     card: (idx: number) => ({
@@ -54,5 +53,3 @@ const styles = {
         flexGrow: 1,
     },
 };
-
-export default BoardCardLoading;

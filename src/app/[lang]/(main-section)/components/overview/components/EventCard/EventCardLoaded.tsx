@@ -90,6 +90,14 @@ const styles = {
         position: 'relative',
         opacity: 0,
         animation: `${pop} 0.3s ease forwards`,
+        transition: '0.3s ease border-color',
+        ':hover': {
+            borderColor: 'primary.main',
+            '.board-card-bg': {
+                filter: 'opacity(1) grayscale(0)',
+                transform: 'scale(101%)',
+            },
+        },
     },
     eventName: {
         display: 'flex',

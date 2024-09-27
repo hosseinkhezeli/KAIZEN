@@ -3,9 +3,16 @@ import Box from '@mui/material/Box';
 import { Divider, Stack, Typography } from '@mui/material';
 
 import CustomCard from '@/components/custom-card/CustomCard';
-import HPCard from '@/app/[lang]/(main-section)/components/overview/components/hp-card/index';
+import { TaskCard } from '@/app/[lang]/(main-section)/components/overview/components/overview-task-cards/TaskCard';
+import { RepeatComponent } from '@utils/methods';
 
-const HpCards = ({ cards }: { cards: ICard[] | undefined }) => {
+export function TaskCardList({
+    cards,
+    isLoadingTasks,
+}: {
+    cards: ICard[] | undefined;
+    isLoadingTasks: boolean;
+}) {
     return (
         <CustomCard
             outerBoxProps={{
@@ -49,12 +56,31 @@ const HpCards = ({ cards }: { cards: ICard[] | undefined }) => {
                 height={'100%'}
                 sx={{ overflowY: 'auto' }}
             >
-                {cards?.map((card, idx) => {
-                    return <HPCard cardInfo={card} key={idx} />;
-                })}
+                {isLoadingTasks ? (
+                    <RepeatComponent
+                        times={3}
+                        render={(idx) => (
+                            <TaskCard
+                                cardInfo={undefined}
+                                key={idx}
+                                idx={idx}
+                                isLoadingCard={isLoadingTasks}
+                            />
+                        )}
+                    />
+                ) : (
+                    cards?.map((card, idx) => {
+                        return (
+                            <TaskCard
+                                cardInfo={card}
+                                idx={idx}
+                                key={idx}
+                                isLoadingCard={isLoadingTasks}
+                            />
+                        );
+                    })
+                )}
             </Stack>
         </CustomCard>
     );
-};
-
-export default HpCards;
+}

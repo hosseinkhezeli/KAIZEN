@@ -1,6 +1,5 @@
-import React, { FC } from 'react';
 import { RepeatComponent } from '@utils/methods';
-import BoardCard from '@/app/[lang]/(main-section)/components/overview/components/border-card/index';
+import { BoardCard } from '@/app/[lang]/(main-section)/components/overview/components/overview-boards/BoardCard';
 import CustomCard from '@components/custom-card/CustomCard';
 import Box from '@mui/material/Box';
 import { Divider, Stack, Typography } from '@mui/material';
@@ -10,7 +9,7 @@ type TOverviewBoards = {
     boards: IGetDashboardData[] | undefined;
 };
 
-const Boards: FC<TOverviewBoards> = ({ isLoading, boards }) => {
+export function BoardsList({ isLoading, boards }: TOverviewBoards) {
     return (
         <CustomCard
             outerBoxProps={{
@@ -69,6 +68,4 @@ const Boards: FC<TOverviewBoards> = ({ isLoading, boards }) => {
             </Stack>
         </CustomCard>
     );
-};
-
-export default Boards;
+}

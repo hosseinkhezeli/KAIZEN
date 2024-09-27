@@ -225,3 +225,26 @@ export const getRandomColorKey = () => {
   // Return the randomly selected status
   return statuses[randomIndex];
 };
+
+export function checkDate(inputDate: Date | string) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (typeof inputDate === 'string') {
+    inputDate = new Date(inputDate);
+    inputDate.setHours(0, 0, 0, 0);
+  } else return '-';
+
+  const threeDaysFromNow = new Date(today);
+  threeDaysFromNow.setDate(today.getDate() + 3);
+
+  if (inputDate < today) {
+    return 'Past';
+  } else if (inputDate.getTime() === today.getTime()) {
+    return 'Present.';
+  } else if (inputDate <= threeDaysFromNow) {
+    return 'NearFuture';
+  } else {
+    return 'Future';
+  }
+}

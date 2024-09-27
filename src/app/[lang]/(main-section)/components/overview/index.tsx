@@ -1,22 +1,20 @@
 'use client';
 //@Mui
 import { Container, LinearProgress, Stack, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Component & Methods
 import useOverview from '@/app/[lang]/(main-section)/hooks/useOverview';
-import BoardCard from 'app/[lang]/(main-section)/components/overview/components/border-card';
-import OverViewCard from '@/app/[lang]/(main-section)/components/overview/components/OverViewCard';
+import GameCard from '@/app/[lang]/(main-section)/components/overview/components/game-card/GameCard';
+import { BoardsList } from '@/app/[lang]/(main-section)/components/overview/components/overview-boards/BoardsList';
+import Events from '@/app/[lang]/(main-section)/components/overview/components/EventCard/Events';
+import Ads from '@/app/[lang]/(main-section)/components/overview/components/ads-card/Ads';
+import { TaskCardList } from '@/app/[lang]/(main-section)/components/overview/components/overview-task-cards/TaskCardList';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types
 import { TDashboard } from '@i18n/dictionary/types/dashboard';
-import Box from '@mui/material/Box';
-import GameCard from '@/app/[lang]/(main-section)/components/overview/components/game-card/GameCard';
-import Boards from '@/app/[lang]/(main-section)/components/overview/components/border-card/Boards';
-import Events from '@/app/[lang]/(main-section)/components/overview/components/EventCard/Events';
-import Ads from '@/app/[lang]/(main-section)/components/overview/components/ads-card/Ads';
-import HPCards from '@/app/[lang]/(main-section)/components/overview/components/hp-card/HPCards';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
     const { isLoadingDashboard, dashboardRes, overviewInfo } = useOverview();
@@ -67,7 +65,7 @@ const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
                             maxHeight: '882px',
                         }}
                     >
-                        <Boards
+                        <BoardsList
                             isLoading={isLoadingDashboard}
                             boards={dashboardRes?.data?.boards}
                         />
@@ -76,7 +74,10 @@ const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
                             isLoading={isLoadingDashboard}
                             boards={dashboardRes?.data?.boards}
                         />
-                        <HPCards cards={dashboardRes?.data?.cards} />
+                        <TaskCardList
+                            cards={dashboardRes?.data?.cards}
+                            isLoadingTasks={isLoadingDashboard}
+                        />
 
                         {/*<time-card />*/}
                         <GameCard />
