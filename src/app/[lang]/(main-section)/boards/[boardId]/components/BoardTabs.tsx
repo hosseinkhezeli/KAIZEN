@@ -62,15 +62,15 @@ const BoardTabs: FC<TBoardTabs> = ({ boardInfo }) => {
                     <Tab label='Activities' {...a11yProps(2)} />
                 </Tabs>
             </Box>
-            {/*<CustomTabPanel value={value} index={0}>*/}
-            {/*    <BoardOverview boardInfo={boardInfo} />*/}
-            {/*</CustomTabPanel>*/}
-            {/*<CustomTabPanel value={value} index={1}>*/}
-            {/*    <BoardColumn />*/}
-            {/*</CustomTabPanel>*/}
-            {/*<CustomTabPanel value={value} index={2}>*/}
-            {/*    Item Three*/}
-            {/*</CustomTabPanel>*/}
+            <CustomTabPanel value={value} index={0}>
+                <BoardOverview boardInfo={boardInfo} />
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={1}>
+                <BoardColumn />
+            </CustomTabPanel>
+            <CustomTabPanel value={value} index={2}>
+                Item Three
+            </CustomTabPanel>
         </Stack>
     );
 };

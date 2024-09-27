@@ -70,7 +70,7 @@ const styles = {
         maxHeight: '210px',
         ':hover': {
             borderColor: 'primary.main',
-            '.board-card-bg': {
+            '.overview-boards-bg': {
                 filter: 'opacity(1) grayscale(0)',
                 transform: 'scale(101%)',
             },

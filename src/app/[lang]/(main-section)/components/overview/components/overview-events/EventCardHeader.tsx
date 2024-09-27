@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import { IconButton } from '@mui/material';
 import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
-import { useEventCard } from '@/app/[lang]/(main-section)/components/overview/components/EventCard/hooks/useEventCard';
+import { useEventCard } from '@/app/[lang]/(main-section)/components/overview/components/overview-events/hooks/useEventCard';
 
 const EventCardHeader = ({
     totalCount,
