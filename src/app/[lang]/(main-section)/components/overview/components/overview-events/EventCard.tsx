@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import EventCardLoading from '@/app/[lang]/(main-section)/components/overview/components/EventCard/EventCardLoading';
-import EventCardLoaded from '@/app/[lang]/(main-section)/components/overview/components/EventCard/EventCardLoaded';
-import { useEventCard } from '@/app/[lang]/(main-section)/components/overview/components/EventCard/hooks/useEventCard';
+import EventCardLoading from '@/app/[lang]/(main-section)/components/overview/components/overview-events/EventCardLoading';
+import EventCardLoaded from '@/app/[lang]/(main-section)/components/overview/components/overview-events/EventCardLoaded';
+import { useEventCard } from '@/app/[lang]/(main-section)/components/overview/components/overview-events/hooks/useEventCard';
 
 type TEventCardProps = {
     boardInfo?: IGetDashboardData[];

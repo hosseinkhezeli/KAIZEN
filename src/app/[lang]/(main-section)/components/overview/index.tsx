@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import useOverview from '@/app/[lang]/(main-section)/hooks/useOverview';
 import GameCard from '@/app/[lang]/(main-section)/components/overview/components/game-card/GameCard';
 import { BoardsList } from '@/app/[lang]/(main-section)/components/overview/components/overview-boards/BoardsList';
-import Events from '@/app/[lang]/(main-section)/components/overview/components/EventCard/Events';
+import Events from '@/app/[lang]/(main-section)/components/overview/components/overview-events/EventsList';
 import Ads from '@/app/[lang]/(main-section)/components/overview/components/ads-card/Ads';
 import { TaskCardList } from '@/app/[lang]/(main-section)/components/overview/components/overview-task-cards/TaskCardList';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

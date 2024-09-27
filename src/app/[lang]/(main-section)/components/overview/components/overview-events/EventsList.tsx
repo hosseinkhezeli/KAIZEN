@@ -1,17 +1,17 @@
 import React, { FC } from 'react';
-import { EventCardProvider } from '@/app/[lang]/(main-section)/components/overview/components/EventCard/hooks/useEventCard';
+import { EventCardProvider } from '@/app/[lang]/(main-section)/components/overview/components/overview-events/hooks/useEventCard';
 import CustomCard from '@components/custom-card/CustomCard';
 import Box from '@mui/material/Box';
 import { Divider, Stack, Typography } from '@mui/material';
 import { Theme } from '@mui/material/styles';
-import EventCardHeader from '@/app/[lang]/(main-section)/components/overview/components/EventCard/EventCardHeader';
-import EventCard from '@/app/[lang]/(main-section)/components/overview/components/EventCard/index';
+import EventCardHeader from '@/app/[lang]/(main-section)/components/overview/components/overview-events/EventCardHeader';
+import EventCard from '@/app/[lang]/(main-section)/components/overview/components/overview-events/EventCard';
 interface TEvents {
     boards?: IGetDashboardData[];
     isLoading?: boolean;
     count: number | undefined;
 }
-const Events: FC<TEvents> = ({ boards, isLoading, count }) => {
+const EventsList: FC<TEvents> = ({ boards, isLoading, count }) => {
     return (
         <EventCardProvider>
             <CustomCard
@@ -59,4 +59,4 @@ const Events: FC<TEvents> = ({ boards, isLoading, count }) => {
     );
 };
 
-export default Events;
+export default EventsList;
