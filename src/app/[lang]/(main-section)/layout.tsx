@@ -5,7 +5,7 @@ import { getDictionaryServer, i18n, type Locale } from '@/i18n';
 // ___________________________________________________________________
 
 //@Components
-import MainLayout from '@/Layouts/main-layout/MainLayout';
+import MainLayout from '@/layouts/main-layout/MainLayout';
 // ___________________________________________________________________
 
 //@Server Functions

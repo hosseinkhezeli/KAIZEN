@@ -8,9 +8,8 @@ import { Container, Stack } from '@mui/material';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Component
-import KaizenAppBar from '@/Layouts/main-layout/components/KaizenAppBar';
+import KaizenAppBar from '@/layouts/main-layout/components/KaizenAppBar';
 import CustomBottomNavigation from '@components/custom-bottom-navigation/CustomBottomNavigation';
-import { Locale } from '@/i18n';
 import KaizenBreadCrumbs from '@/app/[lang]/(main-section)/components/KaizenBreadCrumbs';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
