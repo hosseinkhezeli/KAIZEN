@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { Button, Stack } from '@mui/material';
-import MemberCard from '@/app/[lang]/(main-section)/boards/[boardId]/components/MemberCard';
+import MemberCard from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/MemberCard';
 import { PlusIcon } from '@heroicons/react/24/outline';
 
 type TBoardOverviewMembersProps = {
@@ -15,7 +15,7 @@ const BoardOverviewMembers: FC<TBoardOverviewMembersProps> = ({ members }) => {
             sx={{ overflowY: 'auto', aspectRatio: '1/1' }}
         >
             {members?.map((member, idx) => (
-                <MemberCard key={idx} member={member} />
+                <MemberCard key={idx} member={member} idx={idx} />
             ))}
             <Button
                 variant={'outlined'}

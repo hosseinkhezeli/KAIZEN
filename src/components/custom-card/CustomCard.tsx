@@ -15,6 +15,7 @@ const CustomCard: FC<TCustomCardProps> = ({
 }) => {
     const { sx: outerSx, ...outerProps } = outerBoxProps ?? {};
     const { sx: innerSx, ...innerProps } = innerBoxProps ?? {};
+
     return (
         <Box
             {...outerProps}

@@ -2,7 +2,7 @@
 import React, { FC, ReactNode, SyntheticEvent, useState } from 'react';
 import Box from '@mui/material/Box';
 import { Stack, Tab, Tabs } from '@mui/material';
-import BoardOverview from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardOverview';
+import BoardOverview from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverview';
 import { Properties } from 'csstype';
 import BoardColumn from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardColumn';
 interface TabPanelProps {
@@ -39,7 +39,7 @@ type TBoardTabs = {
 };
 const BoardTabs: FC<TBoardTabs> = ({ boardInfo }) => {
     const [value, setValue] = useState(0);
-
+    const tabs = ['Overview', 'Kanban', 'Activities'];
     const handleChange = (event: SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
@@ -57,9 +57,9 @@ const BoardTabs: FC<TBoardTabs> = ({ boardInfo }) => {
                     onChange={handleChange}
                     aria-label='board tabs'
                 >
-                    <Tab label='Overview' {...a11yProps(0)} />
-                    <Tab label='Kanban' {...a11yProps(1)} />
-                    <Tab label='Activities' {...a11yProps(2)} />
+                    {tabs.map((tab, idx) => (
+                        <Tab key={tab + idx} label={tab} {...a11yProps(idx)} />
+                    ))}
                 </Tabs>
             </Box>
             <CustomTabPanel value={value} index={0}>

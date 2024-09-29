@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { Stack } from '@mui/material';
+import { Stack, Typography } from '@mui/material';
 
-import BoardOverviewCard from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardOverviewCard';
+import BoardOverviewCard from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverviewCard';
 import useBoardOverview from '@/app/[lang]/(main-section)/boards/[boardId]/hooks/useBoardOverview';
-import BoardOverviewMembers from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardOverviewMembers';
+import BoardOverviewMembers from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverviewMembers';
 import {
     ChartBarIcon,
     ClipboardIcon,
@@ -13,9 +13,11 @@ import {
     TagIcon,
 } from '@heroicons/react/24/outline';
 import Box from '@mui/material/Box';
-import ActivityChart from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardActivityChart';
+import ActivityChart from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardActivityChart';
 import { deepPurple } from '@mui/material/colors';
-import BoardLabelsSticker from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardLabels&Sticker';
+import BoardLabelsSticker from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardLabels&Sticker';
+import { Theme } from '@mui/material/styles';
+import { BoardOverviewStatus } from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverviewStatus';
 
 type TBoardOverview = {
     boardInfo?: IBoard;
@@ -47,7 +49,6 @@ const BoardOverview: FC<TBoardOverview> = ({ boardInfo }) => {
                     </Box>
                 }
                 descriptionArr={BasicInformationDescription}
-                color={'primary.light'}
             />
 
             <BoardOverviewCard
@@ -57,12 +58,16 @@ const BoardOverview: FC<TBoardOverview> = ({ boardInfo }) => {
                         Activities
                     </Box>
                 }
+                background={({ palette }) => palette.background.paper}
                 wrapperProps={{
                     style: { gridColumn: 'span 2' },
+                    sx: { background: ({ palette }) => palette.divider },
                 }}
-                color={'success.light'}
             >
                 <ActivityChart data={boardInfo?.activity} />
+                <Typography color={'text.disabled'} variant={'caption'}>
+                    hint: you can trace the days that an activity happens.
+                </Typography>
             </BoardOverviewCard>
             <BoardOverviewCard
                 title={
@@ -71,13 +76,16 @@ const BoardOverview: FC<TBoardOverview> = ({ boardInfo }) => {
                         Board&apos;s Status
                     </Box>
                 }
+                background={({ palette }) => palette.background.paper}
                 wrapperProps={{
                     style: {
                         gridColumn: 'span 2',
                     },
+                    sx: { background: ({ palette }) => palette.divider },
                 }}
-                color={'error.light'}
-            ></BoardOverviewCard>
+            >
+                <BoardOverviewStatus boardInfo={boardInfo} />
+            </BoardOverviewCard>
             <BoardOverviewCard
                 title={
                     <Box display={'flex'} alignItems={'flex-start'} gap={1}>
@@ -85,12 +93,13 @@ const BoardOverview: FC<TBoardOverview> = ({ boardInfo }) => {
                         Members
                     </Box>
                 }
+                background={(theme: Theme) => theme.palette.background.default}
                 wrapperProps={{
                     style: {
                         gridRow: 'span 2',
                     },
+                    sx: { background: ({ palette }) => palette.divider },
                 }}
-                color={'secondary.light'}
             >
                 <BoardOverviewMembers members={boardInfo?.members} />
             </BoardOverviewCard>
@@ -101,7 +110,6 @@ const BoardOverview: FC<TBoardOverview> = ({ boardInfo }) => {
                         Tags & Stickers
                     </Box>
                 }
-                color={deepPurple.A200}
             >
                 <BoardLabelsSticker
                     stickers={boardInfo?.stickers}
