@@ -1,28 +1,28 @@
-/* ------------------------ NotoSans ------------------------ */
-@font-face {
-    font-family: 'Noto Sans';
-    src: url('../../public/fonts/Noto_Sans_Arabic/NotoSansArabic-VariableFont_wdth,wght.ttf');
-    font-display: fallback;
-}
+/*!* ------------------------ NotoSans ------------------------ *!*/
+/*@font-face {*/
+/*    font-family: 'Noto Sans';*/
+/*    src: url('../../public/fonts/Noto_Sans_Arabic/NotoSansArabic-VariableFont_wdth,wght.ttf');*/
+/*    font-display: fallback;*/
+/*}*/
 
-/* ------------------------ Nunito ------------------------ */
-@font-face {
-    font-family: 'Nunito';
-    src: url('../../public/fonts/Nunito/Nunito-VariableFont_wght.ttf');
-    font-display: fallback;
-}
+/*!* ------------------------ Nunito ------------------------ *!*/
+/*@font-face {*/
+/*    font-family: 'Nunito';*/
+/*    src: url('../../public/fonts/Nunito/Nunito-VariableFont_wght.ttf');*/
+/*    font-display: fallback;*/
+/*}*/
 
-.en-font {
-    font-family:
-            Nunito,
-        sans-serif;
-}
+/*.en-font {*/
+/*    font-family:*/
+/*            Nunito,*/
+/*        sans-serif;*/
+/*}*/
 
-.fa-font {
-    font-family:
-        Noto Sans,
-        sans-serif;
-}
+/*.fa-font {*/
+/*    font-family:*/
+/*        Noto Sans,*/
+/*        sans-serif;*/
+/*}*/
 html, body {
     min-height: 100vh;
     width: 100vw;
