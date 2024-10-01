@@ -1,7 +1,6 @@
 'use client';
-import React, { FC, useTransition } from 'react';
-import { useDispatch } from 'react-redux';
-import { setLang, useCommon } from '@states/global/globalSlice';
+import React, { useTransition } from 'react';
+import useGlobalStore from '@states/global/globalSlice';
 import { Typography } from '@mui/material';
 import SvgIranFlag from '@assets/icon/ir.svg';
 import SvgUSAFlag from '@assets/icon/us.svg';
@@ -9,9 +8,9 @@ import Box from '@mui/material/Box';
 import Image from 'next/image';
 import { Locale } from '@/i18n';
 import { usePathname, useRouter } from 'next/navigation';
-import { pop } from '@utils/animationKeyframes';
+import { pop } from '@styles/animationKeyframes';
 
-type TlanguageOptions = {
+type languageOptions = {
     label: string;
     id: Locale;
     icon: string;
@@ -21,11 +20,11 @@ const LanguageSetting = () => {
     const pathname = usePathname();
     const [isNavigating, startNavigation] = useTransition();
     const { push: navigateTo } = useRouter();
-    const dispatch = useDispatch();
-    const { lang } = useCommon();
+    const { setLang, lang } = useGlobalStore();
+
     const onClickHandle = (id: Locale) => {
         startNavigation(() => {
-            dispatch(setLang(id));
+            setLang(id);
             if (pathname.startsWith('/fa')) {
                 {
                 }
@@ -79,7 +78,7 @@ const LanguageSetting = () => {
 
 export default LanguageSetting;
 
-const languageOptions: TlanguageOptions[] = [
+const languageOptions: languageOptions[] = [
     {
         label: 'فارسی',
         id: 'fa',
@@ -99,7 +98,7 @@ const LanguageOptionButton = ({
     isSelected,
 }: {
     idx: number;
-    option: TlanguageOptions;
+    option: languageOptions;
     onClickHandle: (id: Locale) => void;
     isSelected: boolean;
 }) => {
@@ -125,7 +124,7 @@ const LanguageOptionButton = ({
                     transform: 'scale(101%)',
                 },
                 zIndex: 2,
-                fontFamily: option.id === 'fa' ? 'Noto Sans' : 'Roboto Flex',
+                fontFamily: option.id === 'fa' ? 'Noto Sans' : 'Nunito',
             }}
             onClick={() => onClickHandle(option.id as Locale)}
         >

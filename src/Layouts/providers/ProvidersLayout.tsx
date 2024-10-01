@@ -1,21 +1,20 @@
 'use client';
 //@3rd Party
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode, useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-import { persistStore } from 'redux-persist';
 import { SnackbarProvider } from 'notistack';
-import { store } from '@states/store';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Components
 import ThemeProvider from '@styles/theme/ThemeProvider';
-import CustomLoadingIndicator from '@components/custom-loading/CustomLoadingIndicator';
+import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types
 import { Locale } from '@/i18n';
+import AuthLayout from '@/layouts/providers/AuthLayout';
+import useUserStore from '@states/user/userSlice';
+import { useTheme } from '@mui/material/styles';
 export interface IProvidersLayout {
     children: ReactNode;
     lang: Locale;
@@ -24,19 +23,24 @@ export interface IProvidersLayout {
 
 const ProvidersLayout: FC<IProvidersLayout> = ({ children, lang }) => {
     const queryClient = new QueryClient();
-    const persistor = persistStore(store);
+    const { initialize } = useUserStore();
+    const theme = useTheme();
+    useEffect(() => {
+        initialize();
+    }, [initialize]);
     return (
         <QueryClientProvider client={queryClient}>
-            <Provider store={store}>
-                <PersistGate
-                    loading={<CustomLoadingIndicator />}
-                    persistor={persistor}
-                >
-                    <ThemeProvider lang={lang}>
-                        <SnackbarProvider>{children}</SnackbarProvider>
-                    </ThemeProvider>
-                </PersistGate>
-            </Provider>
+            <AuthLayout lang={lang}>
+                <ThemeProvider lang={lang}>
+                    <SnackbarProvider>{children}</SnackbarProvider>
+                    <ProgressBar
+                        height='4px'
+                        color={theme.palette.warning.main}
+                        options={{ showSpinner: true }}
+                        shallowRouting
+                    />
+                </ThemeProvider>
+            </AuthLayout>
         </QueryClientProvider>
     );
 };

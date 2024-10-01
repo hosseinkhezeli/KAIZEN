@@ -34,7 +34,7 @@ export type TSettingMenuList = {
     component?: () => JSX.Element;
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+const HEADER_HEIGHT = document?.getElementById('breadcrumbs')?.clientHeight;
 const useSetting = () => {
     const [selectedItem, setSelectedItem] = useState<TSettingMenuList | null>(
         null,
@@ -67,7 +67,7 @@ const useSetting = () => {
             setSelectedItem(item);
         }
     };
-    return { settingMenuList, onClickHandle, selectedItem };
+    return { settingMenuList, onClickHandle, selectedItem, HEADER_HEIGHT };
 };
 
 export default useSetting;

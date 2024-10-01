@@ -2,7 +2,7 @@
 //@3rd Party
 import { Locale } from '@/i18n';
 import { TSignInDto, TSignUpDto } from '@/services/api/auth/types';
-import { setLogout, setToken, setUserInfo } from '@states/user/userSlice';
+import useUserStore from '@states/user/userSlice';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { enqueueSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
@@ -20,7 +20,6 @@ import {
 //@Types
 import { InputProps } from '@components/custom-form-generator/inputs/components/type';
 import { TAuth } from '@i18n/dictionary/types/auth';
-import { useDispatch } from 'react-redux';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Define the types for the form data to enhance type safety
@@ -49,7 +48,7 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
 
   // State to manage the current step in the sign-in process
   const [step, setStep] = useState<number>(0);
-  const dispatch = useDispatch();
+  const { setToken, setUserInfo } = useUserStore();
   const { lang } = useParams<{ lang: Locale }>();
   const { push: navigateTo } = useRouter();
   const pathname = usePathname();
@@ -92,14 +91,14 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     signInUser(data, {
       onSuccess: (response) => {
         const { token, ...userInfo } = response;
-        dispatch(setToken(token));
-        dispatch(
-          setUserInfo({
-            userId: userInfo.userId,
-            phoneNumber: userInfo.phoneNumber,
-            username: userInfo.username,
-          }),
-        );
+        setToken(token);
+
+        setUserInfo({
+          userId: userInfo.userId,
+          phoneNumber: userInfo.phoneNumber,
+          username: userInfo.username,
+        });
+
         navigateTo(`/${lang ?? 'en'}/`);
         showSnackbar('You have been successfully logged in', 'success', {
           horizontal: 'center',
@@ -142,7 +141,7 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     enqueueSnackbar({ variant, message, anchorOrigin });
   };
   useEffect(() => {
-    if (pathname.includes('sign-in')) dispatch(setLogout(null));
+    // if (pathname.includes('sign-in')) setLogout();
   }, []);
 
   return {

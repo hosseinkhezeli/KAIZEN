@@ -1,5 +1,5 @@
 interface IGetDashboardParamsDTO {
-  userId: string;
+  userId?: string;
 }
 
 interface IGetBoardParamsDTO {
@@ -7,7 +7,7 @@ interface IGetBoardParamsDTO {
 }
 interface IGetDashboardRes {
   count: number;
-  data: IGetDashboardData[];
+  data: { boards: IGetDashboardData[]; cards: ICard[] };
 }
 interface IGetDashboardData {
   id: string;

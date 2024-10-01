@@ -9,7 +9,9 @@ import '@styles/globals.css';
 // ___________________________________________________________________
 
 //@Components
-import ProvidersLayout from '@/Layouts/providers/ProvidersLayout';
+import ProvidersLayout from '@/layouts/providers/ProvidersLayout';
+import localFont from 'next/font/local';
+
 // ___________________________________________________________________
 
 //@Server Functions
@@ -17,6 +19,14 @@ export async function generateStaticParams() {
     return i18n.locales.map((locale: Locale) => ({ lang: locale }));
 }
 
+const notoSans = localFont({
+    src: '../../assets/fonts/Noto_Sans_Arabic/NotoSansArabic-VariableFont_wdth,wght.ttf',
+    display: 'swap',
+});
+const nunito = localFont({
+    src: '../../assets/fonts/Nunito/Nunito-VariableFont_wght.ttf',
+    display: 'swap',
+});
 export const metadata: Metadata = {
     title: 'Kaizen',
     description: 'Manage your tasks in Kaizen style',
@@ -39,7 +49,7 @@ export default function RootLayout({
                 textAlign: isRtl ? 'right' : 'left',
                 overflowX: 'hidden',
             }}
-            className={isRtl ? 'fa-font' : 'en-font'}
+            className={isRtl ? notoSans.className : nunito.className}
         >
             <body>
                 <ProvidersLayout lang={params.lang}>{children}</ProvidersLayout>

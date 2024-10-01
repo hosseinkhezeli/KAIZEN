@@ -5,7 +5,7 @@ import { getDictionaryServer, i18n, type Locale } from '@/i18n';
 // ___________________________________________________________________
 
 //@Components
-import MainLayout from '@/Layouts/main-layout/MainLayout';
+import MainLayout from '@/layouts/main-layout/MainLayout';
 // ___________________________________________________________________
 
 //@Server Functions
@@ -27,9 +27,5 @@ export default function MainSectionLayout({
     params: { lang: Locale };
 }) {
     const dictionary = getDictionaryServer(params?.lang || 'en');
-    return (
-        <MainLayout params={params} dictionary={dictionary}>
-            {children}
-        </MainLayout>
-    );
+    return <MainLayout dictionary={dictionary}>{children}</MainLayout>;
 }

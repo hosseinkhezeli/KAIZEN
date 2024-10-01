@@ -1,5 +1,6 @@
 import { createTheme, PaletteMode, PaletteOptions } from '@mui/material';
 import { MuiAppBar } from '@styles/theme/components/AppBar/MuiAppBar';
+import { MuiAvatar } from '@styles/theme/components/Avatar/MuiAvatar';
 import { MuiBottomNavigation } from '@styles/theme/components/BottomNavigation/MuiBottomNavigation';
 import { MuiBottomNavigationAction } from '@styles/theme/components/BottomNavigation/MuiBottomNavigationAction';
 import { MuiIconButton } from '@styles/theme/components/Button/IconButton';
@@ -12,6 +13,8 @@ import { MuiListItem } from '@styles/theme/components/List/MuiListItem';
 import { MuiListItemButton } from '@styles/theme/components/List/MuiListItemButton';
 import { MuiListItemIcon } from '@styles/theme/components/List/MuiListItemIcon';
 import { MuiListItemText } from '@styles/theme/components/List/MuiListItemText';
+import { MuiMenu } from '@styles/theme/components/Menu/MuiMenu';
+import { MuiMenuItem } from '@styles/theme/components/Menu/MuiMenuItem';
 import { MuiTab } from '@styles/theme/components/Tabs/MuiTab';
 import { MuiTabs } from '@styles/theme/components/Tabs/MuiTabs';
 import { MuiInputBase } from '@styles/theme/components/TextField/MuiInputBase';
@@ -52,6 +55,9 @@ export const customTheme = (mode: PaletteMode | undefined, isRtl: boolean) =>
       MuiTooltip,
       MuiTab,
       MuiTabs,
+      MuiAvatar,
+      MuiMenu,
+      MuiMenuItem,
     },
   });
 

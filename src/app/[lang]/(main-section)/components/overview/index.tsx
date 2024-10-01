@@ -1,168 +1,90 @@
 'use client';
 //@Mui
-import { Container, LinearProgress, Skeleton, Typography } from '@mui/material';
+import { Container, LinearProgress, Stack, Typography } from '@mui/material';
+import Box from '@mui/material/Box';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Component & Methods
 import useOverview from '@/app/[lang]/(main-section)/hooks/useOverview';
-import BoardCard from '@/app/[lang]/(main-section)/components/overview/components/BoardCard';
-import OverviewBar from '@/app/[lang]/(main-section)/components/overview/components/OverviewBar';
-import OverViewCard from '@/app/[lang]/(main-section)/components/overview/components/OverViewCard';
-import { RepeatComponent } from '@utils/methods';
+import GameCard from '@/app/[lang]/(main-section)/components/overview/components/game-card/GameCard';
+import { BoardsList } from '@/app/[lang]/(main-section)/components/overview/components/overview-boards/BoardsList';
+import Events from '@/app/[lang]/(main-section)/components/overview/components/overview-events/EventsList';
+import Ads from '@/app/[lang]/(main-section)/components/overview/components/ads-card/Ads';
+import { TaskCardList } from '@/app/[lang]/(main-section)/components/overview/components/overview-task-cards/TaskCardList';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types
 import { TDashboard } from '@i18n/dictionary/types/dashboard';
-import Box from '@mui/material/Box';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 const Overview = ({ dictionary }: { dictionary: TDashboard }) => {
     const { isLoadingDashboard, dashboardRes, overviewInfo } = useOverview();
+    const HEADER_HEIGHT = document?.getElementById('breadcrumbs')?.clientHeight;
+
     return (
         <>
-            <Container
-                sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+            <Stack
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 2,
+                    p: '1rem 0 2rem',
+                    height: `calc(100vh - ${HEADER_HEIGHT || 53}px)`,
+                    borderTop: '1px solid',
+                    borderColor: 'divider',
+                }}
             >
-                <Typography variant={'h4'} fontWeight={400}>
-                    {dictionary.overview}
-                </Typography>
-                <OverviewBar overviewInfo={overviewInfo} />
-                <Box
+                <Container
                     sx={{
-                        display: 'grid',
+                        flexGrow: 1,
+                        display: 'flex',
+                        flexDirection: 'column',
                         gap: 2,
-                        gridTemplateColumns: '1fr 1fr 1fr',
-                        gridTemplateRows: '1fr 1fr',
-                        gridAutoFlow: 'dense',
+                        height: '100%',
                     }}
                 >
-                    <OverViewCard title={dictionary.boards} colSpan={'span 3'}>
-                        {isLoadingDashboard ? (
-                            <RepeatComponent
-                                times={3}
-                                render={(index) => (
-                                    <Skeleton
-                                        key={index}
-                                        variant='rectangular'
-                                        width={'100%'}
-                                        height={'100%'}
-                                        sx={{
-                                            p: '8px 12px',
-                                            border: '1px solid',
-                                            borderColor: 'divider',
-                                            backgroundColor: 'grey.800',
-                                            borderRadius: 3,
-                                            flexBasis: {
-                                                xs: '100%',
-                                                sm: '50%',
-                                                md: '33%',
-                                            },
-                                            position: 'relative',
-                                            transition:
-                                                '0.3s ease border-color',
-                                            gap: 1,
-                                            ':hover': {
-                                                borderColor: 'primary.main',
-                                            },
-                                            minHeight: '18vw',
-                                        }}
-                                    />
-                                )}
-                            />
-                        ) : (
-                            dashboardRes?.data?.map((boardInfo, idx) => (
-                                <BoardCard boardInfo={boardInfo} key={idx} />
-                            ))
-                        )}
-                    </OverViewCard>
-                    <OverViewCard
-                        title={'Task Cards'}
-                        containerProps={{ sx: {} }}
+                    <Typography
+                        variant={'h1'}
+                        component={'h3'}
+                        fontWeight={400}
                     >
-                        {isLoadingDashboard ? (
-                            <RepeatComponent
-                                times={3}
-                                render={(index) => (
-                                    <Skeleton
-                                        key={index}
-                                        variant='rectangular'
-                                        width={'100%'}
-                                        height={'100%'}
-                                        sx={{
-                                            p: '8px 12px',
-                                            border: '1px solid',
-                                            borderColor: 'divider',
-                                            backgroundColor: 'grey.800',
-                                            borderRadius: 3,
-                                            flexBasis: {
-                                                xs: '100%',
-                                                sm: '50%',
-                                                md: '33%',
-                                            },
-                                            position: 'relative',
-                                            transition:
-                                                '0.3s ease border-color',
-                                            gap: 1,
-                                            ':hover': {
-                                                borderColor: 'primary.main',
-                                            },
-                                            minHeight: '18vw',
-                                        }}
-                                    />
-                                )}
-                            />
-                        ) : (
-                            dashboardRes?.data
-                                ?.slice(0, 2)
-                                ?.map((boardInfo, idx) => (
-                                    <BoardCard
-                                        boardInfo={boardInfo}
-                                        key={idx}
-                                    />
-                                ))
-                        )}
-                    </OverViewCard>
-                    <OverViewCard title={'To-Do'} colSpan={'span 2'}>
-                        {isLoadingDashboard ? (
-                            <RepeatComponent
-                                times={3}
-                                render={(index) => (
-                                    <Skeleton
-                                        key={index}
-                                        variant='rectangular'
-                                        width={'100%'}
-                                        height={'100%'}
-                                        sx={{
-                                            p: '8px 12px',
-                                            border: '1px solid',
-                                            borderColor: 'divider',
-                                            backgroundColor: 'grey.800',
-                                            borderRadius: 3,
-                                            flexBasis: {
-                                                xs: '100%',
-                                                sm: '50%',
-                                                md: '33%',
-                                            },
-                                            position: 'relative',
-                                            transition:
-                                                '0.3s ease border-color',
-                                            gap: 1,
-                                            ':hover': {
-                                                borderColor: 'primary.main',
-                                            },
-                                            minHeight: '18vw',
-                                        }}
-                                    />
-                                )}
-                            />
-                        ) : (
-                            dashboardRes?.data?.map((boardInfo, idx) => (
-                                <BoardCard boardInfo={boardInfo} key={idx} />
-                            ))
-                        )}
-                    </OverViewCard>
-                </Box>
-            </Container>
+                        {dictionary.overview}
+                        <Typography variant={'subtitle1'} fontWeight={400}>
+                            Effortlessly organize and prioritize your tasks to
+                            boost productivity and achieve your goals.
+                        </Typography>
+                    </Typography>
+                    <Box
+                        sx={{
+                            display: 'grid',
+                            gap: 2,
+                            gridTemplateColumns: '1fr 1fr 1fr',
+                            gridTemplateRows: '1fr 1fr 1fr',
+                            gridAutoFlow: 'dense',
+                            overflowY: 'auto',
+                            flexGrow: 1,
+                            maxHeight: '882px',
+                        }}
+                    >
+                        <BoardsList
+                            isLoading={isLoadingDashboard}
+                            boards={dashboardRes?.data?.boards}
+                        />
+                        <Events
+                            count={dashboardRes?.count}
+                            isLoading={isLoadingDashboard}
+                            boards={dashboardRes?.data?.boards}
+                        />
+                        <TaskCardList
+                            cards={dashboardRes?.data?.cards}
+                            isLoadingTasks={isLoadingDashboard}
+                        />
+
+                        {/*<time-card />*/}
+                        <GameCard />
+                        <Ads />
+                    </Box>
+                </Container>
+            </Stack>
 
             {isLoadingDashboard && (
                 <LinearProgress

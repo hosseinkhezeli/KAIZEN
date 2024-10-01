@@ -3,57 +3,85 @@ import { FC, ReactNode } from 'react';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Mui
-import { Divider, Stack, Typography, Box, BoxProps } from '@mui/material';
+import { Divider, Typography, Stack, StackProps } from '@mui/material';
+import CustomCard from '@components/custom-card/CustomCard';
+import Box from '@mui/material/Box';
+import { Theme } from '@mui/material/styles';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types
 type TOverViewCardProps = {
-    title: string;
+    title?: string;
     colSpan?: string;
-    containerProps?: BoxProps;
+    rowSpan?: string;
+    containerProps?: StackProps;
     children: ReactNode;
+    header?: ReactNode;
+    backgroundColor?: (theme: Theme) => string | string;
+    borderColor?: (theme: Theme) => string | string;
 };
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 const OverViewCard: FC<TOverViewCardProps> = ({
     title,
     children,
+    header,
     colSpan,
+    rowSpan,
     containerProps,
+    backgroundColor,
+    borderColor,
 }) => {
     return (
-        <>
-            <Stack
-                sx={{
-                    p: '16px 16px',
+        <CustomCard
+            outerBoxProps={{
+                sx: {
                     gridColumn: colSpan,
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    borderRadius: 3,
-                    gap: 2,
-                    backgroundColor: 'background.paper',
-                }}
+                    gridRow: rowSpan,
+                    height: '100%',
+                    background: borderColor,
+                },
+            }}
+            innerBoxProps={{
+                sx: {
+                    display: 'flex',
+                    flexDirection: 'column',
+                    p: '16px 16px',
+                    gap: 1.5,
+                    height: '100%',
+                    background: backgroundColor,
+                },
+            }}
+        >
+            {(title || header) && (
+                <>
+                    <Box
+                        display={'flex'}
+                        alignItems={'center'}
+                        justifyContent={'space-between'}
+                    >
+                        <Typography
+                            variant={'h6'}
+                            fontWeight={400}
+                            lineHeight={'100%'}
+                            fontSize={20}
+                        >
+                            {title}
+                        </Typography>
+                        {header}
+                    </Box>
+                    <Divider />
+                </>
+            )}
+            <Stack
+                gap={2}
+                overflow={'auto'}
+                height={'100%'}
+                {...containerProps}
             >
-                <Typography
-                    variant={'body1'}
-                    fontWeight={400}
-                    lineHeight={'100%'}
-                >
-                    {title}
-                </Typography>
-                <Divider
-                    sx={{ borderStyle: 'dotted', borderBottomWidth: '2px' }}
-                />
-                <Box
-                    display={'flex'}
-                    gap={2}
-                    flexWrap={{ xs: 'wrap', sm: 'nowrap' }}
-                    {...containerProps}
-                >
-                    {children}
-                </Box>
+                {children}
             </Stack>
-        </>
+        </CustomCard>
     );
 };
 

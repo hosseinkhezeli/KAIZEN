@@ -43,7 +43,7 @@ export const lightPalette: PaletteOptions = {
     contrastText: '#ffffff',
   },
   text: {
-    primary: '#1e2026',
+    primary: '#222328',
     secondary: '#F0F0F0',
     disabled: '#C6c6c6',
   },

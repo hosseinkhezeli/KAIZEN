@@ -10,12 +10,12 @@ export const MuiIconButton: Components<Theme>['MuiIconButton'] = {
     root: ({ theme, ownerState }) => ({
       backgroundColor:
         ownerState.color === 'default'
-          ? theme.palette.background.paper
+          ? theme.palette.grey[800]
           : getColorByOwnerProps(ownerState.color, theme),
       border: '1px solid',
       borderColor:
         ownerState.color === 'default'
-          ? theme.palette.text.disabled
+          ? theme.palette.divider
           : getColorByOwnerProps(ownerState.color, theme),
       padding: '4px',
       minWidth: 32,
@@ -29,6 +29,16 @@ export const MuiIconButton: Components<Theme>['MuiIconButton'] = {
         transform: 'translateY(0.5px)',
         boxShadow: `0 0px 0px 0px ${theme.palette.grey[800]}20`,
       },
+    }),
+    colorInherit: ({ theme, ownerState }) => ({
+      backgroundColor:
+        theme?.palette?.common?.[
+          theme.palette?.mode === 'light' ? 'black' : 'white'
+        ] + ' !important',
+      stroke:
+        theme?.palette?.common?.[
+          theme.palette?.mode === 'light' ? 'white' : 'black'
+        ] + ' !important',
     }),
   },
 };

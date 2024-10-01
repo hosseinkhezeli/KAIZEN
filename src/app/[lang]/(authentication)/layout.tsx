@@ -5,8 +5,11 @@ import { i18n, type Locale } from '@/i18n';
 // ___________________________________________________________________
 
 //@Components
-import { Stack } from '@mui/material';
+import { Container, Stack } from '@mui/material';
 import KaizenLogo from '@components/logo/KaizenLogo';
+import Marquee from '@components/custom-marquee/CustomMarquee';
+import FeatureCard from '@/app/[lang]/(authentication)/sign-in/components/FeatureCard';
+import FeatureMarquee from '@/app/[lang]/(authentication)/sign-in/components/FeatureMarquee';
 // ___________________________________________________________________
 
 //@Server Functions
@@ -35,7 +38,9 @@ export default function AuthLayout({
                     flexGrow={1}
                     sx={{
                         width: '100%',
+                        position: 'relative',
                         height: '100%',
+                        overflow: 'hidden',
                         flexDirection: {
                             xs: 'column',
                             sm: params.lang !== 'en' ? 'row' : 'row-reverse',
@@ -44,6 +49,7 @@ export default function AuthLayout({
                 >
                     <KaizenLogo />
                     {children}
+                    <FeatureMarquee />
                 </Stack>
             </Stack>
         </>

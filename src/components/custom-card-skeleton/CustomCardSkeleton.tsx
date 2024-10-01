@@ -6,7 +6,7 @@ import {
     Stack,
     StackProps,
 } from '@mui/material';
-import { pop } from '../../utils/animationKeyframes';
+import { pop } from '@styles/animationKeyframes';
 import { Divider as MuiDivider } from '@mui/material';
 import Box from '@mui/material/Box';
 

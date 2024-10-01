@@ -6,7 +6,7 @@ import { FormProvider, UseFormReturn, FieldValues } from 'react-hook-form';
 //@Components
 import FormFieldMapping from '@components/custom-form-generator/inputs';
 import Box from '@mui/material/Box';
-import { pop } from '@utils/animationKeyframes';
+import { pop } from '@styles/animationKeyframes';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Types

@@ -29,6 +29,16 @@ const SettingList: FC<TSettingList> = ({
     settingMenuList,
     onClickHandle,
 }) => {
+    const settingSections = [
+        {
+            title: 'Profile',
+            settingItems: settingMenuList.slice(0, 2),
+        },
+        {
+            title: 'Preferences',
+            settingItems: settingMenuList.slice(2),
+        },
+    ];
     return (
         <>
             <Typography variant={'h4'} fontWeight={500}>
@@ -36,109 +46,66 @@ const SettingList: FC<TSettingList> = ({
             </Typography>
             <Stack
                 sx={{
-                    height: '100%',
-                    borderRadius: '8px',
+                    flexGrow: 1,
+                    borderRadius: '24px',
                     border: '1px solid',
-                    padding: '8px 16px',
-                    borderColor: 'text.secondary',
+                    padding: '12px 16px',
+                    borderColor: 'grey.800',
+                    backgroundColor: ({ palette }) => palette.background.paper,
                 }}
-                bgcolor={({ palette }) => palette.background.paper}
             >
                 <List sx={{ gap: 1 }}>
-                    <Typography
-                        variant={'caption'}
-                        fontWeight={400}
-                        color={'grey.600'}
-                    >
-                        Profile
-                    </Typography>
-                    <Divider
-                        sx={{
-                            borderStyle: 'dotted',
-                            borderBottomWidth: '2px',
-                        }}
-                    />
-                    {settingMenuList.slice(0, 2).map((settingItem, idx) => (
-                        <ListItem key={idx}>
-                            <ListItemButton
-                                sx={{ gap: 1 }}
-                                onClick={() => onClickHandle(settingItem)}
-                                className={
-                                    selectedItem?.label === settingItem.label
-                                        ? 'selected'
-                                        : ''
-                                }
+                    {settingSections?.map((setting, idx) => (
+                        <>
+                            <Typography
+                                variant={'caption'}
+                                fontWeight={400}
+                                color={'text.disabled'}
                             >
-                                <ListItemIcon
-                                    sx={{ minWidth: '20px', width: '20px' }}
-                                    className={
-                                        selectedItem?.label ===
-                                        settingItem.label
-                                            ? 'selected'
-                                            : ''
-                                    }
-                                >
-                                    <settingItem.icon stroke={'inherit'} />
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={settingItem.label}
-                                    // className={
-                                    //     selectedItem?.label ===
-                                    //     settingItem.label
-                                    //         ? 'selected'
-                                    //         : ''
-                                    // }
-                                />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
-
-                    <Typography
-                        variant={'caption'}
-                        fontWeight={400}
-                        color={'grey.600'}
-                    >
-                        Preferences
-                    </Typography>
-                    <Divider
-                        sx={{
-                            borderStyle: 'dotted',
-                            borderBottomWidth: '2px',
-                        }}
-                    />
-                    {settingMenuList.slice(2, 4).map((settingItem, idx) => (
-                        <ListItem key={idx}>
-                            <ListItemButton
-                                sx={{ gap: 1 }}
-                                onClick={() => onClickHandle(settingItem)}
-                                className={
-                                    selectedItem?.label === settingItem.label
-                                        ? 'selected'
-                                        : ''
-                                }
-                            >
-                                <ListItemIcon
-                                    sx={{ minWidth: '20px', width: '20px' }}
-                                    className={
-                                        selectedItem?.label ===
-                                        settingItem.label
-                                            ? 'selected'
-                                            : ''
-                                    }
-                                >
-                                    <settingItem.icon stroke={'inherit'} />
-                                </ListItemIcon>
-                                <ListItemText
-                                    primary={settingItem.label}
-                                    // className={
-                                    //     selectedItem?.label ===
-                                    //     settingItem.label
-                                    //         ? 'selected'
-                                    //         : ''
-                                    // }
-                                />
-                            </ListItemButton>
-                        </ListItem>
+                                {setting.title}
+                            </Typography>
+                            <Divider
+                                sx={{
+                                    borderColor: 'grey.A400',
+                                }}
+                            />
+                            {setting?.settingItems?.map((settingItem, idx) => (
+                                <ListItem key={idx}>
+                                    <ListItemButton
+                                        sx={{ gap: 1 }}
+                                        onClick={() =>
+                                            onClickHandle(settingItem)
+                                        }
+                                        className={
+                                            selectedItem?.label ===
+                                            settingItem.label
+                                                ? 'selected'
+                                                : ''
+                                        }
+                                    >
+                                        <ListItemIcon
+                                            sx={{
+                                                minWidth: '20px',
+                                                width: '20px',
+                                            }}
+                                            className={
+                                                selectedItem?.label ===
+                                                settingItem.label
+                                                    ? 'selected'
+                                                    : ''
+                                            }
+                                        >
+                                            <settingItem.icon
+                                                stroke={'inherit'}
+                                            />
+                                        </ListItemIcon>
+                                        <ListItemText
+                                            primary={settingItem.label}
+                                        />
+                                    </ListItemButton>
+                                </ListItem>
+                            ))}
+                        </>
                     ))}
                 </List>
             </Stack>

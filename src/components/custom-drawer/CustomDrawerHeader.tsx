@@ -89,12 +89,9 @@ const CustomDrawerHeader = ({
                         <Avatar
                             variant={'rounded'}
                             sx={{
-                                width: { xs: 32, lg: 34 },
-                                height: { xs: 32, lg: 34 },
                                 backgroundColor: 'grey.800',
                                 border: '1px solid',
                                 borderColor: 'divider',
-                                stroke: ({ palette }) => palette.grey[400],
                             }}
                         >
                             <UserIcon
@@ -114,7 +111,8 @@ const CustomDrawerHeader = ({
                 >
                     {open ? (
                         <ArrowLeftIcon
-                            width={18}
+                            width={14}
+                            strokeWidth={3}
                             style={{
                                 transform:
                                     direction === 'ltr'
@@ -123,14 +121,14 @@ const CustomDrawerHeader = ({
                             }}
                         />
                     ) : (
-                        <EllipsisHorizontalIcon width={18} />
+                        <EllipsisHorizontalIcon width={14} strokeWidth={3} />
                     )}
                 </IconButton>
             </Box>
             {open ? (
                 <Button
                     color={'inherit'}
-                    startIcon={<PlusIcon width={18} />}
+                    startIcon={<PlusIcon width={14} strokeWidth={3} />}
                     fullWidth
                     sx={{ width: open ? '100%' : 'max-content' }}
                 >
@@ -144,7 +142,7 @@ const CustomDrawerHeader = ({
                     }}
                     onClick={() => onClick(!open)}
                 >
-                    <PlusIcon width={16} />
+                    <PlusIcon width={14} strokeWidth={3} />
                 </IconButton>
             )}
         </Stack>

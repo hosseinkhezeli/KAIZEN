@@ -1,7 +1,6 @@
 import { i18n } from '@/i18n';
 import en from '@i18n/dictionary/en';
 import fa from '@i18n/dictionary/fa';
-import { store } from '@states/store';
 
 // Type to get nested keys of an object as a string literal type
 export type NestedKeyOf<ObjectType extends object> = {
@@ -22,7 +21,7 @@ const dictionaries = {
 // Function to get the dictionary client based on the selected language
 export const getDictionaryClient = (lang?: TLanguages) => {
   // Get the current language from the global state
-  const langStore: TLanguages = store.getState().global.lang;
+  const langStore: TLanguages = 'en';
   const dictionary = lang ? dictionaries[lang] : dictionaries[langStore];
 
   // Function to retrieve translations

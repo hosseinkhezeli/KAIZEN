@@ -1,45 +1,55 @@
-import { createSlice, PayloadAction, Slice } from '@reduxjs/toolkit';
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
 import { IUser } from '@/types/user/user_types';
-import { useSelector } from 'react-redux';
-import { RootState } from '../store';
 
 // Define the UserState interface
 export interface UserState {
   token?: string; // Optional token
   user: IUser | null; // User can be IUser type or null
   isLoggedIn: boolean; // Boolean indicating login status
+  loading: boolean; // Loading state for initialization
+  setToken: (token?: string) => void; // Function to set the token
+  setUserInfo: (user: IUser | null) => void; // Function to set user info
+  setLogout: () => void; // Function to log out
+  initialize: () => void; // Function to set loading to false
 }
 
-// Initial state
-const initialState: UserState = {
-  token: undefined, // Initially no token
-  user: null, // Initially no user
-  isLoggedIn: false, // Initially not logged in
-};
+// Create the Zustand store
+const useUserStore = create<UserState>()(
+  devtools(
+    persist(
+      (set) => ({
+        token: undefined,
+        user: null,
+        isLoggedIn: false,
+        loading: true,
+        setToken: (token) => {
+          set((state) => ({
+            token: token,
+            isLoggedIn: Boolean(token),
+            loading: false,
+          }));
+        },
+        setUserInfo: (user) => {
+          set({ user });
+        },
+        setLogout: () => {
+          set({
+            user: null,
+            token: undefined,
+            isLoggedIn: false,
+            loading: false,
+          });
+        },
+        initialize: () => {
+          set({ loading: false });
+        },
+      }),
+      {
+        name: 'user-storage',
+      },
+    ),
+  ),
+);
 
-// Create the user slice with proper typing
-const UserSlice: Slice<UserState> = createSlice({
-  name: 'user',
-  initialState,
-  reducers: {
-    setToken: (state, action: PayloadAction<string | undefined>) => {
-      state.token = action.payload; // Set the token
-      state.isLoggedIn = Boolean(action.payload || state.token); // Automatically set isLoggedIn based on token presence
-    },
-    setUserInfo: (state, action: PayloadAction<IUser | null>) => {
-      state.user = action.payload; // Set user info
-    },
-    setLogout: (state) => {
-      state.user = null; // Clear user on logout
-      state.token = undefined; // Clear token on logout
-      state.isLoggedIn = false; // Set isLoggedIn to false on logout
-    },
-  },
-});
-
-// Custom hook to access user state
-export const useGetUser = () => useSelector((state: RootState) => state.user);
-
-// Export actions and reducer
-export const { setToken, setUserInfo, setLogout } = UserSlice.actions;
-export default UserSlice.reducer;
+export default useUserStore;

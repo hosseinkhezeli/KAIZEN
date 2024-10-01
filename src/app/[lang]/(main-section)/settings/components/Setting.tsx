@@ -5,46 +5,68 @@ import { Container, Stack } from '@mui/material';
 //@Hooks & Components
 import useSetting from '@/app/[lang]/(main-section)/settings/hooks/useSetting';
 import SettingList from '@/app/[lang]/(main-section)/settings/components/SettingList';
+import CustomCard from '@components/custom-card/CustomCard';
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export const Setting = () => {
-    const { settingMenuList, selectedItem, onClickHandle } = useSetting();
+    const { settingMenuList, selectedItem, onClickHandle, HEADER_HEIGHT } =
+        useSetting();
     return (
-        <Container
+        <Stack
             sx={{
-                gap: 2,
-                display: 'flex',
-                height: '100%',
-                borderRadius: '8px',
-                border: '1px solid',
-                padding: '8px 16px',
-                borderColor: ({ palette }) => palette.grey[300] + '33',
-                backgroundColor: ({ palette }) => palette.grey[800] + '55',
+                height: `calc(100vh - ${(HEADER_HEIGHT ?? 0) * 4}px)`,
+                borderTop: '1px solid',
+                borderColor: 'divider',
+                flexGrow: 1,
+                py: '2rem',
             }}
         >
-            <Stack sx={{ flexBasis: '30%', height: '100%' }}>
-                <SettingList
-                    settingMenuList={settingMenuList}
-                    selectedItem={selectedItem}
-                    onClickHandle={onClickHandle}
-                />
-            </Stack>
-            <Stack
-                flexGrow={1}
-                gap={2}
+            <Container
                 sx={{
-                    boxSizing: 'border-box',
-                    height: 'calc(100% - 53px)',
-                    marginTop: '52px',
-                    borderRadius: '8px',
+                    gap: 2,
+                    flexGrow: 1,
+                    display: 'flex',
                     border: '1px solid',
-                    padding: '8px 16px',
-                    borderColor: 'text.secondary',
+                    padding: '20px 16px',
+                    borderColor: ({ palette }) => palette.grey[700],
+                    borderRadius: '24px',
+                    backgroundColor: ({ palette }) => palette.background.paper,
                 }}
-                bgcolor={({ palette }) => palette.background.paper}
             >
-                {selectedItem?.component?.()}
-            </Stack>
-        </Container>
+                <CustomCard
+                    outerBoxProps={{
+                        sx: {
+                            display: 'flex',
+                            flexDirection: 'column',
+                            flexBasis: '30%',
+                            height: '100%',
+                        },
+                    }}
+                >
+                    <SettingList
+                        settingMenuList={settingMenuList}
+                        selectedItem={selectedItem}
+                        onClickHandle={onClickHandle}
+                    />
+                </CustomCard>
+
+                <Stack
+                    flexGrow={1}
+                    gap={2}
+                    sx={{
+                        boxSizing: 'border-box',
+                        height: `calc(100vh - ${HEADER_HEIGHT}px)`,
+                        marginTop: `${HEADER_HEIGHT}px`,
+                        borderRadius: '24px',
+                        border: '1px solid',
+                        padding: '24px 30px',
+                        borderColor: 'divider',
+                    }}
+                    bgcolor={({ palette }) => palette.background.paper}
+                >
+                    {selectedItem?.component?.()}
+                </Stack>
+            </Container>
+        </Stack>
     );
 };

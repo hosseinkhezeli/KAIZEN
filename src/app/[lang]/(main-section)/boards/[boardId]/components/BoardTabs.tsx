@@ -1,15 +1,18 @@
 'use client';
-import React, { ReactNode, SyntheticEvent, useState } from 'react';
+import React, { FC, ReactNode, SyntheticEvent, useState } from 'react';
 import Box from '@mui/material/Box';
-import { Button, Tab, Tabs } from '@mui/material';
-import { PlusIcon } from '@heroicons/react/24/outline';
+import { Stack, Tab, Tabs } from '@mui/material';
+import BoardOverview from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverview';
+import { Properties } from 'csstype';
+import BoardColumn from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardColumn';
 interface TabPanelProps {
     children?: ReactNode;
     index: number;
     value: number;
+    style?: Properties<string | number, string & {}>;
 }
 function CustomTabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
+    const { children, value, index, style, ...other } = props;
 
     return (
         <div
@@ -17,6 +20,7 @@ function CustomTabPanel(props: TabPanelProps) {
             hidden={value !== index}
             id={`board-tabpanel-${index}`}
             aria-labelledby={`board-tab-${index}`}
+            style={{ ...style, height: '100%', flexGrow: 1, width: '100%' }}
             {...other}
         >
             {value === index && children}
@@ -30,42 +34,44 @@ function a11yProps(index: number) {
         'aria-controls': `board-tabpanel-${index}`,
     };
 }
-const BoardTabs = () => {
+type TBoardTabs = {
+    boardInfo?: IBoard;
+};
+const BoardTabs: FC<TBoardTabs> = ({ boardInfo }) => {
     const [value, setValue] = useState(0);
-
+    const tabs = ['Overview', 'Kanban', 'Activities'];
     const handleChange = (event: SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
     return (
-        <Box sx={{ width: '100%' }}>
+        <Stack sx={{ width: '100%', height: '100%', flexGrow: 1 }}>
             <Box
                 display={'flex'}
                 justifyContent={'space-between'}
                 alignItems={'baseline'}
+                mb={'1rem'}
+                height={48}
             >
                 <Tabs
                     value={value}
                     onChange={handleChange}
                     aria-label='board tabs'
                 >
-                    <Tab label='Overview' {...a11yProps(0)} />
-                    <Tab label='Kanban' {...a11yProps(1)} />
-                    <Tab label='Activities' {...a11yProps(2)} />
+                    {tabs.map((tab, idx) => (
+                        <Tab key={tab + idx} label={tab} {...a11yProps(idx)} />
+                    ))}
                 </Tabs>
-                <Button endIcon={<PlusIcon width={'16px'} />} color={'info'}>
-                    Add Task
-                </Button>
             </Box>
             <CustomTabPanel value={value} index={0}>
-                Item One
+                <BoardOverview boardInfo={boardInfo} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                Item Two
+                <BoardColumn />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
                 Item Three
             </CustomTabPanel>
-        </Box>
+        </Stack>
     );
 };
 

@@ -84,7 +84,7 @@ const CustomBreadCrumbs: FC<ICustomBreadCrumbs> = memo(
 
         return (
             <Breadcrumbs
-                maxItems={2}
+                maxItems={4}
                 separator={
                     <ChevronRightIcon
                         style={{ fill: palette.text.disabled }}

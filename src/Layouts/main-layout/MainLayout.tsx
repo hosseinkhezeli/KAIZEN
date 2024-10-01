@@ -8,23 +8,18 @@ import { Container, Stack } from '@mui/material';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //@Component
-import KaizenAppBar from '@/Layouts/main-layout/components/KaizenAppBar';
+import KaizenAppBar from '@/layouts/main-layout/components/KaizenAppBar';
 import CustomBottomNavigation from '@components/custom-bottom-navigation/CustomBottomNavigation';
-import { Locale } from '@/i18n';
-import useHandleAuth from '@hooks/useHandleAuth';
 import KaizenBreadCrumbs from '@/app/[lang]/(main-section)/components/KaizenBreadCrumbs';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export default function MainLayout({
     children,
-    params,
     dictionary,
 }: {
     children: ReactNode;
-    params: { lang: Locale };
     dictionary: any;
 }) {
-    useHandleAuth({ lang: params.lang || 'en' });
     return (
         <Stack
             height='100%'
@@ -38,7 +33,7 @@ export default function MainLayout({
                 height={'100%'}
                 width={'auto'}
             >
-                <Container>
+                <Container id={'breadcrumbs'}>
                     <KaizenBreadCrumbs />
                 </Container>
                 {children}

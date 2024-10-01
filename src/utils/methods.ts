@@ -1,7 +1,6 @@
-import { ButtonOwnProps } from '@mui/material/Button';
-import { Theme, useTheme } from '@mui/material/styles';
-import { OverridableStringUnion } from '@mui/types';
-import { store } from '@states/store';
+import { Locale } from '@/i18n';
+import { Theme } from '@mui/material/styles';
+
 import { EMPTY_TEXT } from '@utils/consts';
 import { useEffect, useState } from 'react';
 
@@ -28,9 +27,8 @@ export const combineFullName = (
 
 // Handles user logout
 export const logoutUser = (): void => {
-  localStorage.clear();
-  store.dispatch({ type: 'logout' });
-  window.open('/login', '_self');
+  // localStorage.clear();
+  // window.open('/login', '_self');
 };
 
 // Downloads a file from a given link
@@ -174,4 +172,79 @@ export function rndPatternGenerator(theme: Theme): string {
     `linear-gradient(30deg, ${theme.palette.primary.main}20 12%, transparent 12.5%, transparent 87%, ${theme.palette.primary.main}20 87.5%, ${theme.palette.primary.main}20), linear-gradient(150deg, ${theme.palette.primary.main}20 12%, transparent 12.5%, transparent 87%, ${theme.palette.primary.main}20 87.5%, ${theme.palette.primary.main}20), linear-gradient(30deg, ${theme.palette.primary.main}20 12%, transparent 12.5%, transparent 87%, ${theme.palette.primary.main}20 87.5%, ${theme.palette.primary.main}20), linear-gradient(150deg, ${theme.palette.primary.main}20 12%, transparent 12.5%, transparent 87%, ${theme.palette.primary.main}20 87.5%, ${theme.palette.primary.main}20), linear-gradient(60deg, ${theme.palette.primary.main}30 25%, transparent 25.5%, transparent 75%, ${theme.palette.primary.main}30 75%, ${theme.palette.primary.main}30), linear-gradient(60deg, ${theme.palette.primary.main}30 25%, transparent 25.5%, transparent 75%, ${theme.palette.primary.main}30 75%, ${theme.palette.primary.main}30)`,
   ];
   return patterns[Math.floor(Math.random() * 3)];
+}
+
+export function formatDate(date?: Date) {
+  const newDate = new Date(date ?? Date.now());
+  const year = newDate?.getFullYear?.();
+  const month = String(newDate?.getMonth?.() ?? 0 + 1)?.padStart(2, '0'); // Months are zero-based
+  const day = String(newDate?.getDate?.())?.padStart(2, '0');
+  return date ? `${year}/${month}/${day}` : '';
+}
+
+export const getShortMonthName = (monthIndex: number, locale: Locale) => {
+  if (locale === 'fa') {
+    // Persian month names (shortened)
+    const persianMonths = [
+      'فروردین', // Farvardin (1)
+      'اردیبهشت', // Ordibehesht (2)
+      'خرداد', // Khordad (3)
+      'تیر', // Tir (4)
+      'مرداد', // Mordad (5)
+      'شهریور', // Shahrivar (6)
+      'مهر', // Mehr (7)
+      'آبان', // Aban (8)
+      'آذر', // Azar (9)
+      'دی', // Dey (10)
+      'بهمن', // Bahman (11)
+      'اسفند', // Esfand (12)
+    ];
+    return persianMonths[monthIndex];
+  } else if (locale === 'en') {
+    // Use the built-in toLocaleString for English month names
+    const date = new Date(2023, monthIndex); // Year is arbitrary
+    return date.toLocaleString('en', { month: 'short' });
+  } else {
+    throw new Error(`Unsupported locale: ${locale}`);
+  }
+};
+
+export const getRandomColorKey = () => {
+  const statuses = [
+    'primary',
+    'secondary',
+    'warning',
+    'error',
+    'info',
+    'success',
+  ];
+
+  // Generate a random index based on the length of the statuses array
+  const randomIndex = Math.floor(Math.random() * statuses.length);
+
+  // Return the randomly selected status
+  return statuses[randomIndex];
+};
+
+export function checkDate(inputDate: Date | string) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  if (typeof inputDate === 'string') {
+    inputDate = new Date(inputDate);
+    inputDate.setHours(0, 0, 0, 0);
+  } else return '-';
+
+  const threeDaysFromNow = new Date(today);
+  threeDaysFromNow.setDate(today.getDate() + 3);
+
+  if (inputDate < today) {
+    return 'Past';
+  } else if (inputDate.getTime() === today.getTime()) {
+    return 'Present.';
+  } else if (inputDate <= threeDaysFromNow) {
+    return 'NearFuture';
+  } else {
+    return 'Future';
+  }
 }

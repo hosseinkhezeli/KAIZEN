@@ -1,28 +1,28 @@
-/* ------------------------ NotoSans ------------------------ */
-@font-face {
-    font-family: 'Noto Sans';
-    src: url('../../public/fonts/Noto_Sans_Arabic/NotoSansArabic-VariableFont_wdth,wght.ttf');
-    font-display: fallback;
-}
+/*!* ------------------------ NotoSans ------------------------ *!*/
+/*@font-face {*/
+/*    font-family: 'Noto Sans';*/
+/*    src: url('../../public/fonts/Noto_Sans_Arabic/NotoSansArabic-VariableFont_wdth,wght.ttf');*/
+/*    font-display: fallback;*/
+/*}*/
 
-/* ------------------------ Libre_Franklin ------------------------ */
-@font-face {
-    font-family: 'Roboto Flex';
-    src: url('../../public/fonts/Libre_Franklin/RobotoFlex-VariableFont_GRAD,XOPQ,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf');
-    font-display: fallback;
-}
+/*!* ------------------------ Nunito ------------------------ *!*/
+/*@font-face {*/
+/*    font-family: 'Nunito';*/
+/*    src: url('../../public/fonts/Nunito/Nunito-VariableFont_wght.ttf');*/
+/*    font-display: fallback;*/
+/*}*/
 
-.en-font {
-    font-family:
-            Roboto Flex,
-        sans-serif;
-}
+/*.en-font {*/
+/*    font-family:*/
+/*            Nunito,*/
+/*        sans-serif;*/
+/*}*/
 
-.fa-font {
-    font-family:
-        Noto Sans,
-        sans-serif;
-}
+/*.fa-font {*/
+/*    font-family:*/
+/*        Noto Sans,*/
+/*        sans-serif;*/
+/*}*/
 html, body {
     min-height: 100vh;
     width: 100vw;
@@ -31,4 +31,25 @@ html, body {
 }
 .Mui-Loading {
     background-color: #121212;
+}
+/* Custom Scrollbar Styles for Chrome, Edge, and Safari */
+::-webkit-scrollbar {
+    width: 6px; /* Width of the scrollbar */
+    height: 6px; /* Width of the scrollbar */
+
+}
+
+::-webkit-scrollbar-track {
+    background: #ffffff11; /* Background of the scrollbar track */
+    border-radius: 9999px; /* Rounded corners for the thumb */
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: #7a7a7a; /* Color of the scrollbar thumb */
+    border-radius: 9999px; /* Rounded corners for the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the thumb on hover */
 }
