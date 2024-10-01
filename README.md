@@ -8,7 +8,6 @@ experience where you can organize your projects with ease, just like a dance!
 - **Kanban Style Boards**: Effortlessly move tasks between stages.
 - **Task Management**: Create, edit, and delete tasks with a simple click.
 - **Drag and Drop**: Rearrange tasks to fit your workflow.
-- **Real-Time Updates**: Stay in sync with your team as changes happen instantly.
 
 ## Technologies Used 🛠️
 
@@ -18,9 +17,11 @@ experience where you can organize your projects with ease, just like a dance!
 - **TypeScript**: Adds type safety to JavaScript.
 - **Axios**: Promise-based HTTP client for making API requests.
 - **TanStack Query**: Powerful data-fetching and state management.
-- **Redux Toolkit**: Simplifies state management.
+- **Zustand**: Simplifies state management.
 - **Material-UI (MUI)**: UI components for React.
 - **React Hook Form**: A library designed for managing form state and validation.
+- **Chart.js**: UI components for charts and visualized data.
+- **Husky and lint-staged**: A tool for Git hooks that runs scripts, including lint-staged, which lints staged files before commits.
 
 ## Installation Instructions 🚀
 
