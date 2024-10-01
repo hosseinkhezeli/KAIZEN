@@ -6,7 +6,6 @@ import useBoardOverview from '@/app/[lang]/(main-section)/boards/[boardId]/hooks
 import BoardOverviewMembers from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverviewMembers';
 import {
     ChartBarIcon,
-    ClipboardIcon,
     IdentificationIcon,
     InformationCircleIcon,
     PresentationChartLineIcon,
@@ -14,7 +13,6 @@ import {
 } from '@heroicons/react/24/outline';
 import Box from '@mui/material/Box';
 import ActivityChart from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardActivityChart';
-import { deepPurple } from '@mui/material/colors';
 import BoardLabelsSticker from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardLabels&Sticker';
 import { Theme } from '@mui/material/styles';
 import { BoardOverviewStatus } from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverviewStatus';
