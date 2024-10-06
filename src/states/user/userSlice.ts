@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
-import { IUser } from '@/types/user/user_types';
+import { IUser } from '@types/user/user_types';
 
 // Define the UserState interface
 export interface UserState {

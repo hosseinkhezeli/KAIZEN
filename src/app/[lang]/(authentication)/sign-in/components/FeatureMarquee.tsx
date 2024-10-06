@@ -39,7 +39,7 @@ export default FeatureMarquee;
 
 const textContent = [
     {
-        title: 'Use Kanban Flow',
+        title: 'Use Index Flow',
         description:
             'Visualize your tasks by moving them from "To Do" to "Done" for motivation.',
         Icon: RectangleGroupIcon,

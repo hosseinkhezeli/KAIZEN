@@ -5,7 +5,7 @@ experience where you can organize your projects with ease, just like a dance!
 
 ## Features 🌟
 
-- **Kanban Style Boards**: Effortlessly move tasks between stages.
+- **Index Style Boards**: Effortlessly move tasks between stages.
 - **Task Management**: Create, edit, and delete tasks with a simple click.
 - **Drag and Drop**: Rearrange tasks to fit your workflow.
 

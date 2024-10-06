@@ -4,7 +4,9 @@ import Box from '@mui/material/Box';
 import { Stack, Tab, Tabs } from '@mui/material';
 import BoardOverview from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverview';
 import { Properties } from 'csstype';
-import BoardColumn from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardColumn';
+import { Kanban } from '@/app/[lang]/(main-section)/boards/[boardId]/components/kanban';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import { useQueryParams } from '@hooks/useQueryParams';
 interface TabPanelProps {
     children?: ReactNode;
     index: number;
@@ -38,10 +40,11 @@ type TBoardTabs = {
     boardInfo?: IBoard;
 };
 const BoardTabs: FC<TBoardTabs> = ({ boardInfo }) => {
-    const [value, setValue] = useState(0);
     const tabs = ['Overview', 'Kanban', 'Activities'];
+    const { setQueryParam, searchParams } = useQueryParams();
+    const value = tabs.findIndex((tab) => tab === searchParams?.get('view'));
     const handleChange = (event: SyntheticEvent, newValue: number) => {
-        setValue(newValue);
+        setQueryParam('view', tabs[newValue]);
     };
     return (
         <Stack sx={{ width: '100%', height: '100%', flexGrow: 1 }}>
@@ -66,7 +69,7 @@ const BoardTabs: FC<TBoardTabs> = ({ boardInfo }) => {
                 <BoardOverview boardInfo={boardInfo} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={1}>
-                <BoardColumn />
+                <Kanban columns={boardInfo?.columns} />
             </CustomTabPanel>
             <CustomTabPanel value={value} index={2}>
                 Item Three
