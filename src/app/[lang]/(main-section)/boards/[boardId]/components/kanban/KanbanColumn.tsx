@@ -19,6 +19,7 @@ export function KanbanColumn({ column }: TKanbanColumn) {
                 minWidth: '264px',
                 height: '100%',
                 gap: 2,
+                order: column?.position,
             }}
         >
             <Typography>{column?.title}</Typography>
@@ -28,7 +29,8 @@ export function KanbanColumn({ column }: TKanbanColumn) {
                     height: '100%',
                     border: '1px solid',
                     borderRadius: 6,
-                    p: 4,
+                    p: 1,
+                    gap: 1,
                     transition: 'ease 0.2s all',
                     ...style,
                 }}

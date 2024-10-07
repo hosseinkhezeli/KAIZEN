@@ -2,11 +2,10 @@
 import React, { FC, ReactNode, SyntheticEvent, useState } from 'react';
 import Box from '@mui/material/Box';
 import { Stack, Tab, Tabs } from '@mui/material';
-import BoardOverview from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverview';
 import { Properties } from 'csstype';
 import { Kanban } from '@/app/[lang]/(main-section)/boards/[boardId]/components/kanban';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import { useQueryParams } from '@hooks/useQueryParams';
+import BoardOverview from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview';
 interface TabPanelProps {
     children?: ReactNode;
     index: number;

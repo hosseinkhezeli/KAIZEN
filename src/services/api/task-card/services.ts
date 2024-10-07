@@ -3,6 +3,6 @@ import { routes } from '@/services/api/task-card/routes';
 
 export const updateTaskCardColumn = (
   body: TMoveTaskCardBody,
-): Promise<IGetDashboardRes> => {
+): Promise<IBoardColumn[]> => {
   return http.put(routes.moveTaskCard, body);
 };
