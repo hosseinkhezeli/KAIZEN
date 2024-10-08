@@ -1,27 +1,36 @@
-import React from 'react';
-import { Avatar, AvatarGroup, Stack, Tooltip, Typography } from '@mui/material';
+'use client';
+//@3rd Party
+import Image from 'next/image';
 import { useDraggable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
-import {
-    DocumentTextIcon,
-    UserIcon,
-    WindowIcon,
-} from '@heroicons/react/24/outline';
-import { PlaceholderAvatars } from '@components/avatar-placeholder/AvatarPlaceHolder';
-import Image from 'next/image';
-import { Property } from 'csstype';
-import { truncateString } from '@utils/methods';
+// ___________________________________________________________________
 
+//@Mui
+import { Stack, styled, Tooltip, Typography } from '@mui/material';
+// ___________________________________________________________________
+
+//@Components & Hooks
+import { truncateString } from '@utils/methods';
+// ___________________________________________________________________
+
+//@Assets
+import { WindowIcon } from '@heroicons/react/24/outline';
+// ___________________________________________________________________
+
+//@Types
+import { KaizenAvatarGroup } from '@components/avatar-group/AvatarGroup';
 type TKanbanTaskCard = {
     card: ICard;
     columnId: string | undefined;
 };
+// ___________________________________________________________________
 
 export function KanbanTaskCard({ card, columnId }: TKanbanTaskCard) {
     const { attributes, listeners, setNodeRef, transform } = useDraggable({
         id: card?.id,
         data: { id: card?.id, columnId: columnId },
     });
+
     const style = transform
         ? {
               transform: CSS.Translate.toString(transform),
@@ -29,103 +38,81 @@ export function KanbanTaskCard({ card, columnId }: TKanbanTaskCard) {
         : undefined;
 
     return (
-        <Stack
+        <CardUnderlay
             ref={setNodeRef}
             style={style}
             {...listeners}
             {...attributes}
-            sx={{
-                borderRadius: '24px',
-                background: ({ palette }) =>
-                    `linear-gradient(135deg, ${palette.grey[600]},70%, ${palette.secondary.light})`,
-            }}
         >
-            <Stack
-                sx={{
-                    backgroundColor: 'background.default',
-                    p: 1,
-                    m: '1px',
-                    borderRadius: '24px',
-                    gap: 1,
-                }}
-            >
-                <Typography
-                    variant={'caption'}
-                    sx={{
-                        textTransform: 'uppercase',
-                        color: 'text.disabled',
-                        fontSize: '10px !important',
-                    }}
-                >
-                    {card?.id?.slice(0, 4)}
-                </Typography>
+            <CardContainer>
+                <CardId>{card?.id?.slice(0, 4)}</CardId>
                 <Stack>
-                    <Typography
-                        sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
-                    >
+                    <CardTitle>
                         <WindowIcon width={20} height={20} />
                         {card.title}
-                    </Typography>
+                    </CardTitle>
                     <Tooltip title={card?.description || ''}>
-                        <Typography
-                            variant='caption'
-                            sx={{
-                                cursor: 'help',
-                                display: 'flex',
-                                alignItems: 'start',
-                                gap: 1,
-                                color: 'text.disabled',
-                                fontSize: 10,
-                            }}
-                        >
-                            <DocumentTextIcon
-                                width={32}
-                                height={32}
-                                style={{ visibility: 'hidden' }}
-                            />
+                        <CardDescription>
                             {truncateString(card?.description || '', 70)}
-                        </Typography>
+                        </CardDescription>
                     </Tooltip>
                 </Stack>
-                <AvatarGroup
-                    max={4}
-                    spacing='small'
-                    sx={{ '.MuiAvatar-root': { border: 'none' } }}
-                >
-                    {card?.assignedTo?.length ? (
-                        card?.assignedTo?.map(({ member }, idx) => (
-                            <Avatar
-                                key={member.userId}
-                                alt={member.fullName}
-                                src={member.profilePictureUrl}
-                                sx={{ filter: `blur(${idx / 3}px)` }}
-                            >
-                                <UserIcon
-                                    width={20}
-                                    height={20}
-                                    stroke='inherit'
-                                />
-                            </Avatar>
-                        ))
-                    ) : (
-                        <PlaceholderAvatars />
-                    )}
-                </AvatarGroup>
-
-                <Image
-                    src={card?.coverImage || ' '}
-                    alt='Board Background'
-                    width={300}
-                    height={90}
-                    style={{
-                        width: '100%',
-                        objectFit: 'cover' as Property.ObjectFit,
-                        borderRadius: '24px',
-                        border: '1px solid',
-                        borderColor: 'inherit',
-                    }}
+                <KaizenAvatarGroup
+                    members={card?.assignedTo?.map(({ member }) => member)}
                 />
-            </Stack>
-        </Stack>
+                {card?.coverImage && (
+                    <CardCoverImage
+                        src={card?.coverImage || ' '}
+                        alt='Card Background'
+                        width={300}
+                        height={90}
+                    />
+                )}
+            </CardContainer>
+        </CardUnderlay>
     );
 }
+const CardUnderlay = styled(Stack)(({ theme }) => ({
+    borderRadius: 24,
+    maxWidth: 248,
+    width: '100%',
+    background: `linear-gradient(135deg, ${theme?.palette.grey[600]},70%, ${theme?.palette.secondary.light})`,
+}));
+
+const CardContainer = styled(Stack)(({ theme }) => ({
+    backgroundColor: theme.palette.background.paper,
+    padding: '6px 8px',
+    margin: 1,
+    borderRadius: 24,
+    gap: 4,
+}));
+
+const CardId = styled(Typography)(({ theme }) => ({
+    ...theme.typography['caption'],
+    textTransform: 'uppercase',
+    color: theme.palette.text.disabled,
+    fontSize: 10,
+}));
+
+const CardTitle = styled(Typography)(() => ({
+    display: 'flex',
+    alignItems: 'center',
+    gap: 4,
+}));
+const CardDescription = styled(Typography)(({ theme }) => ({
+    ...theme.typography['caption'],
+    cursor: 'help',
+    display: 'flex',
+    alignItems: 'start',
+    gap: 4,
+    color: theme.palette.text.disabled,
+    fontSize: 10,
+}));
+
+const CardCoverImage = styled(Image)(() => ({
+    width: '100%',
+    objectFit: 'cover',
+    borderRadius: 24,
+    border: '1px solid',
+    borderColor: 'inherit',
+}));

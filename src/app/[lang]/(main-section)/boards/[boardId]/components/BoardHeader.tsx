@@ -93,9 +93,9 @@ const MemberSection: FC<{ members?: IBoardMember[] }> = ({ members }) => (
             {members?.length ? (
                 members.map((member, idx) => (
                     <Avatar
-                        key={member.id}
-                        alt={member.fullName}
-                        src={member.profilePictureUrl}
+                        key={member?.id}
+                        alt={member?.fullName}
+                        src={member?.profilePictureUrl}
                         sx={{ filter: `blur(${idx / 3}px)` }}
                     >
                         <UserIcon width={20} height={20} stroke='inherit' />

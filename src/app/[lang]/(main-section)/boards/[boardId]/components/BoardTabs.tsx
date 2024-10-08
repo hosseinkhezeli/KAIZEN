@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, ReactNode, SyntheticEvent, useState } from 'react';
+import React, { FC, ReactNode, SyntheticEvent } from 'react';
 import Box from '@mui/material/Box';
 import { Stack, Tab, Tabs } from '@mui/material';
 import { Properties } from 'csstype';

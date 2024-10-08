@@ -84,11 +84,7 @@ interface ICardTags {
 
 interface ICardAssignee {
   memberId: string;
-  member: {
-    profilePictureUrl: string;
-    fullName: string;
-    userId: string;
-  };
+  member: IBoardMember;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
