@@ -50,7 +50,7 @@ interface ICard {
   comments?: ICardComment[];
   status?: ICardStatus; // Represents the current status in JIRA context
   priority?: string; // Priority level in JIRA context
-  assignedTo?: string[]; // Users assigned to the card
+  assignedTo?: ICardAssignee[]; // Users assigned to the card
   coverImage?: string; // URL for card cover image
   tags?: ICardTags[];
   parentId?: string; // ID of the parent task if this is a sub-task
@@ -82,6 +82,10 @@ interface ICardTags {
   color?: string;
 }
 
+interface ICardAssignee {
+  memberId: string;
+  member: IBoardMember;
+}
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Status Types

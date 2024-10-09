@@ -8,19 +8,23 @@ interface MarqueeProps {
     speed?: number;
 }
 
-const CustomMarquee: FC<MarqueeProps> = ({ components, speed = 50 }) => {
+const CustomMarquee: FC<MarqueeProps> = ({ components, speed = 100 }) => {
     return (
         <>
-            <Marquee style={{ width: '100%' }} speed={100}>
+            <Marquee style={{ width: '100%' }} speed={speed}>
                 <Box
-                    width={'100%'}
+                    width={'max-content'}
                     display={'flex'}
                     justifyContent={'space-between'}
-                    mx={'50vw'}
-                    gap={10}
                 >
                     {components?.map((component, idx) => (
-                        <Box key={idx}>{component}</Box>
+                        <Box
+                            key={idx}
+                            width={'max-content'}
+                            sx={{ opacity: 0.5 }}
+                        >
+                            {component}
+                        </Box>
                     ))}
                 </Box>
             </Marquee>

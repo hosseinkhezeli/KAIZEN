@@ -12,7 +12,7 @@ import {
     TagIcon,
 } from '@heroicons/react/24/outline';
 import Box from '@mui/material/Box';
-import ActivityChart from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardActivityChart';
+import { ActivityChart } from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardActivityChart';
 import BoardLabelsSticker from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardLabels&Sticker';
 import { Theme } from '@mui/material/styles';
 import { BoardOverviewStatus } from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverviewStatus';

@@ -7,7 +7,7 @@ import { useParams, usePathname, useRouter } from 'next/navigation';
 import { enqueueSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ___________________________________________________________________
 
 //@Hooks & Components
 import {
@@ -15,14 +15,13 @@ import {
   useCreateSignUp,
   useGetOtpCode,
 } from '@/services/api/auth/hooks';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ___________________________________________________________________
 
 //@Types
 import { InputProps } from '@components/custom-form-generator/inputs/components/type';
 import { TAuth } from '@i18n/dictionary/types/auth';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ___________________________________________________________________
 
-// Define the types for the form data to enhance type safety
 interface OtpFormData {
   phoneNumber: string | undefined;
 }
@@ -31,9 +30,7 @@ interface SignInFormData extends OtpFormData {
   otp: string | undefined;
 }
 
-// Custom hook for handling the sign-in process using OTP
 const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
-  // Initialize forms with react-hook-form
   const otpForm = useForm<OtpFormData>({
     defaultValues: { phoneNumber: undefined },
   });
@@ -41,19 +38,16 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     defaultValues: { phoneNumber: undefined, otp: undefined },
   });
 
-  // API mutation hooks
   const { mutate: getOtpCode } = useGetOtpCode();
   const { mutate: signUpUser } = useCreateSignUp();
   const { mutate: signInUser } = useCreateSignIn();
 
-  // State to manage the current step in the sign-in process
   const [step, setStep] = useState<number>(0);
-  const { setToken, setUserInfo } = useUserStore();
+  const { setToken, setUserInfo, setLogout } = useUserStore();
   const { lang } = useParams<{ lang: Locale }>();
   const { push: navigateTo } = useRouter();
   const pathname = usePathname();
 
-  // Input configuration for OTP and Sign In forms
   const inputListOtp: InputProps[] = [
     {
       name: 'phoneNumber',
@@ -73,7 +67,6 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     },
   ];
 
-  // Handles user sign-up and triggers OTP retrieval
   const onSubmitSignUp = (data: TSignUpDto) => {
     signUpUser(data, {
       onSuccess: () => {
@@ -86,7 +79,6 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     });
   };
 
-  // Handles user sign-in
   const onSubmitSignIn = (data: TSignInDto) => {
     signInUser(data, {
       onSuccess: (response) => {
@@ -111,7 +103,6 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     });
   };
 
-  // Handles OTP retrieval and manages the sign-in step
   const onSubmitOtp = (data: { phoneNumber: string }) => {
     getOtpCode(
       { phoneNumber: data.phoneNumber },
@@ -123,13 +114,12 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
           showSnackbar('Code successfully sent', 'success');
         },
         onError: () => {
-          onSubmitSignUp({ phoneNumber: data.phoneNumber }); // Attempt sign-up if OTP retrieval fails
+          onSubmitSignUp({ phoneNumber: data.phoneNumber });
         },
       },
     );
   };
 
-  // Utility function to show notifications
   const showSnackbar = (
     message: string,
     variant: 'success' | 'error',
@@ -141,7 +131,7 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     enqueueSnackbar({ variant, message, anchorOrigin });
   };
   useEffect(() => {
-    // if (pathname.includes('sign-in')) setLogout();
+    if (pathname.includes('sign-in')) setLogout();
   }, []);
 
   return {

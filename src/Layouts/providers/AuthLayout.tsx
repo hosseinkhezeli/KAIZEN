@@ -14,18 +14,15 @@ const AuthLayout = ({
 }) => {
     const { token, isLoggedIn, loading } = useUserStore();
     const router = useRouter();
-
     useEffect(() => {
-        if (!loading && (!isLoggedIn || !token)) {
-            router.push(`${lang}/sign-in`);
+        if (!loading && !isLoggedIn && !token) {
+            router.push(`/${lang}/sign-in`);
         }
-    }, [isLoggedIn, token, router]);
+    }, [isLoggedIn, token, loading]);
 
-    if (!isLoggedIn || !token || loading) {
+    if (loading) {
         return <CustomLoadingIndicator />;
     }
-
-    // Render children if authenticated
     return <>{children}</>;
 };
 

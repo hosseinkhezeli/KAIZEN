@@ -5,11 +5,9 @@ import { i18n, type Locale } from '@/i18n';
 // ___________________________________________________________________
 
 //@Components
-import { Container, Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import KaizenLogo from '@components/logo/KaizenLogo';
-import Marquee from '@components/custom-marquee/CustomMarquee';
-import FeatureCard from '@/app/[lang]/(authentication)/sign-in/components/FeatureCard';
-import FeatureMarquee from '@/app/[lang]/(authentication)/sign-in/components/FeatureMarquee';
+import KaizenMarquee from '@/app/[lang]/(authentication)/sign-in/components/KaizenMarquee';
 // ___________________________________________________________________
 
 //@Server Functions
@@ -32,25 +30,23 @@ export default function AuthLayout({
 }) {
     return (
         <>
-            <Stack height='100%' width='100%'>
-                <Stack
-                    component={'main'}
-                    flexGrow={1}
-                    sx={{
-                        width: '100%',
-                        position: 'relative',
-                        height: '100%',
-                        overflow: 'hidden',
-                        flexDirection: {
-                            xs: 'column',
-                            sm: params.lang !== 'en' ? 'row' : 'row-reverse',
-                        },
-                    }}
-                >
-                    <KaizenLogo />
-                    {children}
-                    <FeatureMarquee />
-                </Stack>
+            <Stack
+                component={'main'}
+                flexGrow={1}
+                sx={{
+                    width: '100%',
+                    position: 'relative',
+                    height: '100%',
+                    overflow: 'hidden',
+                    flexDirection: {
+                        xs: 'column',
+                        sm: params.lang !== 'en' ? 'row' : 'row-reverse',
+                    },
+                }}
+            >
+                <KaizenLogo />
+                {children}
+                <KaizenMarquee />
             </Stack>
         </>
     );

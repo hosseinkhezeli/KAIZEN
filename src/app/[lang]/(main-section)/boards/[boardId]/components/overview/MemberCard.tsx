@@ -37,11 +37,11 @@ const MemberCard: FC<TMemberCardProps> = ({ member, idx }) => {
             }}
         >
             <Box display={'flex'} alignItems={'center'} gap={1}>
-                <Avatar src={member.profilePictureUrl}>
+                <Avatar src={member?.profilePictureUrl}>
                     <UserIcon width={20} height={20} stroke={'inherit'} />
                 </Avatar>
                 <Typography variant={'caption'} sx={{ cursor: 'pointer' }}>
-                    {member.fullName || 'Unknown member'}
+                    {member?.fullName || 'Unknown member'}
                 </Typography>
             </Box>
             <IconButton className={'hidden-button'} sx={{}}>

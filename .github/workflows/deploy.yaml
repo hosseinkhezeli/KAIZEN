@@ -1,0 +1,25 @@
+name: CI/CD for Stage Branch
+
+on:
+  push:
+    branches:
+      - stage
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: SSH Connection
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: 188.121.113.59
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/ubuntu/Kaizen
+            git pull
+            npm run build

@@ -1,12 +1,13 @@
 'use client';
 
+//@Components & Hooks
 import useBoard from '@/app/[lang]/(main-section)/boards/[boardId]/hooks/useBoard';
 import { Container, LinearProgress } from '@mui/material';
-import React from 'react';
 import BoardHeader from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardHeader';
 import BoardTabs from '@/app/[lang]/(main-section)/boards/[boardId]/components/BoardTabs';
+// ___________________________________________________________________
 
-const Board = ({ boardId }: { boardId: string }) => {
+export function Board({ boardId }: { boardId: string }) {
     const { isLoadingBoard, boardTitle, members, boardRes, bgImageUrl } =
         useBoard(boardId);
     return (
@@ -37,6 +38,4 @@ const Board = ({ boardId }: { boardId: string }) => {
             )}
         </Container>
     );
-};
-
-export default Board;
+}

@@ -1,79 +1,51 @@
-// components/ContributionChart.js
-import React, { useState } from 'react';
-import { Box, Button, Grid2 as Grid, Stack, Typography } from '@mui/material';
+'use client';
+//@Mui
+import {
+    Box,
+    Button,
+    Grid2 as Grid,
+    Stack,
+    styled,
+    Typography,
+} from '@mui/material';
+// ___________________________________________________________________
+
+//@Hooks
 import { getShortMonthName } from '@utils/methods';
+import { useActivityChart } from '@/app/[lang]/(main-section)/boards/[boardId]/hooks/useActivityChart';
+// ___________________________________________________________________
 
-const ActivityChart = ({ data }: { data: IBoardActivityLog[] | undefined }) => {
-    const [year, setYear] = useState(2023);
-
-    const getDaysInYear = (year: number) => {
-        const days = [];
-        const startDate = new Date(year, 0, 1);
-        const endDate = new Date(year, 11, 31);
-
-        let currentDate = startDate;
-        while (currentDate <= endDate) {
-            days.push(new Date(currentDate));
-            currentDate.setDate(currentDate.getDate() + 1); // Move to the next day
-        }
-        return days;
-    };
-
-    const contributionsByDay: any = {};
-    data?.forEach(({ timestamp }) => {
-        const date = new Date(timestamp).toISOString().split('T')[0];
-        contributionsByDay[date] = (contributionsByDay[date] || 0) + 1; // Count contributions by day
-    });
-
-    const daysInYear = getDaysInYear(year);
-    const months = Array.from({ length: 12 }, (_, i) =>
-        new Date(new Date(Date.now()).setMonth(i + 1)).getMonth(),
-    );
+export function ActivityChart({
+    data,
+}: {
+    data: IBoardActivityLog[] | undefined;
+}) {
+    const { months, daysInYear, contributionsByDay, setYear, year } =
+        useActivityChart({
+            data,
+        });
     return (
-        <Stack flexDirection={'row'} gap={2}>
-            <Box
-                sx={{
-                    overflowX: 'auto',
-                    whiteSpace: 'nowrap',
-                    padding: '8px',
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    borderRadius: 2,
-                    pb: '8px',
-                }}
-            >
-                <Box
-                    display={'flex'}
-                    width={'200%'}
-                    justifyContent={'space-between'}
-                    p={'8px'}
-                >
+        <Container>
+            <ChartContainer>
+                <MonthsContainer>
                     {months?.map((month, idx) => (
                         <Typography key={idx} variant={'caption'}>
                             {getShortMonthName(month, 'en')}
                         </Typography>
                     ))}
-                </Box>
-                <Grid
-                    container
-                    spacing={0.7}
-                    sx={{
-                        minWidth: '200%',
-                    }}
-                >
+                </MonthsContainer>
+                <Chart container spacing={0.7}>
                     {daysInYear.map((day) => {
                         const dateString = day.toISOString().split('T')[0];
                         const contributionCount =
                             contributionsByDay[dateString] || 0;
-
-                        // Determine the color based on the number of contributions
                         let backgroundColor;
                         if (contributionCount > 1) {
-                            backgroundColor = 'darkgreen'; // More than one contribution
+                            backgroundColor = 'success.2'; // More than one contribution
                         } else if (contributionCount === 1) {
-                            backgroundColor = 'green'; // One contribution
+                            backgroundColor = 'success.main'; // One contribution
                         } else {
-                            backgroundColor = 'lightgray'; // No contributions
+                            backgroundColor = 'grey.200'; // No contributions
                         }
 
                         return (
@@ -81,23 +53,13 @@ const ActivityChart = ({ data }: { data: IBoardActivityLog[] | undefined }) => {
                                 key={dateString}
                                 sx={{ display: 'inline-block' }}
                             >
-                                <Box
-                                    sx={{
-                                        width: '10px',
-                                        height: '10px', // Increased height for better visibility
-                                        backgroundColor: backgroundColor,
-                                        borderRadius: '2px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                    }}
-                                />
+                                <ChartDay bgcolor={backgroundColor} />
                             </Grid>
                         );
                     })}
-                </Grid>
-            </Box>
-            <Stack gap={1}>
+                </Chart>
+            </ChartContainer>
+            <YearSelectorContainer>
                 {[2024, 2023].map((currYear, idx) => (
                     <Button
                         key={idx}
@@ -110,9 +72,43 @@ const ActivityChart = ({ data }: { data: IBoardActivityLog[] | undefined }) => {
                         {currYear}
                     </Button>
                 ))}
-            </Stack>
-        </Stack>
+            </YearSelectorContainer>
+        </Container>
     );
-};
+}
+const Container = styled(Stack)(() => ({
+    flexDirection: 'row',
+    gap: 8,
+}));
 
-export default ActivityChart;
+const ChartContainer = styled(Box)(({ theme }) => ({
+    overflowX: 'auto',
+    whiteSpace: 'nowrap',
+    padding: 8,
+    border: '1px solid',
+    borderColor: theme.palette.divider,
+    borderRadius: 8,
+}));
+const MonthsContainer = styled(Box)(({ theme }) => ({
+    display: 'flex',
+    width: '200%',
+    justifyContent: 'space-between',
+    padding: 8,
+}));
+
+const Chart = styled(Grid)(() => ({
+    minWidth: '200%',
+}));
+
+const ChartDay = styled(Box)(() => ({
+    width: 10,
+    height: 10,
+    borderRadius: 2,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+}));
+
+const YearSelectorContainer = styled(Stack)(() => ({
+    gap: 4,
+}));
