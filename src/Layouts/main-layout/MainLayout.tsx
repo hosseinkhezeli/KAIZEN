@@ -1,17 +1,17 @@
 'use client';
 //@3rd Party
 import { ReactNode } from 'react';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//________________________________________________________
 
 //@Mui
 import { Container, Stack } from '@mui/material';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//________________________________________________________
 
 //@Component
 import KaizenAppBar from '@/layouts/main-layout/components/KaizenAppBar';
 import CustomBottomNavigation from '@components/custom-bottom-navigation/CustomBottomNavigation';
 import KaizenBreadCrumbs from '@/app/[lang]/(main-section)/components/KaizenBreadCrumbs';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//________________________________________________________
 
 export default function MainLayout({
     children,

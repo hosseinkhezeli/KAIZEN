@@ -3,23 +3,26 @@
 import { FC, ReactNode, useEffect } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SnackbarProvider } from 'notistack';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//________________________________________________________
+
+//@Mui
+import { useTheme } from '@mui/material/styles';
+//________________________________________________________
 
 //Components
 import ThemeProvider from '@styles/theme/ThemeProvider';
 import { AppProgressBar as ProgressBar } from 'next-nprogress-bar';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import useUserStore from '@states/user/userSlice';
+import AuthLayout from '@/layouts/providers/AuthLayout';
+//________________________________________________________
 
 //@Types
 import { Locale } from '@/i18n';
-import AuthLayout from '@/layouts/providers/AuthLayout';
-import useUserStore from '@states/user/userSlice';
-import { useTheme } from '@mui/material/styles';
 export interface IProvidersLayout {
     children: ReactNode;
     lang: Locale;
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//________________________________________________________
 
 const ProvidersLayout: FC<IProvidersLayout> = ({ children, lang }) => {
     const queryClient = new QueryClient();
