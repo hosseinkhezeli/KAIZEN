@@ -9,8 +9,8 @@ import '@styles/globals.css';
 // ___________________________________________________________________
 
 //@Components
-import ProvidersLayout from '@/layouts/providers/ProvidersLayout';
 import localFont from 'next/font/local';
+import ProvidersLayout from '@/layouts/providers/ProvidersLayout';
 
 // ___________________________________________________________________
 

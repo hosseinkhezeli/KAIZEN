@@ -1,9 +1,20 @@
 'use client';
-import { Locale } from '@/i18n';
-import useUserStore from '@states/user/userSlice';
+//@3rd Party
 import { useRouter } from 'next/navigation';
 import { ReactNode, useEffect } from 'react';
+//________________________________________________________
+
+//@Hooks
+import useUserStore from '@states/user/userSlice';
+//________________________________________________________
+
+//@Components
 import CustomLoadingIndicator from '@components/custom-loading/CustomLoadingIndicator';
+//________________________________________________________
+
+//@Types
+import { Locale } from '@/i18n';
+//________________________________________________________
 
 const AuthLayout = ({
     lang,

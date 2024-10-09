@@ -22,4 +22,6 @@ jobs:
           script: |
             cd /home/ubuntu/Kaizen
             git pull
+            npm i
             npm run build
+            npm start
