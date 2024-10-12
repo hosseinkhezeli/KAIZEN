@@ -1,79 +1,55 @@
+'use client';
+//@3rd Party
 import React, { FC } from 'react';
-import { Stack, Typography } from '@mui/material';
+//_______________________________________________________________
 
-import { SwatchIcon, TagIcon } from '@heroicons/react/24/outline';
+//@MUI
+import { Box, styled } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+//_______________________________________________________________
 
+//@Assets
+import { SwatchIcon, TagIcon } from '@heroicons/react/24/outline';
+import { Label, Sticker } from '@/components/Tags';
+//_______________________________________________________________
+
+//@Types
 type TBoardLabelsStickerProps = {
     stickers: string[] | undefined;
     labels: string[] | undefined;
 };
+//_______________________________________________________________
+
 const BoardLabelsSticker: FC<TBoardLabelsStickerProps> = ({
     stickers,
     labels,
 }) => {
     const { palette } = useTheme();
-    function gradientLight(color?: string | undefined) {
-        switch (color) {
-            case 'labels':
-                return `linear-gradient(to bottom, ${'#FDCC80'}, ${'#E83509'})`;
-            default:
-                return `linear-gradient(to bottom, ${palette.grey[400]},70%, ${palette.grey[600]})`;
-        }
-    }
-
     return (
-        <Stack
-            flexDirection={'row'}
-            gap={1}
-            flexWrap={'wrap'}
-            sx={{ userSelect: 'none', cursor: 'default' }}
-        >
+        <Container>
             {stickers?.map((sticker, idx) => (
-                <Typography
-                    key={idx}
-                    variant={'caption'}
-                    color={palette.grey[900]}
-                    fontWeight={700}
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        p: '4px 8px',
-                        borderRadius: '12px',
-                        width: 'max-content',
-                        height: 'max-content',
-                        background: gradientLight(),
-                        boxShadow: `inset 0 -5px 4px -2px ${palette.grey[700]}, inset 0 5px 4px -2px ${palette.grey[50]} `,
-                    }}
-                >
+                <Sticker key={idx}>
                     <TagIcon width={20} height={20} color={palette.grey[900]} />
                     {sticker}
-                </Typography>
+                </Sticker>
             ))}
 
             {labels?.map((label, idx) => (
-                <Typography
-                    key={idx}
-                    fontWeight={700}
-                    variant={'caption'}
-                    color={'#5F0000'}
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        p: '4px 8px',
-                        borderRadius: '12px',
-                        width: 'max-content',
-                        height: 'max-content',
-                        background: gradientLight('labels'),
-                        boxShadow: `inset 0 -5px 4px -2px ${'#920F02'}, inset 0 5px 4px -2px ${'#F7F9F9'} `,
-                    }}
-                >
+                <Label key={idx}>
                     <SwatchIcon width={20} height={20} color={'#5F0000'} />
                     {label}
-                </Typography>
+                </Label>
             ))}
-        </Stack>
+        </Container>
     );
 };
 
 export default BoardLabelsSticker;
+
+const Container = styled(Box)(() => ({
+    display: 'flex',
+    gap: 4,
+    flexWrap: 'wrap',
+    userSelect: 'none',
+    cursor: 'default',
+}));

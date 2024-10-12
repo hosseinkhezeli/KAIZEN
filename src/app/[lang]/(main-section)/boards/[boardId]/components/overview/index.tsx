@@ -1,9 +1,14 @@
+'use client';
+//@3rd Party
 import { FC } from 'react';
-import { Stack, Typography } from '@mui/material';
+//_______________________________________________________________
 
-import BoardOverviewCard from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverviewCard';
-import useBoardOverview from '@/app/[lang]/(main-section)/boards/[boardId]/hooks/useBoardOverview';
-import BoardOverviewMembers from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverviewMembers';
+//@MUI
+import { Stack, Typography, Box, styled } from '@mui/material';
+import { Theme } from '@mui/material/styles';
+//_______________________________________________________________
+
+//@Assets
 import {
     ChartBarIcon,
     IdentificationIcon,
@@ -11,111 +16,120 @@ import {
     PresentationChartLineIcon,
     TagIcon,
 } from '@heroicons/react/24/outline';
-import Box from '@mui/material/Box';
-import { ActivityChart } from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardActivityChart';
-import BoardLabelsSticker from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardLabels&Sticker';
-import { Theme } from '@mui/material/styles';
-import { BoardOverviewStatus } from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/BoardOverviewStatus';
+//_______________________________________________________________
 
+//@Components
+import BoardOverviewCard from './BoardOverviewCard';
+import useBoardOverview from '../../hooks/useBoardOverview';
+import BoardOverviewMembers from './BoardOverviewMembers';
+import { ActivityChart } from './BoardActivityChart';
+import BoardLabelsSticker from './BoardLabels&Sticker';
+import { BoardOverviewStatus } from './BoardOverviewStatus';
+
+//_______________________________________________________________
+
+//@Types
 type TBoardOverview = {
     boardInfo?: IBoard;
 };
-
-const BoardOverview: FC<TBoardOverview> = ({ boardInfo }) => {
+//_______________________________________________________________
+export function BoardOverview({ boardInfo }: TBoardOverview) {
     const { BasicInformationDescription } = useBoardOverview({ boardInfo });
-
-    return (
-        <Stack
-            display={'grid'}
-            gridTemplateColumns={'repeat(4,calc(25% - 12px))'}
-            gridTemplateRows={'repeat(2,1fr)'}
-            sx={{
-                gridAutoFlow: 'dense',
-                width: '100%',
-                gridTemplateRows: '250px',
-                overflowY: 'auto',
-                gridAutoRows: 'minmax(100px, 250px)',
-            }}
-            height={'100%'}
-            gap={2}
-        >
-            <BoardOverviewCard
-                title={
-                    <Box display={'flex'} alignItems={'flex-start'} gap={1}>
-                        <InformationCircleIcon width={20} height={20} />
-                        Basic Information
-                    </Box>
-                }
-                descriptionArr={BasicInformationDescription}
-            />
-
-            <BoardOverviewCard
-                title={
-                    <Box display={'flex'} alignItems={'flex-start'} gap={1}>
-                        <PresentationChartLineIcon width={20} height={20} />
-                        Activities
-                    </Box>
-                }
-                background={({ palette }) => palette.background.paper}
-                wrapperProps={{
-                    style: { gridColumn: 'span 2' },
-                    sx: { background: ({ palette }) => palette.divider },
-                }}
-            >
-                <ActivityChart data={boardInfo?.activity} />
-                <Typography color={'text.disabled'} variant={'caption'}>
-                    hint: you can trace the days that an activity happens.
-                </Typography>
-            </BoardOverviewCard>
-            <BoardOverviewCard
-                title={
-                    <Box display={'flex'} alignItems={'flex-start'} gap={1}>
-                        <ChartBarIcon width={20} height={20} />
-                        Board&apos;s Status
-                    </Box>
-                }
-                background={({ palette }) => palette.background.paper}
-                wrapperProps={{
-                    style: {
-                        gridColumn: 'span 2',
-                    },
-                    sx: { background: ({ palette }) => palette.divider },
-                }}
-            >
-                <BoardOverviewStatus boardInfo={boardInfo} />
-            </BoardOverviewCard>
-            <BoardOverviewCard
-                title={
-                    <Box display={'flex'} alignItems={'flex-start'} gap={1}>
-                        <IdentificationIcon width={20} height={20} />
-                        Members
-                    </Box>
-                }
-                background={(theme: Theme) => theme.palette.background.default}
-                wrapperProps={{
-                    style: {
-                        gridRow: 'span 2',
-                    },
-                    sx: { background: ({ palette }) => palette.divider },
-                }}
-            >
-                <BoardOverviewMembers members={boardInfo?.members} />
-            </BoardOverviewCard>
-            <BoardOverviewCard
-                title={
-                    <Box display={'flex'} alignItems={'flex-start'} gap={1}>
-                        <TagIcon width={20} height={20} />
-                        Tags & Stickers
-                    </Box>
-                }
-            >
+    const overviewCards = [
+        {
+            icon: InformationCircleIcon,
+            title: 'Basic Information',
+            content: (
+                <BasicInformation description={BasicInformationDescription} />
+            ),
+        },
+        {
+            icon: PresentationChartLineIcon,
+            title: 'Activities',
+            content: <Activities boardInfo={boardInfo} />,
+            wrapperProps: twoColumnWrapperProps,
+        },
+        {
+            icon: ChartBarIcon,
+            title: "Board's Status",
+            content: <BoardOverviewStatus boardInfo={boardInfo} />,
+            wrapperProps: twoColumnWrapperProps,
+        },
+        {
+            icon: IdentificationIcon,
+            title: 'Members',
+            content: <BoardOverviewMembers members={boardInfo?.members} />,
+            wrapperProps: twoRowWrapperProps,
+        },
+        {
+            icon: TagIcon,
+            title: 'Tags & Stickers',
+            content: (
                 <BoardLabelsSticker
                     stickers={boardInfo?.stickers}
                     labels={boardInfo?.labels}
                 />
-            </BoardOverviewCard>
-        </Stack>
+            ),
+        },
+    ];
+    return (
+        <Container>
+            {overviewCards?.map((card, idx) => (
+                <OverviewCard key={card.title + idx} {...card} />
+            ))}
+        </Container>
     );
+}
+
+const Container = styled(Stack)(() => ({
+    gridAutoFlow: 'dense',
+    width: '100%',
+    gridTemplateRows: '250px',
+    overflowY: 'auto',
+    gridAutoRows: 'minmax(100px, 250px)',
+    gap: 8,
+    height: '100%',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, calc(25% - 12px))',
+}));
+
+const OverviewCard: FC<{
+    icon: React.ElementType;
+    title: string;
+    content: React.ReactNode;
+    wrapperProps?: object;
+}> = ({ icon, title, content, wrapperProps }) => (
+    <BoardOverviewCard
+        title={<CardTitle icon={icon} text={title} />}
+        wrapperProps={wrapperProps}
+    >
+        {content}
+    </BoardOverviewCard>
+);
+const Activities: FC<{ boardInfo?: IBoard }> = ({ boardInfo }) => (
+    <>
+        <ActivityChart data={boardInfo?.activity} />
+        <Typography color='text.disabled' variant='caption'>
+            hint: you can trace the days that an activity happens.
+        </Typography>
+    </>
+);
+
+const CardTitle: FC<{ icon: any; text: string }> = ({ icon: Icon, text }) => (
+    <Box display='flex' alignItems='flex-start' gap={1}>
+        <Icon width={20} height={20} />
+        {text}
+    </Box>
+);
+const twoColumnWrapperProps = {
+    style: { gridColumn: 'span 2' },
+    sx: { background: ({ palette }: Theme) => palette.divider },
 };
 
-export default BoardOverview;
+const twoRowWrapperProps = {
+    style: { gridRow: 'span 2' },
+    sx: { background: ({ palette }: Theme) => palette.divider },
+};
+const BasicInformation: FC<{ description: any }> = ({ description }) => (
+    <>{description}</>
+);

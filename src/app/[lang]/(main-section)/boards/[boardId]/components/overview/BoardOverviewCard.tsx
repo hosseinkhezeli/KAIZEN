@@ -1,11 +1,21 @@
+'use client';
+//@3rd Party
 import React, { FC, ReactNode } from 'react';
-import { Stack, StackProps, Typography } from '@mui/material';
+//_______________________________________________________________
+
+//@MUI
+import { Stack, StackProps, styled, Typography } from '@mui/material';
+import { Theme } from '@mui/material/styles';
+//_______________________________________________________________
+
+//@Components
 import Descriptor, {
     TDescriptorProps,
 } from '@components/descriptor/Descriptor';
 import CustomCard from '@components/custom-card/CustomCard';
-import { Theme } from '@mui/material/styles';
+//_______________________________________________________________
 
+//@Types
 type TBoardOverviewCardProps = {
     title: ReactNode;
     descriptionArr?: TDescriptorProps[];
@@ -34,18 +44,8 @@ const BoardOverviewCard: FC<TBoardOverviewCardProps> = ({
             }}
             innerBoxProps={{ sx: { background: background } }}
         >
-            <Stack
-                sx={{
-                    height: '100%',
-                    width: '100%',
-                    borderRadius: '24px',
-                    gap: 1,
-                }}
-            >
-                <Typography variant={'caption'} fontWeight={400}>
-                    {title}
-                </Typography>
-
+            <CardContainer>
+                <Title>{title}</Title>
                 {descriptionArr?.map((item, idx) => (
                     <Descriptor
                         key={idx}
@@ -60,9 +60,21 @@ const BoardOverviewCard: FC<TBoardOverviewCardProps> = ({
                     />
                 ))}
                 {children}
-            </Stack>
+            </CardContainer>
         </CustomCard>
     );
 };
 
 export default BoardOverviewCard;
+
+const CardContainer = styled(Stack)(({ theme }) => ({
+    height: '100%',
+    width: '100%',
+    borderRadius: 24,
+    gap: 4,
+}));
+
+const Title = styled(Typography)(({ theme }) => ({
+    ...theme.typography.caption,
+    fontWeight: 400,
+}));

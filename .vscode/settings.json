@@ -1,0 +1,51 @@
+{
+  "editor.inlineSuggest.fontFamily": "JetBrains Mono, 'Courier New', monospace",
+  "workbench.colorTheme": "Bearded Theme Black & Gold",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.iconTheme": "material-icon-theme",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.autoSave": "afterDelay",
+  "git.enableSmartCommit": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.defaultProfile.windows": "Git Bash",
+  "editor.fontSize": 13,
+  "editor.lineHeight": "23%",
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.codeLens": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorStyle": "block",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.folding": true,
+  "editor.formatOnSave": true,
+  "editor.rulers": [{ "column": 80, "color": "#CACACA10" }],
+  "editor.padding.top": 20,
+  "editor.padding.bottom": 20,
+  "editor.roundedSelection": true,
+  "editor.tabCompletion": "on",
+  "editor.smoothScrolling": true,
+  "editor.fontFamily": "JetBrains Mono, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontWeight": "100",
+  "debug.console.fontFamily": "JetBrains Mono, 'Courier New', monospace",
+  "debug.console.fontSize": 13,
+  "scm.inputFontFamily": "JetBrains Mono, 'Courier New', monospace",
+  "terminal.integrated.fontFamily": "JetBrains Mono, 'Courier New', monospace",
+  "terminal.integrated.fontSize": 13,
+  "notebook.output.fontFamily": "JetBrains Mono, 'Courier New', monospace",
+  "chat.editor.fontFamily": "JetBrains Mono, 'Courier New', monospace",
+  "chat.editor.fontSize": 13
+}

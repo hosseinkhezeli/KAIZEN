@@ -1,5 +1,4 @@
-'use client'; // Error boundaries must be Client Components
-
+'use client';
 export default function Error({
     error,
     reset,

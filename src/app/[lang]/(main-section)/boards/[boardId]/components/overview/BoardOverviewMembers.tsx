@@ -1,19 +1,27 @@
+//@3rd Party
 import React, { FC } from 'react';
-import { Button, Stack } from '@mui/material';
+//_______________________________________________________________
+
+//@MUI
+import { Button, Stack, styled } from '@mui/material';
+//_______________________________________________________________
+
+//@Components
 import MemberCard from '@/app/[lang]/(main-section)/boards/[boardId]/components/overview/MemberCard';
+//_______________________________________________________________
+
+//@Assets
 import { PlusIcon } from '@heroicons/react/24/outline';
 
+//@Types
 type TBoardOverviewMembersProps = {
     members: IBoardMember[] | undefined;
 };
+//_______________________________________________________________
+
 const BoardOverviewMembers: FC<TBoardOverviewMembersProps> = ({ members }) => {
     return (
-        <Stack
-            display={'flex'}
-            height={'100%'}
-            gap={1}
-            sx={{ overflowY: 'auto', aspectRatio: '1/1' }}
-        >
+        <Container>
             {members?.map((member, idx) => (
                 <MemberCard key={idx} member={member} idx={idx} />
             ))}
@@ -30,8 +38,16 @@ const BoardOverviewMembers: FC<TBoardOverviewMembersProps> = ({ members }) => {
             >
                 Add Member
             </Button>
-        </Stack>
+        </Container>
     );
 };
 
 export default BoardOverviewMembers;
+
+const Container = styled(Stack)(({ theme }) => ({
+    display: 'flex',
+    height: '100%',
+    gap: 4,
+    overflowY: 'auto',
+    aspectRatio: '1/1',
+}));
