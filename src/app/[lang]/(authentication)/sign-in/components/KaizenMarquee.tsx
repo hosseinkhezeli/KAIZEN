@@ -15,7 +15,7 @@ import Marquee from '@components/custom-marquee/CustomMarquee';
 import LogoTypoSvg from '@assets/LogoType.svg';
 // ___________________________________________________________________
 
-const KaizenMarquee = () => {
+export function KaizenMarquee() {
     const values = Array.from({ length: 10 }, (_, idx) => (
         <Image
             key={idx}
@@ -47,6 +47,4 @@ const KaizenMarquee = () => {
             ))}
         </Container>
     );
-};
-
-export default KaizenMarquee;
+}

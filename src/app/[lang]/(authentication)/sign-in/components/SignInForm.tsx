@@ -11,7 +11,7 @@ import { cominIn, cominUp } from '@styles/animationKeyframes';
 import { TAuth } from '@i18n/dictionary/types/auth';
 // ___________________________________________________________________
 
-const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
+export function SignInForm({ dictionary }: { dictionary: TAuth }) {
     const {
         onSubmitOtp,
         otpForm,
@@ -45,9 +45,7 @@ const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
             </FormWrapper>
         </FormContainer>
     );
-};
-
-export default SignInForm;
+}
 
 export const FormContainer = styled(Stack)(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,

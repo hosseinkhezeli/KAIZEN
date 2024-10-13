@@ -1,5 +1,5 @@
 //@Components & Methods
-import SignInForm from '@/app/[lang]/(authentication)/sign-in/components/SignInForm';
+import {SignInForm} from '@/app/[lang]/(authentication)/sign-in/components/SignInForm';
 import { getDictionaryServer, Locale } from '@/i18n/i18n';
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

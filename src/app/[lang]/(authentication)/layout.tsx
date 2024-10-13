@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 
 //@Components
 import { Stack } from '@mui/material';
-import KaizenMarquee from '@/app/[lang]/(authentication)/sign-in/components/KaizenMarquee';
+import {KaizenMarquee} from '@/app/[lang]/(authentication)/sign-in/components/KaizenMarquee';
 import KaizenLogo from '@/components/KaizenLogo';
 import { i18n, Locale } from '@/i18n/i18n';
 // ___________________________________________________________________
