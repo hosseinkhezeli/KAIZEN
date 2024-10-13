@@ -2,17 +2,20 @@
 //@3rd Party
 import Image from 'next/image';
 import Link from 'next/link';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________
+
 
 //@Mui
 import { AppBar, Toolbar, Avatar } from '@mui/material';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import { useTheme } from '@mui/material/styles';
+//______________________________________________________________
+
 
 //@Assets
 import LogoIconSvg from '@assets/LogoIcon.svg';
 import LogoTypoSvg from '@assets/LogoType.svg';
-import { useTheme } from '@mui/material/styles';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________
+
 
 const CustomAppbar = ({ onClick }: { onClick?: () => void }) => {
     const { direction, palette } = useTheme();

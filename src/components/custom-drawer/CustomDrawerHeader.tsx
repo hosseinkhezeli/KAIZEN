@@ -1,7 +1,16 @@
+//3rd Party
 import React from 'react';
-import { Avatar, Button, IconButton, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
+//______________________________________________________________
+
+//@Mui
+import { Avatar, Button, IconButton, Stack, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+//______________________________________________________________
+
+//@Assets
 import LogoIconSvg from '@assets/LogoIcon.svg';
 import LogoTypoSvg from '@assets/LogoType.svg';
 import {
@@ -10,9 +19,11 @@ import {
     PlusIcon,
     UserIcon,
 } from '@heroicons/react/24/outline';
-import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+//______________________________________________________________
+
+//@Types
 import { TGlobal } from '@i18n/dictionary/types/global';
+//______________________________________________________________
 
 const KaizenButton = ({ withoutType }: { withoutType?: boolean }) => {
     const { palette } = useTheme();

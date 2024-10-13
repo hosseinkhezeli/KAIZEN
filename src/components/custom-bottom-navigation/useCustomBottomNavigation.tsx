@@ -1,3 +1,4 @@
+//3rd Party
 import React, {
     ReactNode,
     SyntheticEvent,
@@ -5,17 +6,26 @@ import React, {
     useState,
     useTransition,
 } from 'react';
-import { useTheme } from '@mui/material/styles';
 import { useParams, usePathname, useRouter } from 'next/navigation';
-import { Locale } from '@/i18n';
+//______________________________________________________________
+
+//@Mui
+import { useTheme } from '@mui/material/styles';
+import { useMediaQuery } from '@mui/material';
+//@Next
+//______________________________________________________________
+
+//@Assets
 import {
     Cog6ToothIcon,
     HomeIcon,
     RectangleGroupIcon,
     RectangleStackIcon,
 } from '@heroicons/react/24/outline';
-import { useMediaQuery } from '@mui/material';
+//______________________________________________________________
 
+//@Types
+import { Locale } from '@/i18n';
 export enum NavigationValue {
     Settings = 'settings',
     Cards = 'cards',
@@ -28,6 +38,8 @@ export interface INavigationItem {
     icon: ReactNode;
     id: NavigationValue;
 }
+//______________________________________________________________
+
 const useCustomBottomNavigation = () => {
     const [isPending, startTransition] = useTransition();
     const { lang } = useParams<{ lang: Locale }>();

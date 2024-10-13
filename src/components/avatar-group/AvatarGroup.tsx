@@ -1,10 +1,20 @@
-import { Avatar, AvatarGroup } from '@mui/material';
-import { UserIcon } from '@heroicons/react/24/outline';
+//@3rd party
 import React from 'react';
+//______________________________________________________________
 
+//@Mui
+import { Avatar, AvatarGroup } from '@mui/material';
+//______________________________________________________________
+
+//@Assets
+import { UserIcon } from '@heroicons/react/24/outline';
+//______________________________________________________________
+
+//@Types
 type TKaizenAvatarGroupProps = {
     members: IBoardMember[] | undefined;
 };
+//______________________________________________________________
 
 export function KaizenAvatarGroup({ members = [] }: TKaizenAvatarGroupProps) {
     return (

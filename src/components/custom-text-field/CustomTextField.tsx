@@ -1,6 +1,6 @@
 //@3rd Party
 import React, { ChangeEvent, forwardRef } from 'react';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________
 
 //@Mui
 import {
@@ -10,7 +10,8 @@ import {
     FormControlProps,
     TextFieldProps,
 } from '@mui/material';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________
+
 
 //@Types
 interface ITextInput extends TextFieldProps<'outlined'> {
@@ -19,7 +20,8 @@ interface ITextInput extends TextFieldProps<'outlined'> {
     formControlProps?: FormControlProps;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________
+
 
 const TextInput = forwardRef<HTMLInputElement, ITextInput>(
     (

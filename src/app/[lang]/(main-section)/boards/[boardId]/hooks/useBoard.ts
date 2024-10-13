@@ -1,6 +1,14 @@
-import { useGetBoard } from '@/services/api/board/hooks';
-import { useQueryParams } from '@hooks/useQueryParams';
+//@3rd party
 import { useEffect } from 'react';
+//_______________________________________________________________
+
+//@Services
+import { useGetBoard } from '@/services/api/board/hooks';
+//_______________________________________________________________
+
+//@Hooks
+import { useQueryParams } from '@hooks/useQueryParams';
+//_______________________________________________________________
 
 const useBoard = (boardId: string) => {
   const { data: boardRes, isLoading: isLoadingBoard } = useGetBoard({

@@ -1,4 +1,9 @@
+//@3rd party
 import React, { FC } from 'react';
+import Image from 'next/image';
+//_______________________________________________________________
+
+//@Mui
 import {
     Avatar,
     AvatarGroup,
@@ -7,8 +12,13 @@ import {
     Skeleton,
     Typography,
 } from '@mui/material';
+//_______________________________________________________________
+
+//@Assets
 import { PlusIcon, UserIcon } from '@heroicons/react/24/outline';
-import Image from 'next/image';
+//_______________________________________________________________
+
+//Types
 import { Theme } from '@mui/material/styles';
 
 type BoardHeaderProps = {
@@ -16,6 +26,7 @@ type BoardHeaderProps = {
     members?: IBoardMember[] | undefined;
     bgImageUrl?: string;
 };
+//_______________________________________________________________
 
 const BoardHeader: FC<BoardHeaderProps> = ({
     boardTitle,

@@ -1,10 +1,19 @@
-import { TKanban } from '@/app/[lang]/(main-section)/boards/[boardId]/components/kanban';
-import { useMoveTaskCardColumn } from '@/services/api/task-card/hooks';
-import { useQueryClient } from '@tanstack/react-query';
-import { useParams } from 'next/navigation';
+//@3rd party
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query';
+//_______________________________________________________________
+
+//@Hooks
+import { useMoveTaskCardColumn } from '@/services/api/task-card/hooks';
+//_______________________________________________________________
+
+//@Types
+import { TKanban } from '@/app/[lang]/(main-section)/boards/[boardId]/components/kanban';
+//_______________________________________________________________
 
 export function useKanban(props: TKanban) {
+  //Dependencies
   const { mutate: moveTaskCardColumn } = useMoveTaskCardColumn();
   const [uiColumns, setUiColumns] = useState<IBoardColumn[] | undefined>(
     props?.columns,
@@ -17,6 +26,7 @@ export function useKanban(props: TKanban) {
   const queryClient = useQueryClient();
   const { boardId } = useParams<{ boardId: string }>();
 
+  //Handlers
   useEffect(() => {
     setUiColumns(props?.columns);
   }, [props?.columns]);
@@ -34,14 +44,12 @@ export function useKanban(props: TKanban) {
     if (originColumnId === destinationColumnId) {
       return;
     }
-
     const params: TMoveTaskCardBody = {
       cardId,
       originColumnId,
       destinationColumnId,
       boardId,
     };
-
     moveTaskCardColumn(params, {
       onSuccess: (data) => {
         setUiColumns(data);

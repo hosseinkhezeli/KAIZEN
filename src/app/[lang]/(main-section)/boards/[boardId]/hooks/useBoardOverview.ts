@@ -1,9 +1,16 @@
-import { TDescriptorProps } from '@components/descriptor/Descriptor';
-import { formatDate } from '@utils/methods';
+//@3rd party
 import { ReactNode, useMemo } from 'react';
+//_______________________________________________________________
+
+//@Utils
+import { formatDate } from '@utils/methods';
+//_______________________________________________________________
+
+//@Types
+import { TDescriptorProps } from '@components/descriptor/Descriptor';
+//_______________________________________________________________
 
 const useBoardOverview = ({ boardInfo }: { boardInfo?: IBoard }) => {
-  console.log(boardInfo);
   const BasicInformationDescription: TDescriptorProps[] = useMemo(
     () =>
       [

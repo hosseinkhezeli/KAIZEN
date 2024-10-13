@@ -5,16 +5,16 @@ import { FC, memo, ReactNode, useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { Route } from 'next';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________
 
 // @Mui
 import { Breadcrumbs, BreadcrumbsProps, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________
 
 // @Assets
 import { ChevronRightIcon } from '@heroicons/react/20/solid';
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________
 
 //@Types
 interface IBreadcrumb {
@@ -25,7 +25,7 @@ interface IBreadcrumb {
 interface ICustomBreadCrumbs extends BreadcrumbsProps {
     breadcrumbs: IBreadcrumb[] | undefined[];
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//______________________________________________________________
 
 const CustomBreadCrumbs: FC<ICustomBreadCrumbs> = memo(
     ({ breadcrumbs, sx, ...rest }) => {

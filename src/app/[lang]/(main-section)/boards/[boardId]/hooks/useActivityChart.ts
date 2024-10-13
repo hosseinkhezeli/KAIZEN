@@ -1,13 +1,16 @@
 'use client';
+//@3rd party
 import { useState } from 'react';
+//_______________________________________________________________
 
+//@Types
 type TUseActivityChartProps = {
   data: IBoardActivityLog[] | undefined;
 };
+//_______________________________________________________________
 
 export function useActivityChart(props: TUseActivityChartProps) {
   const [year, setYear] = useState(2023);
-
   const getDaysInYear = (year: number) => {
     const days = [];
     const startDate = new Date(year, 0, 1);

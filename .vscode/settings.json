@@ -1,6 +1,6 @@
 {
   "editor.inlineSuggest.fontFamily": "JetBrains Mono, 'Courier New', monospace",
-  "workbench.colorTheme": "Bearded Theme Black & Gold",
+  "workbench.colorTheme": "Default Dark Modern",
   "liveServer.settings.donotShowInfoMsg": true,
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
