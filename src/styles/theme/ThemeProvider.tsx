@@ -5,7 +5,7 @@ import useGlobalStore from '@states/global/globalSlice';
 import customTheme from './theme';
 
 import CacheProvider from './CacheProvider';
-import { Locale } from '@/i18n';
+import { Locale } from '@/i18n/i18n';
 
 interface AppThemeProps {
     children: ReactNode;

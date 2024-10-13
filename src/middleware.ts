@@ -1,4 +1,4 @@
-import { i18n } from '@/i18n';
+import { i18n } from '@/i18n/i18n';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { devtools, persist } from 'zustand/middleware';
 import { PaletteMode } from '@mui/material';
-import { Locale } from '@/i18n';
+import { Locale } from '@/i18n/i18n';
 
 export interface IGlobalState {
   themeMode: PaletteMode;

@@ -1,7 +1,7 @@
 //@3rd Party
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { i18n, type Locale } from '@/i18n';
+import { i18n, type Locale } from '@/i18n/i18n';
 // ___________________________________________________________________
 
 //@Styles

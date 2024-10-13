@@ -1,4 +1,4 @@
-import { Locale } from '@/i18n';
+import { Locale } from '@/i18n/i18n';
 import { Theme } from '@mui/material/styles';
 
 import { EMPTY_TEXT } from '@utils/consts';

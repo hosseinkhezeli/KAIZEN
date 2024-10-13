@@ -25,7 +25,7 @@ import {
 //______________________________________________________________
 
 //@Types
-import { Locale } from '@/i18n';
+import { Locale } from '@/i18n/i18n';
 export enum NavigationValue {
     Settings = 'settings',
     Cards = 'cards',

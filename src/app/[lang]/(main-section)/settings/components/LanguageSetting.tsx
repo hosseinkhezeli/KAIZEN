@@ -6,7 +6,7 @@ import SvgIranFlag from '@assets/icon/ir.svg';
 import SvgUSAFlag from '@assets/icon/us.svg';
 import Box from '@mui/material/Box';
 import Image from 'next/image';
-import { Locale } from '@/i18n';
+import { Locale } from '@/i18n/i18n';
 import { usePathname, useRouter } from 'next/navigation';
 import { pop } from '@styles/animationKeyframes';
 

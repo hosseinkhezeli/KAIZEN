@@ -38,7 +38,7 @@ import CustomDrawerHeader from '@components/custom-drawer/CustomDrawerHeader';
 
 
 //@Types
-import { Locale } from '@/i18n';
+import { Locale } from '@/i18n/i18n';
 import {
     INavigationItem,
     NavigationValue,

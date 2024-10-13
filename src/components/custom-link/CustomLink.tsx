@@ -7,7 +7,7 @@ import { useTheme } from '@mui/material/styles';
 //______________________________________________________________
 
 //@Types
-import { Locale } from '@/i18n';
+import { Locale } from '@/i18n/i18n';
 //______________________________________________________________
 
 const Href = ({

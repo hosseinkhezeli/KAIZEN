@@ -17,7 +17,7 @@ import AuthLayout from '@/layouts/providers/AuthLayout';
 //________________________________________________________
 
 //@Types
-import { Locale } from '@/i18n';
+import { Locale } from '@/i18n/i18n';
 export interface IProvidersLayout {
     children: ReactNode;
     lang: Locale;

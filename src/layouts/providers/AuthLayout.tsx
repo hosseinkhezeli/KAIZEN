@@ -13,7 +13,7 @@ import CustomLoadingIndicator from '@components/custom-loading/CustomLoadingIndi
 //________________________________________________________
 
 //@Types
-import { Locale } from '@/i18n';
+import { Locale } from '@/i18n/i18n';
 //________________________________________________________
 
 const AuthLayout = ({

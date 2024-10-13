@@ -1,13 +1,14 @@
 //@3rd Party
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
-import { i18n, type Locale } from '@/i18n';
+
 // ___________________________________________________________________
 
 //@Components
 import { Stack } from '@mui/material';
-import KaizenLogo from '@components/logo/KaizenLogo';
 import KaizenMarquee from '@/app/[lang]/(authentication)/sign-in/components/KaizenMarquee';
+import KaizenLogo from '@/components/KaizenLogo';
+import { i18n, Locale } from '@/i18n/i18n';
 // ___________________________________________________________________
 
 //@Server Functions

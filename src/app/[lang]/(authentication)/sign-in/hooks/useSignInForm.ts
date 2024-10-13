@@ -1,6 +1,6 @@
 'use client';
 //@3rd Party
-import { Locale } from '@/i18n';
+import { Locale } from '@/i18n/i18n';
 import { TSignInDto, TSignUpDto } from '@/services/api/auth/types';
 import useUserStore from '@states/user/userSlice';
 import { useParams, usePathname, useRouter } from 'next/navigation';

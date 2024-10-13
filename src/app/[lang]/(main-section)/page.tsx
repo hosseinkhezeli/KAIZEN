@@ -1,5 +1,5 @@
 import Overview from '@/app/[lang]/(main-section)/components/overview';
-import { getDictionaryServer, type Locale } from '@/i18n';
+import { getDictionaryServer, type Locale } from '@/i18n/i18n';
 
 export default function Home({ params }: { params: { lang: Locale } }) {
     const dictionary = getDictionaryServer(params.lang);
