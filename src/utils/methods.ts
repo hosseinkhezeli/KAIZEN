@@ -81,23 +81,6 @@ export const convertWeekdayToPersian = (weekday: string): string => {
   return weekdays[weekday] || 'شنبه';
 };
 
-// Custom hook for debouncing a value
-export const useDebounce = (value: any, delay: number): any => {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
-};
-
 // Formats time as HH:MM
 export const formatTime = (time: string | Date): string => {
   if (!time) return '-';
