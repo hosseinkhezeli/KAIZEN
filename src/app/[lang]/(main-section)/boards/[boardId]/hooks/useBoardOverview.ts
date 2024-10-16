@@ -23,10 +23,11 @@ const useBoardOverview = ({ boardInfo }: { boardInfo?: IBoard }) => {
         description:
           idx === arr.length - 1
             ? formatDate(boardInfo?.[item.id as keyof IBoard] as Date)
-            : (boardInfo?.[item.id as keyof IBoard] as ReactNode) || '-',
+            : (boardInfo?.[item?.id as keyof IBoard] as ReactNode) || '-',
       })),
     [boardInfo?.id],
   );
+  console.log(boardInfo, 'boardInfo', BasicInformationDescription);
   return { BasicInformationDescription };
 };
 

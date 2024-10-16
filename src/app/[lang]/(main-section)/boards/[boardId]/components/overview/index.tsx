@@ -25,6 +25,7 @@ import BoardOverviewMembers from './BoardOverviewMembers';
 import { ActivityChart } from './BoardActivityChart';
 import BoardLabelsSticker from './BoardLabels&Sticker';
 import { BoardOverviewStatus } from './BoardOverviewStatus';
+import Descriptor from '@/components/descriptor/Descriptor';
 
 //_______________________________________________________________
 
@@ -39,9 +40,7 @@ export function BoardOverview({ boardInfo }: TBoardOverview) {
         {
             icon: InformationCircleIcon,
             title: 'Basic Information',
-            content: (
-                <BasicInformation description={BasicInformationDescription} />
-            ),
+            content: <BasicInformation info={BasicInformationDescription} />,
         },
         {
             icon: PresentationChartLineIcon,
@@ -72,10 +71,18 @@ export function BoardOverview({ boardInfo }: TBoardOverview) {
             ),
         },
     ];
+
     return (
         <Container>
             {overviewCards?.map((card, idx) => (
-                <OverviewCard key={card.title + idx} {...card} />
+                <OverviewCard
+                    key={card?.title + idx}
+                    icon={card?.icon}
+                    title={card?.title}
+                    wrapperProps={card?.wrapperProps}
+                >
+                    {card?.content}
+                </OverviewCard>
             ))}
         </Container>
     );
@@ -96,14 +103,14 @@ const Container = styled(Stack)(() => ({
 const OverviewCard: FC<{
     icon: React.ElementType;
     title: string;
-    content: React.ReactNode;
+    children: React.ReactNode;
     wrapperProps?: object;
-}> = ({ icon, title, content, wrapperProps }) => (
+}> = ({ icon, title, children, wrapperProps }) => (
     <BoardOverviewCard
         title={<CardTitle icon={icon} text={title} />}
         wrapperProps={wrapperProps}
     >
-        {content}
+        {children}
     </BoardOverviewCard>
 );
 const Activities: FC<{ boardInfo?: IBoard }> = ({ boardInfo }) => (
@@ -130,6 +137,18 @@ const twoRowWrapperProps = {
     style: { gridRow: 'span 2' },
     sx: { background: ({ palette }: Theme) => palette.divider },
 };
-const BasicInformation: FC<{ description: any }> = ({ description }) => (
-    <>{description}</>
-);
+const BasicInformation: FC<{ info: any[] }> = ({ info }) => {
+    console.log(info);
+
+    return (
+        <>
+            {info?.map((item, idx) => (
+                <Descriptor
+                    key={idx}
+                    title={item.title}
+                    description={item.description}
+                />
+            ))}
+        </>
+    );
+};
