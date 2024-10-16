@@ -1,18 +1,15 @@
 //@3rd Party
-import { FC, useState, KeyboardEvent } from 'react';
+import { FC, useState, KeyboardEvent, useEffect } from 'react';
 //______________________________________________________________
-
 
 //@Mui
 import { Grid2 as Grid, InputLabel, TextField } from '@mui/material';
 //______________________________________________________________
 
-
 //@Components
 import { TextFieldProps } from '@components/custom-form-generator/inputs/components/type';
 import { useFormContext } from 'react-hook-form';
 //______________________________________________________________
-
 
 const OtpInput: FC<TextFieldProps> = ({
     name,
@@ -24,7 +21,11 @@ const OtpInput: FC<TextFieldProps> = ({
     const {
         setValue,
         formState: { errors },
+        getValues,
     } = useFormContext();
+    useEffect(() => {
+        setOtp(getValues(name)?.split(''));
+    }, [getValues(name)]);
     const handleChange = (index: number, value: string) => {
         const newOtp = [...otp];
         newOtp[index] = value;
