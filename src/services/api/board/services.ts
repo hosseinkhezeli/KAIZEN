@@ -12,3 +12,7 @@ export const getBoard = (
 ): Promise<IGetBoardRes> => {
   return http.get(routes.board(pathParams));
 };
+
+export const createBoard = (body: ICreateBoardDTO): Promise<IGetBoardRes> => {
+  return http.post(routes.createBoard, body);
+};

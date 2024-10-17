@@ -28,7 +28,7 @@ const LiveDateTime: React.FC = () => {
 
         return () => clearInterval(intervalId); // Cleanup on component unmount
     }, []);
-    console.log(dateTime.time.split(':'));
+
     const hour = dateTime.time.split(':')[0];
     const minute = dateTime.time.split(':')[1];
     const second = dateTime.time.split(':')[2];

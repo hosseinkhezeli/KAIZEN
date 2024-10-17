@@ -22,6 +22,7 @@ import { MuiInputBase } from '@styles/theme/components/TextField/MuiInputBase';
 import { MuiTooltip } from '@styles/theme/components/Tooltip/MuiTooltip';
 import { typography } from '@styles/theme/components/Typography';
 import { MuiTypography } from '@styles/theme/components/Typography/MuiTypography/MuiTypography';
+import { MuiDialog } from '@styles/theme/components/Dialog/MuiDialog';
 import { lightPalette } from './palette/light/lightPalette';
 import { darkPalette } from './palette/dark/darkPalette';
 
@@ -60,6 +61,7 @@ export const customTheme = (mode: PaletteMode | undefined, isRtl: boolean) =>
       MuiMenu,
       MuiMenuItem,
       MuiSnackbar,
+      MuiDialog,
     },
   });
 

@@ -41,13 +41,15 @@ export function BoardCardLoaded({ boardInfo }: BoardCardLoadedProps) {
                     className={'overview-boards-bg'}
                     sx={styles.imageContainer}
                 >
-                    <Image
-                        src={boardInfo?.background || ' '}
-                        alt='Board Background'
-                        width={300}
-                        height={90}
-                        style={styles?.image}
-                    />
+                    {boardInfo?.background && (
+                        <Image
+                            src={boardInfo?.background || ' '}
+                            alt='Board Background'
+                            width={300}
+                            height={90}
+                            style={styles?.image}
+                        />
+                    )}
                 </Box>
             </Stack>
         </Href>

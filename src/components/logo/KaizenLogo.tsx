@@ -3,19 +3,16 @@
 import Image from 'next/image';
 //______________________________________________________________
 
-
 //@Mui
 import { Stack } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 //______________________________________________________________
-
 
 //@Assets
 import LogoIconSvg from '@assets/LogoIcon.svg';
 import LogoTypoSvg from '@assets/LogoType.svg';
 import { introSm, introXs } from '@styles/animationKeyframes';
 //______________________________________________________________
-
 
 const KaizenLogo = () => {
     const { palette } = useTheme();

@@ -11,6 +11,7 @@ import { Container, Stack } from '@mui/material';
 import KaizenAppBar from '@/layouts/main-layout/components/KaizenAppBar';
 import CustomBottomNavigation from '@components/custom-bottom-navigation/CustomBottomNavigation';
 import KaizenBreadCrumbs from '@/app/[lang]/(main-section)/components/KaizenBreadCrumbs';
+import { KaizenDialog } from './components/KaizenDialog';
 //________________________________________________________
 
 export default function MainLayout({
@@ -39,6 +40,7 @@ export default function MainLayout({
                 {children}
             </Stack>
             <CustomBottomNavigation dictionary={dictionary} />
+            <KaizenDialog />
         </Stack>
     );
 }

@@ -24,6 +24,7 @@ const Href = ({
             href={'/' + lang + to}
             style={{
                 textDecoration: 'none',
+                width: '100%',
                 color: palette.text.primary,
                 ...typography.caption,
             }}

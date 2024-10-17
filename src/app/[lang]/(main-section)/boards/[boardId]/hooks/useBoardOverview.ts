@@ -27,7 +27,7 @@ const useBoardOverview = ({ boardInfo }: { boardInfo?: IBoard }) => {
       })),
     [boardInfo?.id],
   );
-  console.log(boardInfo, 'boardInfo', BasicInformationDescription);
+
   return { BasicInformationDescription };
 };
 

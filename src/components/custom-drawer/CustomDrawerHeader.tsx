@@ -2,6 +2,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import Href from '../custom-link/CustomLink';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 //______________________________________________________________
 
 //@Mui
@@ -23,6 +25,10 @@ import {
 
 //@Types
 import { TGlobal } from '@i18n/dictionary/types/global';
+type QueryParam = {
+    [key: string]: string | string[] | undefined;
+};
+
 //______________________________________________________________
 
 const KaizenButton = ({ withoutType }: { withoutType?: boolean }) => {
@@ -74,6 +80,19 @@ const CustomDrawerHeader = ({
     dictionary: TGlobal;
 }) => {
     const { direction } = useTheme();
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+
+    const addQueryParam = (newParam: { [key: string]: string }) => {
+        const updatedParams = new URLSearchParams(searchParams.toString());
+        Object.entries(newParam).forEach(([key, value]) => {
+            updatedParams.set(key, value);
+        });
+        return `${updatedParams.toString()}`;
+    };
+
+    const router = useRouter();
+    const { push } = router;
     return (
         <Stack
             gap={1.5}
@@ -137,14 +156,21 @@ const CustomDrawerHeader = ({
                 </IconButton>
             </Box>
             {open ? (
-                <Button
-                    color={'inherit'}
-                    startIcon={<PlusIcon width={14} strokeWidth={3} />}
-                    fullWidth
-                    sx={{ width: open ? '100%' : 'max-content' }}
-                >
-                    {dictionary.newProject}
-                </Button>
+         
+                    <Button
+                        color={'inherit'}
+                        startIcon={<PlusIcon width={14} strokeWidth={3} />}
+                        fullWidth
+                        onClick={() =>
+                            push(
+                                `${pathname}?${addQueryParam({ action: 'create-board' })}`,
+                            )
+                        }
+                        sx={{ width: open ? '100%' : 'max-content' }}
+                    >
+                        {dictionary.newProject}
+                    </Button>
+      
             ) : (
                 <IconButton
                     sx={{

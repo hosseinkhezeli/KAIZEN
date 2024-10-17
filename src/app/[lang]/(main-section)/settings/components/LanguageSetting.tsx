@@ -128,19 +128,21 @@ const LanguageOptionButton = ({
             }}
             onClick={() => onClickHandle(option.id as Locale)}
         >
-            <Image
-                src={option.icon}
-                alt={option.label}
-                width={160}
-                height={90}
-                className={'hidden-flag'}
-                style={{
-                    maxHeight: '32px',
-                    width: 'auto',
-                    zIndex: 1,
-                    borderRadius: '8px',
-                }}
-            />
+            {option.icon && (
+                <Image
+                    src={option.icon}
+                    alt={option.label}
+                    width={160}
+                    height={90}
+                    className={'hidden-flag'}
+                    style={{
+                        maxHeight: '32px',
+                        width: 'auto',
+                        zIndex: 1,
+                        borderRadius: '8px',
+                    }}
+                />
+            )}
             {option.label}
         </Box>
     );

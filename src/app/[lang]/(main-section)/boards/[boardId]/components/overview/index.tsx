@@ -138,7 +138,7 @@ const twoRowWrapperProps = {
     sx: { background: ({ palette }: Theme) => palette.divider },
 };
 const BasicInformation: FC<{ info: any[] }> = ({ info }) => {
-    console.log(info);
+
 
     return (
         <>

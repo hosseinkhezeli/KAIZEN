@@ -152,21 +152,22 @@ const InviteButton: FC = () => (
 const BackgroundImage: FC<{ bgImageUrl: string; altText?: string }> = ({
     bgImageUrl,
     altText,
-}) => (
-    <Image
-        src={bgImageUrl}
-        alt={altText ?? ''}
-        width={800}
-        height={450}
-        style={{
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-        }}
-    />
-);
+}) =>
+    bgImageUrl && (
+        <Image
+            src={bgImageUrl}
+            alt={altText ?? ''}
+            width={800}
+            height={450}
+            style={{
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+            }}
+        />
+    );
 
 export default BoardHeader;

@@ -22,4 +22,10 @@ interface IGetBoardDTO {
   count: number;
 }
 
+interface ICreateBoardDTO {
+  title: string;
+  description: string;
+  userId?: string;
+}
+
 type IGetBoardRes = IBoard;
