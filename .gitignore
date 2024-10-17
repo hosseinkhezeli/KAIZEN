@@ -6,7 +6,7 @@
 .pnp.js
 .yarn/install-state.gz
 .idea
-.env.development
+# .env.development
 .env.production
 # testing
 /coverage
