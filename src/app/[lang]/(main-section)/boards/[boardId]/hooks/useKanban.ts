@@ -44,15 +44,43 @@ export function useKanban(props: TKanban) {
     if (originColumnId === destinationColumnId) {
       return;
     }
+
+    const originColumn = uiColumns?.find(
+      (column) => column.id === originColumnId,
+    );
+
+    // Find the destination column
+    const destinationColumn = uiColumns?.find(
+      (column) => column.id === destinationColumnId,
+    );
+
+    // Find the task card in the origin column
+    const cardIndex = originColumn?.taskCards.findIndex(
+      (card) => card.id === cardId,
+    );
+
+    // Move the task card
+    const [updatedCard] = originColumn?.taskCards.splice(cardIndex || 0, 1)!;
+    destinationColumn?.taskCards.push(updatedCard);
+
+    //Merging with rest of columns
+
+    const restColumns = uiColumns?.filter((column) =>
+      [originColumnId, destinationColumnId].some(
+        (columnId) => columnId !== column.id,
+      ),
+    );
+    console.log(restColumns);
+    // setUiColumns([restColumns, destinationColumn, originColumn].flat(2));
     const params: TMoveTaskCardBody = {
       cardId,
       originColumnId,
       destinationColumnId,
       boardId,
     };
+
     moveTaskCardColumn(params, {
       onSuccess: (data) => {
-        setUiColumns(data);
         queryClient.refetchQueries({ queryKey: ['get-board'] });
       },
       onError: () => {

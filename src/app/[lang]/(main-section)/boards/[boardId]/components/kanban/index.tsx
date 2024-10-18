@@ -23,6 +23,7 @@ export function Kanban({ columns }: TKanban) {
         useKanban({
             columns,
         });
+    console.log(uiColumns);
     return (
         <DndContext onDragEnd={handleDragOver}>
             <ColumnsContainer>

@@ -38,9 +38,9 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     defaultValues: { phoneNumber: undefined, otp: undefined },
   });
 
-  const { mutate: getOtpCode } = useGetOtpCode();
-  const { mutate: signUpUser } = useCreateSignUp();
-  const { mutate: signInUser } = useCreateSignIn();
+  const { mutate: getOtpCode, isPending: isGettinOTP } = useGetOtpCode();
+  const { mutate: signUpUser, isPending: isSigningUp } = useCreateSignUp();
+  const { mutate: signInUser, isPending: isSigningIn } = useCreateSignIn();
 
   const [step, setStep] = useState<number>(0);
   const { setToken, setUserInfo, setLogout } = useUserStore();
@@ -110,7 +110,7 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
         onSuccess: (res) => {
           setStep(1); // Move to the sign-in step
           signInForm.setValue('phoneNumber', res.phoneNumber);
-          signInForm.setValue('otp', res.otpCode);
+          signInForm.setValue('otp', '000000');
           showSnackbar('Code successfully sent', 'success');
         },
         onError: () => {
@@ -142,6 +142,9 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
     onSubmitSignIn,
     signInForm,
     step,
+    isGettinOTP,
+    isSigningIn,
+    isSigningUp,
   };
 };
 

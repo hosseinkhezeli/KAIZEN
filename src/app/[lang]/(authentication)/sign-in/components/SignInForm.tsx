@@ -20,6 +20,9 @@ const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
         signInForm,
         inputListSignIn,
         step,
+        isGettinOTP,
+        isSigningIn,
+        isSigningUp,
     } = useSignInForm({ dictionary });
 
     return (
@@ -38,6 +41,7 @@ const SignInForm = ({ dictionary }: { dictionary: TAuth }) => {
                         variant='contained'
                         color='primary'
                         fullWidth
+                        disabled={isSigningIn || isSigningUp || isGettinOTP}
                     >
                         {step === 0 ? dictionary.send_code : dictionary.sign_in}
                     </Button>

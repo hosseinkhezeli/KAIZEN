@@ -4,7 +4,7 @@ import useUserStore from '@states/user/userSlice';
 const useOverview = () => {
   const { user } = useUserStore();
   const { data: dashboardRes, isLoading: isLoadingDashboard } = useGetDashboard(
-    { userId: user?.userId },
+    { userId: user?.username },
   );
   const overviewInfo = [
     { count: dashboardRes?.count, label: 'Active Boards' },
