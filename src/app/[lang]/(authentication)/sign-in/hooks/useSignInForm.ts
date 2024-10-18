@@ -110,7 +110,7 @@ const useSignInForm = ({ dictionary }: { dictionary: TAuth }) => {
         onSuccess: (res) => {
           setStep(1); // Move to the sign-in step
           signInForm.setValue('phoneNumber', res.phoneNumber);
-          signInForm.setValue('otp', '000000');
+          signInForm.setValue('otp', res.otpCode);
           showSnackbar('Code successfully sent', 'success');
         },
         onError: () => {
